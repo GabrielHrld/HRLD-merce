@@ -1,22 +1,27 @@
 import React from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, {Autoplay} from 'swiper';
+import SwiperCore, {Autoplay, Navigation, Pagination,} from 'swiper';
 
+//SLIDES
 import 'swiper/swiper.scss';
+import 'swiper/components/navigation/navigation.scss';
+import 'swiper/components/pagination/pagination.scss';
 import '../styles/components/Hero.scss'
+//IMAGES SLIDE
 import Slide1 from '../../assets/1.jpg'
 import Slide2 from '../../assets/2.jpg'
 
-SwiperCore.use([Autoplay])
+SwiperCore.use([Autoplay, Navigation, Pagination])
 const Hero = () => {
   return (
     <div className="hero">
       <Swiper
         spaceBetween={50}
         slidesPerView={1}
-        onSlideChange={() => console.log('slide change')}
-        onSwiper={(swiper) => console.log(swiper)}
-        pagination={{ clickable: true }}
+        onSlideChange
+        // onSwiper
+        pagination={{ clickable: true, }}
+        navigation={true}
         scrollbar={{ draggable: true }}
         autoplay
       >
