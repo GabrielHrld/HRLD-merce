@@ -5,7 +5,7 @@ export const productsMock = [
     price: '2750',
     description:
       'Combiná nuestro pantalón chino tanto con camisas como con chombas. Ideales para un look semi formal.',
-    category: ['productos', 'pantalones'],
+    category: ['pantalones'],
     images: [
       'https://orsobianco.com.ar/wp-content/uploads/2021/05/9-6-600x600.jpg',
       'https://orsobianco.com.ar/wp-content/uploads/2021/05/10-6-600x941.jpg',
@@ -17,7 +17,7 @@ export const productsMock = [
     price: '2750',
     description:
       'Combiná nuestro pantalón chino tanto con camisas como con chombas. Ideales para un look semi formal.',
-    category: ['productos', 'pantalones'],
+    category: ['pantalones'],
     images: [
       'https://orsobianco.com.ar/wp-content/uploads/2021/05/9-6-600x600.jpg',
       'https://orsobianco.com.ar/wp-content/uploads/2021/05/10-6-600x941.jpg',
@@ -29,7 +29,7 @@ export const productsMock = [
     price: '2750',
     description:
       'Combiná nuestro pantalón chino tanto con camisas como con chombas. Ideales para un look semi formal.',
-    category: ['productos', 'pantalones'],
+    category: ['pantalones'],
     images: [
       'https://orsobianco.com.ar/wp-content/uploads/2021/05/9-6-600x600.jpg',
       'https://orsobianco.com.ar/wp-content/uploads/2021/05/10-6-600x941.jpg',
@@ -41,7 +41,7 @@ export const productsMock = [
     price: '2750',
     description:
       'Combiná nuestro pantalón chino tanto con camisas como con chombas. Ideales para un look semi formal.',
-    category: ['productos', 'pantalones'],
+    category: ['pantalones'],
     images: [
       'https://orsobianco.com.ar/wp-content/uploads/2021/05/9-6-600x600.jpg',
       'https://orsobianco.com.ar/wp-content/uploads/2021/05/10-6-600x941.jpg',
@@ -49,14 +49,14 @@ export const productsMock = [
   },
   {
     id: 5,
-    title: 'Pantalón Chino Gabardina Azul Noche',
-    price: '2750',
+    title: 'Chino satén bronce',
+    price: '3000',
     description:
       'Combiná nuestro pantalón chino tanto con camisas como con chombas. Ideales para un look semi formal.',
-    category: ['productos', 'pantalones'],
+    category: ['pantalones'],
     images: [
-      'https://orsobianco.com.ar/wp-content/uploads/2021/05/9-6-600x600.jpg',
-      'https://orsobianco.com.ar/wp-content/uploads/2021/05/10-6-600x941.jpg',
+      'https://orsobianco.com.ar/wp-content/uploads/2021/05/21-3-600x600.jpg',
+      'https://orsobianco.com.ar/wp-content/uploads/2021/05/22-4-600x767.jpg',
     ],
   },
   {
@@ -65,7 +65,7 @@ export const productsMock = [
     price: '2750',
     description:
       'Combiná nuestro pantalón chino tanto con camisas como con chombas. Ideales para un look semi formal.',
-    category: ['productos', 'pantalones'],
+    category: ['pantalones'],
     images: [
       'https://orsobianco.com.ar/wp-content/uploads/2021/05/9-6-600x600.jpg',
       'https://orsobianco.com.ar/wp-content/uploads/2021/05/10-6-600x941.jpg',
@@ -77,7 +77,7 @@ export const productsMock = [
     price: '2750',
     description:
       'Combiná nuestro pantalón chino tanto con camisas como con chombas. Ideales para un look semi formal.',
-    category: ['productos', 'pantalones'],
+    category: ['pantalones'],
     images: [
       'https://orsobianco.com.ar/wp-content/uploads/2021/05/9-6-600x600.jpg',
       'https://orsobianco.com.ar/wp-content/uploads/2021/05/10-6-600x941.jpg',
@@ -89,7 +89,7 @@ export const productsMock = [
     price: '2750',
     description:
       'Combiná nuestro pantalón chino tanto con camisas como con chombas. Ideales para un look semi formal.',
-    category: ['productos', 'pantalones'],
+    category: ['pantalones'],
     images: [
       'https://orsobianco.com.ar/wp-content/uploads/2021/05/9-6-600x600.jpg',
       'https://orsobianco.com.ar/wp-content/uploads/2021/05/10-6-600x941.jpg',
@@ -101,7 +101,7 @@ export const productsMock = [
     price: '2750',
     description:
       'Combiná nuestro pantalón chino tanto con camisas como con chombas. Ideales para un look semi formal.',
-    category: ['productos', 'pantalones'],
+    category: ['pantalones'],
     images: [
       'https://orsobianco.com.ar/wp-content/uploads/2021/05/9-6-600x600.jpg',
       'https://orsobianco.com.ar/wp-content/uploads/2021/05/10-6-600x941.jpg',
@@ -113,7 +113,7 @@ export const productsMock = [
     price: '2750',
     description:
       'Combiná nuestro pantalón chino tanto con camisas como con chombas. Ideales para un look semi formal.',
-    category: ['productos', 'pantalones'],
+    category: ['pantalones'],
     images: [
       'https://orsobianco.com.ar/wp-content/uploads/2021/05/9-6-600x600.jpg',
       'https://orsobianco.com.ar/wp-content/uploads/2021/05/10-6-600x941.jpg',
@@ -125,7 +125,7 @@ export const productsMock = [
     price: '2750',
     description:
       'Combiná nuestro pantalón chino tanto con camisas como con chombas. Ideales para un look semi formal.',
-    category: ['productos', 'pantalones'],
+    category: ['pantalones'],
     images: [
       'https://orsobianco.com.ar/wp-content/uploads/2021/05/9-6-600x600.jpg',
       'https://orsobianco.com.ar/wp-content/uploads/2021/05/10-6-600x941.jpg',
@@ -137,7 +137,7 @@ export const productsMock = [
     price: '2750',
     description:
       'Combiná nuestro pantalón chino tanto con camisas como con chombas. Ideales para un look semi formal.',
-    category: ['productos', 'pantalones'],
+    category: ['pantalones'],
     images: [
       'https://orsobianco.com.ar/wp-content/uploads/2021/05/9-6-600x600.jpg',
       'https://orsobianco.com.ar/wp-content/uploads/2021/05/10-6-600x941.jpg',

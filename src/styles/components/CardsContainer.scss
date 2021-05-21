@@ -1,5 +1,8 @@
-.container-cards{
+.container-cards_wrapper{
   padding: 5rem calc((100vw - 1300px) / 2);
+  
+}
+.container-cards{
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   // background-color: green; 
