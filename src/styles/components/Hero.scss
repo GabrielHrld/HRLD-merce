@@ -1,0 +1,23 @@
+.hero {
+  padding-top: 2%;
+  padding: 0rem calc((100vw - 1300px) / 2);
+
+  position: relative;
+  z-index: 1 !important;
+  .swiper-container {
+    width: 100%;
+    height: 500px;
+    .swiper-wrapper {
+      .swiper-slide {
+        background: transparent;
+        width: 100% !important;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+}
+
