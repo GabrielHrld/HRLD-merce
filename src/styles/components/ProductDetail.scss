@@ -1,0 +1,122 @@
+@import '../app.scss';
+@mixin titles{
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  padding: 1em 0;
+}
+.product-detail_container{
+  width: 100%;
+  .main{
+    display: grid;
+    grid-template-columns: 60% 40%;
+    max-width: 90vw;
+    margin: 2rem auto;
+    padding: 0rem calc((100vw - 1300px) / 2);
+    &-images_carousel{
+      // position: relative;
+      // background-color: $color-primary;
+      // flex-flow: row wrap;
+      .swiper-wrapper{
+        max-height: 700px;
+        background-color: #e6e9f2;
+        .image-container{
+          height: 100%;
+          transform: scale(1);
+          transition: .5s all ease;
+          img{
+            width: 100%;
+            object-fit: contain;
+          }
+        }
+        .image-container:hover{
+          transform: scale(0.85);
+        }
+      }
+    }
+    &-info_container{
+      // flex-flow: row wrap;
+
+       background-color: $text-color-primary;
+      padding: 2.5vw 1.3vw 2.3vw 2.5vw;
+      color: #2a2b2c; 
+      .main-info_title{
+        @include titles;
+      }
+      .main-info_price{
+        @include titles();
+        padding: 1em 0;
+      }
+      .fees{
+        padding: 1em 0;
+      }
+      .main-info_form{
+        table{
+          width: 100%;
+          margin-bottom: 1rem;
+          tr{
+            .label,
+            .value{
+              display: block;
+            }
+            .label{
+              padding: .5em 0;
+            }
+            .value{
+              select{
+                height: 2.3rem;
+                outline: none;
+                font-weight: 300;
+              }
+            }
+          }
+        }
+        .addCart-wrapper{
+          .addCart-container{
+            display: flex;
+            flex: row wrap;
+            flex-direction: column;
+            .label{
+              padding: .5em 0;
+            }
+            div{
+              display: flex;
+              .quantity{
+                padding-left: 10px;
+              }
+            }
+            
+          }
+        }
+      }
+    }
+    
+  }
+} 
+
+@media screen and (max-width: 678px) {
+  .product-detail_container{
+    .main{
+      display: grid;
+      grid-template-columns: none;
+      grid-template-rows: auto ;
+
+      &-images_carousel{
+        .swiper-wrapper{
+          max-width: calc(100vw - 4rem);
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .product-detail_container{
+    .main{
+      position: relative;
+      margin: 0 auto;
+      padding-top: 110px;
+    }
+  }
+}

@@ -174,7 +174,9 @@
 
 @media screen and (max-width: 1024px){
   .Header{
+    position: fixed;
     .Navbar{
+      
       .menu-btn{
         display: flex;
         position:relative;
@@ -244,6 +246,7 @@
       background-color: $color-secondary;
       position: relative;
       transition: .8s all ease-in-out;
+      top: -1px;
       left: -100%;
       & div{
         display: flex;

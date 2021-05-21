@@ -1,23 +1,25 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import NumberFormat from 'react-number-format';
 
 import '../styles/components/Card.scss'
+import MonthlyFees from './MonthlyFees';
 const Card = ({product}) => {
   return (
     <div>
       <ul className="card-container">
         <li>
           <div className="card-image_container">
-            <a href="/">
+            <Link to="/products">
               <figure>
                 <img src={product.images[0]} alt={product.title} />
               </figure>
-            </a>
+            </Link>
           </div>
           <div className="card-title">
-            <a href="/">
+            <Link to="/products">
               <span>{product.title}</span>
-            </a>
+            </Link>
           </div>
           <div className="card-price">
             <NumberFormat
@@ -27,20 +29,7 @@ const Card = ({product}) => {
               prefix={'$'}
             />
           </div>
-          <div className="card-cuotes">
-            <div>
-              <strong>6</strong> cuotas sin interés de{' '}
-              <strong>
-                <NumberFormat
-                  value={product.price / 6}
-                  displayType={'text'}
-                  thousandSeparator={true}
-                  prefix={'$'}
-                  decimalScale={2}
-                />
-              </strong>
-            </div>
-          </div>
+          <MonthlyFees fees={6} price={product.price}/>
         </li>
       </ul>
     </div>

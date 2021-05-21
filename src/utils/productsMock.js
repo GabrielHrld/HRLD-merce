@@ -1,5 +1,6 @@
 export const productsMock = [
   {
+    id: 1,
     title: 'Pantalón Chino Gabardina Azul Noche',
     price: '2750',
     description:
@@ -11,6 +12,7 @@ export const productsMock = [
     ],
   },
   {
+    id: 2,
     title: 'Pantalón Chino Gabardina Azul Noche',
     price: '2750',
     description:
@@ -22,6 +24,7 @@ export const productsMock = [
     ],
   },
   {
+    id: 3,
     title: 'Pantalón Chino Gabardina Azul Noche',
     price: '2750',
     description:
@@ -33,6 +36,7 @@ export const productsMock = [
     ],
   },
   {
+    id: 4,
     title: 'Pantalón Chino Gabardina Azul Noche',
     price: '2750',
     description:
@@ -44,6 +48,7 @@ export const productsMock = [
     ],
   },
   {
+    id: 5,
     title: 'Pantalón Chino Gabardina Azul Noche',
     price: '2750',
     description:
@@ -55,6 +60,7 @@ export const productsMock = [
     ],
   },
   {
+    id: 6,
     title: 'Pantalón Chino Gabardina Azul Noche',
     price: '2750',
     description:
@@ -66,6 +72,7 @@ export const productsMock = [
     ],
   },
   {
+    id: 7,
     title: 'Pantalón Chino Gabardina Azul Noche',
     price: '2750',
     description:
@@ -77,6 +84,7 @@ export const productsMock = [
     ],
   },
   {
+    id: 8,
     title: 'Pantalón Chino Gabardina Azul Noche',
     price: '2750',
     description:
@@ -88,6 +96,7 @@ export const productsMock = [
     ],
   },
   {
+    id: 9,
     title: 'Pantalón Chino Gabardina Azul Noche',
     price: '2750',
     description:
@@ -99,6 +108,7 @@ export const productsMock = [
     ],
   },
   {
+    id: 10,
     title: 'Pantalón Chino Gabardina Azul Noche',
     price: '2750',
     description:
@@ -110,6 +120,7 @@ export const productsMock = [
     ],
   },
   {
+    id: 11,
     title: 'Pantalón Chino Gabardina Azul Noche',
     price: '2750',
     description:
@@ -121,6 +132,7 @@ export const productsMock = [
     ],
   },
   {
+    id: 12,
     title: 'Pantalón Chino Gabardina Azul Noche',
     price: '2750',
     description:
