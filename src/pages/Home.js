@@ -11,7 +11,7 @@ const Home = () => (
       <Hero />
       <BannerService />
       <Promo text="ELIGI, COMPRA Y RECIBÍ NUESTROS BÁSICOS SIN MOVERTE DE TU CASA"/>
-      <CardsContainer />
+      <CardsContainer quantity={3}/>
       <BannerService />
 
     </div>

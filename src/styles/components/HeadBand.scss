@@ -1,0 +1,54 @@
+@import '../app.scss';
+.headBand-wrapper{
+  width: 100%;
+  background-color: $color-secondary;
+  .headBand-container{
+    width: 100%;
+    height: 100px;
+    display: grid;
+    grid-template-columns:  repeat(3, 1fr);
+    align-items: center;
+    padding: 0rem calc((100vw - 1300px) / 2);
+
+    .headBand-item{
+      color: $text-color-primary;
+      font-size: 1.4rem;
+
+      &:nth-child(1){
+        display: flex;
+        justify-content: flex-start;
+        .filter{
+          padding-left: 15%;
+          cursor: pointer;
+          transition: .4s all ease;
+        }
+        .filter:hover{
+          color: $text-color-secondary;
+        }
+      }
+      &:nth-child(2){
+        h1{
+          font-size: 4vw;
+        }
+      }
+      &:nth-child(3){
+        display: flex;
+        justify-content: flex-end;
+        .orderBy{
+          padding-right: 15%;
+          select{
+            min-width:125px;
+            width: 80%;
+            height: 2.4rem;
+            outline: none;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 1024px){
+  .headBand-wrapper{
+    padding-top:80px;
+  }
+}
