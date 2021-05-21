@@ -12,6 +12,8 @@ const Home = () => (
       <BannerService />
       <Promo text="ELIGI, COMPRA Y RECIBÍ NUESTROS BÁSICOS SIN MOVERTE DE TU CASA"/>
       <CardsContainer />
+      <BannerService />
+
     </div>
   </div>
 );
