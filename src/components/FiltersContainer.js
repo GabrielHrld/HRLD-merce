@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {connect} from 'react-redux';
+import { handleFilterClick} from '../actions'
 
 import { FaTimes } from 'react-icons/fa';
 import { withStyles,makeStyles } from '@material-ui/core/styles';
@@ -22,19 +23,23 @@ const CustomSlider =  withStyles({
 
 import '../styles/components/FiltersContainer.scss';
 
-const FiltersContainer = ({click, filterClick, cartClick}) => {
+const FiltersContainer = ({click, filterClick, cartClick, state, handleFilterClick}) => {
   const classes = useStyles();
   const [value, setValue] = useState([0, 18000]);
+  
+  const activeFilterClick = () =>{
+    handleFilterClick(!filterClick);
+  }
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
   
   return (
-    <div className={click ? "side-filters_wrapper active" : "side-filters_wrapper"}>
+    <div className={filterClick ? "side-filters_wrapper active" : "side-filters_wrapper"}>
       <div className="side-filters_container">
         <header>
-          <a title="Close" className="close-icon_container">
+          <a title="Close" className="close-icon_container" onClick={activeFilterClick}>
             <FaTimes className="icon" />
           </a>
         </header>
@@ -92,9 +97,12 @@ const FiltersContainer = ({click, filterClick, cartClick}) => {
 
 const mapStateToProps = state =>{
   return {
-    filterClick: state.filterClick,
-    cartClick: state.cartClick
+    filterClick: state.filterClick
   }
 }
 
-export default connect(mapStateToProps, null)(FiltersContainer);
+const mapDispatchToProps = {
+  handleFilterClick,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FiltersContainer);

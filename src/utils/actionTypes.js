@@ -1,0 +1,1 @@
+export const handleFilterClickType = 'HANDLE_FILTER_CLICK';

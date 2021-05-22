@@ -1,16 +1,20 @@
 import React, { useState } from 'react'
+import {connect} from 'react-redux'
 import FiltersContainer from './FiltersContainer'
+import {handleFilterClick} from '../actions'
 
 import '../styles/components/HeadBand.scss'
-const HeadBand = () => {
-  const [click, setClick] = useState(false)
-  const handleClick = () => setClick(!click);
-  console.log(click)
+const HeadBand = ({filterClick, handleFilterClick}) => {
+  
+  const activeFilterClick = () =>{
+    handleFilterClick(!filterClick);
+  }
+
   return (
     <div className="headBand-wrapper">
       <div className="headBand-container">
         <div className="headBand-item">
-          <span className="filter" onClick={handleClick}>Filtro</span>
+          <span className="filter" onClick={activeFilterClick}>Filtro</span>
         </div>
         <div className="headBand-item">
           <h1>Productos</h1>
@@ -26,10 +30,20 @@ const HeadBand = () => {
           </form>
         </div>
       </div>
-      <FiltersContainer click={click}/>
+      <FiltersContainer click={filterClick}/>
 
     </div>
   )
 }
 
-export default HeadBand
+const mapStateToProps = state => {
+  return {
+    filterClick: state.filterClick
+  }
+}
+
+const mapDispatchToProps = {
+  handleFilterClick
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(HeadBand);
