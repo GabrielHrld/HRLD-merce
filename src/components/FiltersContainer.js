@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { FaTimes } from 'react-icons/fa';
+import {connect} from 'react-redux';
 
+import { FaTimes } from 'react-icons/fa';
 import { withStyles,makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/slider';
+
 
 //SLIDER STYLES
 const useStyles = makeStyles({
@@ -20,7 +22,7 @@ const CustomSlider =  withStyles({
 
 import '../styles/components/FiltersContainer.scss';
 
-const FiltersContainer = ({click}) => {
+const FiltersContainer = ({click, filterClick, cartClick}) => {
   const classes = useStyles();
   const [value, setValue] = useState([0, 18000]);
 
@@ -88,4 +90,11 @@ const FiltersContainer = ({click}) => {
   );
 };
 
-export default FiltersContainer;
+const mapStateToProps = state =>{
+  return {
+    filterClick: state.filterClick,
+    cartClick: state.cartClick
+  }
+}
+
+export default connect(mapStateToProps, null)(FiltersContainer);

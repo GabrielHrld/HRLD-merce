@@ -21,8 +21,8 @@ const HeadBand = () => {
               <option value="">Ordenar por los últimos</option>
               <option value="">Ordenar por precio: bajo a alto</option>
               <option value="">Ordenar por precio: alto a bajo</option>
-              <input type="hidden" value="1" />
             </select>
+              <input type="hidden" value="1" />
           </form>
         </div>
       </div>

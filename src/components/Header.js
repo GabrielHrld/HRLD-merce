@@ -50,7 +50,7 @@ const Header = () => {
                 </a>
                 <ul className="dropdown-links">
                     {
-                      categories.map((category)=><li className="dropdown-item"><a href="/">{category}</a></li>)
+                      categories.map((category, index)=><li className="dropdown-item" key={category+index}><a href="/">{category}</a></li>)
                     }
                 </ul>
               </li>
