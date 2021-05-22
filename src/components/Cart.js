@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import {connect} from 'react-redux'
+import {handleCartClick} from '../actions'
 import { FaTimes } from "react-icons/fa";
 import { HiMinus, HiPlus } from "react-icons/hi";
 import NumberFormat from 'react-number-format';
@@ -9,14 +11,18 @@ import {productsMock} from '../utils/productsMock';
 
 import {ImBin} from 'react-icons/im'
 
-const Cart = ({click}) => {
+const Cart = ({cartClick, handleCartClick}) => {
   const [products, setProducts] = useState(productsMock)
+  
+  const activeCartClick =()=> {
+    handleCartClick(!cartClick)
+  }
 
   return (
-    <div className={click ? "side-cart_wrapper active" : "side-cart_wrapper"}>
+    <div className={cartClick ? "side-cart_wrapper active" : "side-cart_wrapper"}>
       <div className="side-cart_container">
         <header>
-          <a title="Close" className="close-icon_container">
+          <a title="Close" className="close-icon_container" onClick={activeCartClick}>
             <FaTimes className="icon" />
           </a>
           <span><h3>Carrito de compras</h3></span>
@@ -94,5 +100,14 @@ const Cart = ({click}) => {
     </div>
   )
 }
+const mapStateToProps = state => {
+  return {
+    cartClick: state.cartClick,
+  }
+}
 
-export default Cart
+const mapDispatchToProps = {
+  handleCartClick
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cart)

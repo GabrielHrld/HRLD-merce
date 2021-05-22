@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import {productsMock} from '../utils/productsMock'
+import {connect} from 'react-redux';
 
 import '../styles/components/CardsContainer.scss'
 import Card from './Card'
 import Pagination from './Pagination';
 
-const CardsContainer = ({quantity, pagination}) => {
-  const [products, setProducts] = useState(productsMock)
+const CardsContainer = ({products, quantity, pagination}) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage, setProductsPerPage] = useState(4);
 
@@ -52,17 +51,14 @@ const CardsContainer = ({quantity, pagination}) => {
         </div> : 
         <div></div>
       }
-      {/* <div className="pagination-wrapper">
-        <Pagination 
-          productsPerPage={productsPerPage} 
-          totalProducts={products.length} 
-          paginate={paginate}
-          
-        />
-
-      </div> */}
     </div>
   )
 }
 
-export default CardsContainer
+const mapStateToProps = state =>{
+  return {
+    products: state.products
+  }
+}
+
+export default connect(mapStateToProps, null)(CardsContainer);

@@ -7,10 +7,8 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux'
 import reducer from './reducers';
 
-const initialState = {
-  "filterClick": false,
-  "cartClick": false 
-}
+//Initial State
+import {initialState} from './utils/InitialState';
 
 const store = createStore(reducer, initialState);
 

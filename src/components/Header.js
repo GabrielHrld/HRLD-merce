@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/components/Header.scss';
+import {connect} from 'react-redux';
+import {handleCartClick} from '../actions'
 import { MdSearch } from 'react-icons/md';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { IoIosArrowDown } from 'react-icons/io';
@@ -8,13 +10,17 @@ import Logo from '../../assets/logo.png';
 import {productsMock} from '../utils/productsMock';
 import Cart from './Cart'
 
-const Header = () => {
+const Header = ({cart, cartClick, handleCartClick}) => {
   const [click, setClick] = useState(false);
-  const [cartClick, setCartClick] = useState(false);
+  
   const [products, setProducts] = useState(productsMock);
 
   const handleClick = () => setClick(!click);
-  const handleCartClick = () => setCartClick(!cartClick);
+
+  //función para switchear el cart menu
+  const activeCartClick =()=> {
+    handleCartClick(!cartClick)
+  }
   
   //categories
   const categories = []
@@ -70,9 +76,9 @@ const Header = () => {
                 <li><a href="/">Registrarse</a></li>
               </div>
               <div>
-                <li id="cart"><a onClick={handleCartClick}>
+                <li id="cart"><a onClick={activeCartClick}>
                   <AiOutlineShoppingCart className="cart-icon"/>
-                  <span>1</span>
+                  <span>{cart.length}</span>
                 </a></li>
               </div>
             </ul>
@@ -101,4 +107,15 @@ const Header = () => {
   );
 };
 
-export default Header;
+const mapStateToProps = state =>{
+  return{
+    cartClick: state.cartClick,
+    cart: state.cart
+  }
+}
+
+const mapDispatchToProps = {
+  handleCartClick
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
