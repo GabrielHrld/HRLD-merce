@@ -32,12 +32,12 @@ const CardsContainer = ({quantity}) => {
           quantity ? 
             products.slice(0, quantity).map((product)=>{
               return(
-                <Card product={product} />
+                <Card product={product} key={product.id}/>
               )
             }) :
             currentProducts.map((product) => {
               return(
-                <Card product={product} />
+                <Card product={product} key={product.id}/>
               )
             }) 
         }

@@ -10,12 +10,12 @@ import '../styles/app.scss';
 const App = () => (
   <Router>
     <Layout>
-      <Switch>
+      {/* <Switch> */}
         <Route exact path="/" component={Home} />
+        <Route exact path="/products/:id" component={ProductDetail} />
         <Route exact path="/products" component={Market} />
-        <Route exact path="/detail" component={ProductDetail} />
         <Route exact path="/profile" component={Profile} />
-      </Switch>
+      {/* </Switch> */}
     </Layout>
   </Router>
 );

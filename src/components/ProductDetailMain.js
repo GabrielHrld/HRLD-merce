@@ -1,5 +1,6 @@
 import React from 'react'
 import MonthlyFees from '../components/MonthlyFees'
+import NumberFormat from 'react-number-format';
 
 //SWIPER
 import 'swiper/swiper.scss';
@@ -24,67 +25,72 @@ const ProductDetailHero = ({product}) => {
             navigation
             pagination={ {clickable: true} }
             scrollbar={{ draggable: true }}
-            onSwiper={(swiper) => console.log(swiper)}
-            onSlideChange={() => console.log('slide change')}
             className="swiper-wrapper"
           >
-            <SwiperSlide className="swiper-slide">
-              <figure className="image-container">
-                <img src={product[0].images[0]} alt="" />
-              </figure>
-            </SwiperSlide>
-            <SwiperSlide className="swiper-slide">
-              <figure className="image-container">
-                <img src={product[0].images[1]} alt="" />
-              </figure>
-            </SwiperSlide>
+            {
+              product.images.map((image)=>{
+                return(
+                  <SwiperSlide className="swiper-slide">
+                    <figure className="image-container">
+                      <img src={image} alt="" />
+                    </figure>
+                  </SwiperSlide>
+                )
+              })
+            }
           </Swiper>
         </div>
         <div className="main-info_container">
           <div className="main-info_title">
-            <span>TITULO</span>
+            <span>{product.name}</span>
           </div>
           <div className="main-info_price">
-            <span>$3.000,00</span>
+          <NumberFormat
+              value={product.price}
+              displayType={'text'}
+              thousandSeparator={true}
+              prefix={'$'}
+            />
           </div>
           <div className="main-info_description">
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga, molestiae.
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi quae ex odit quia molestiae libero.
-            </p>
+            <p>{product.description}</p>
           </div>
           <form action="" className="main-info_form">
             <table>
-              <tr>
-                <td className="label">
-                  <label htmlFor="" className="p_color">Color</label>
-                </td>
-                <td className="value">
-                  <select name="" id="p_color">
-                    <option value>Elige una opción</option>
-                    <option value="azul">Azul</option>
-                  </select>
-                </td>
-              </tr>
-              <tr>
-                <td className="label">
-                  <label htmlFor="">Talle</label>
-                </td>
-                <td className="value">
-                  <select name="" id="p_size">
-                    <option value="">Elige una opcioón</option>
-                    <option value="">38</option>
-                    <option value="">40</option>
-                    <option value="">42</option>
-                    <option value="">44</option>
-                  </select>
-                </td>
-              </tr>
+              <tbody>
+                <tr>
+                  <td className="label">
+                    <label htmlFor="" className="p_color">Color</label>
+                  </td>
+                  <td className="value">
+                    <select name="" id="p_color">
+                      <option value>Elige una opción</option>
+                      <option value={product.color}>{product.color}</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td className="label">
+                    <label htmlFor="">Talle</label>
+                  </td>
+                  <td className="value">
+                    <select name="" id="p_size">
+                      <option value="">Elige una opción</option>
+                      {
+                        product.sizeAvailable.map((size) => {
+                          return(<option value={size} >{size}</option>)
+                        })
+                      }
+                    </select>
+                  </td>
+                </tr>
+              </tbody>
             </table>
-            <div class="addCart-wrapper">
+            <div className="addCart-wrapper">
               <div className="addCart-container">
-                <label htmlFor="quantity" className="label">Cantidad</label>
+                <label htmlFor="quantity" className="label">Cantidad: max {product.stock} unidades</label>
                 <div>
-                  <input type="number" className="quantity" id="quantity" min="0" />
+                  <input type="number" className="quantity" id="quantity" min="0" max={product.stock}/>
                   <Button text={'añadir al carrito'}/>
 
                 </div>

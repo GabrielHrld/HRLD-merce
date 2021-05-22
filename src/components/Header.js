@@ -5,14 +5,22 @@ import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { IoIosArrowDown } from 'react-icons/io';
 
 import Logo from '../../assets/logo.png';
+import {productsMock} from '../utils/productsMock';
 
 const Header = () => {
   const [click, setClick] = useState(false);
-  const [dropdown, setDropdown] = useState(false);
+  const [products, setProducts] = useState(productsMock);
 
-  const handleDropdown = () => setDropdown(!dropdown);
   const handleClick = () => setClick(!click);
   
+  //categories
+  const categories = []
+  for (let i = 0; i < products.length; i++) {
+    const category = products[i].category[0];
+    if(!categories.includes(category)){
+      categories.push(category)
+    }
+  }
   return (
     <>
       <header className="Header">
@@ -38,10 +46,9 @@ const Header = () => {
                   
                 </a>
                 <ul className="dropdown-links">
-                    <li className="dropdown-item"><a href="/">1</a></li>
-                    <li className="dropdown-item"><a href="/">2</a></li>
-                    <li className="dropdown-item"><a href="/">3/</a></li>
-                    <li className="dropdown-item"><a href="/">4</a></li>
+                    {
+                      categories.map((category)=><li className="dropdown-item"><a href="/">{category}</a></li>)
+                    }
                 </ul>
               </li>
               <li ><a href="/">SALE 🔥</a></li>
@@ -54,7 +61,7 @@ const Header = () => {
             </form>
           </div>
           <div className="rightSection">
-            <ul ul className="rightSection-links">
+            <ul className="rightSection-links">
               <div>
                 <li><a href="/">Ingresar</a></li>
                 <li><a href="/">Registrarse</a></li>

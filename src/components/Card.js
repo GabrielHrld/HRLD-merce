@@ -10,15 +10,15 @@ const Card = ({product}) => {
       <ul className="card-container">
         <li>
           <div className="card-image_container">
-            <Link to="/products">
+            <Link to={`/products/:${product.id}`}>
               <figure>
-                <img src={product.images[0]} alt={product.title} />
+                <img src={product.images[0]} alt={product.name} />
               </figure>
             </Link>
           </div>
           <div className="card-title">
-            <Link to="/products">
-              <span>{product.title}</span>
+            <Link to={`/products/:${product.id}`}>
+              <span>{product.name}</span>
             </Link>
           </div>
           <div className="card-price">

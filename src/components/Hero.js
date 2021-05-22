@@ -18,8 +18,6 @@ const Hero = () => {
       <Swiper
         spaceBetween={50}
         slidesPerView={1}
-        onSlideChange
-        // onSwiper
         pagination={{ clickable: true, }}
         navigation={true}
         scrollbar={{ draggable: true }}
