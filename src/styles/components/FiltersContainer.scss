@@ -1,0 +1,116 @@
+@import '../app.scss';
+
+.side-filters_wrapper {
+  position: fixed;
+  top: 0vh;
+  left: -100%;
+  z-index: 11;
+  width: 30vw;
+  min-width: 300px;
+  height: auto;
+  min-height: 100vh;
+  background-color: $text-color-primary;
+  transition: 1s left ease-out;
+  &.active{
+    left:0%
+  }
+  .side-filters_container {
+    height: 100%;
+    header {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 0% 2rem;
+      height: 8vh;
+      background-color: $background-light-high;
+      .close-icon_container {
+        .icon {
+          color: $text-color-dark;
+          font-size: calc(1rem + 1vw);
+          cursor: pointer;
+        }
+      }
+    }
+    .filters-container {
+      .price-filter {
+        display: flex;
+        flex-direction: column;
+        padding: 3vh 3vw;
+        // background: $text-color-dark;
+        div {
+          margin-bottom: 1em;
+        }
+      }
+      .category-filter {
+        display: flex;
+        flex-direction: column;
+        padding: 3vh 3vw;
+        height: auto;
+        // max-height: 20%;
+
+        .categories-container {
+          padding-left: 1.5rem;
+          height: calc(8vw);
+          min-height: 100px;
+          max-height: 30vh;
+          background-color: $background-light;
+          overflow: scroll;
+          &::-webkit-scrollbar-thumb {
+            background: $text-color-dark;
+            border-radius: 35px;
+          }
+          &::-webkit-scrollbar-track-piece {
+            background: transparent;
+          }
+          li {
+            padding: 1.5em 0;
+            a {
+              color: $text-color-dark;
+              text-transform: uppercase;
+              font-weight: bold;
+            }
+          }
+        }
+
+        div,
+        ul {
+          margin-bottom: 1em;
+        }
+      }
+      .color-fllter {
+        display: flex;
+        flex-direction: column;
+        padding: 3vh 3vw;
+        height: auto;
+          .colors-container {
+            padding-left: 1.5rem;
+            height: calc(8vw);
+            min-height: 100px;
+            max-height: 30vh;
+            background-color: $background-light;
+            overflow: scroll;
+            &::-webkit-scrollbar-thumb {
+              background: $text-color-dark;
+              border-radius: 35px;
+            }
+            &::-webkit-scrollbar-track-piece {
+              background: transparent;
+            }
+            li {
+              padding: 1.5em 0;
+              a {
+                color: $text-color-dark;
+                text-transform: uppercase;
+                font-weight: bold;
+              }
+            }
+          
+        }
+      }
+    }
+  }
+}
+.categories-container::-webkit-scrollbar,
+.colors-container::-webkit-scrollbar {
+  height: 0px;
+}
