@@ -5,6 +5,7 @@ import { withStyles,makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/slider';
 
+//SLIDER STYLES
 const useStyles = makeStyles({
   root: {
     width: '100%',
@@ -18,6 +19,7 @@ const CustomSlider =  withStyles({
 })(Slider)
 
 import '../styles/components/FiltersContainer.scss';
+
 const FiltersContainer = ({click}) => {
   const classes = useStyles();
   const [value, setValue] = useState([0, 18000]);

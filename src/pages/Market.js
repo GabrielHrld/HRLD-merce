@@ -8,7 +8,7 @@ const Market = () => {
   return (
     <div className="market-wrapper">
       <HeadBand />
-      <CardsContainer />
+      <CardsContainer pagination={true}/>
     </div>
   )
 }

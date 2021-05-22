@@ -5,7 +5,7 @@ import '../styles/components/CardsContainer.scss'
 import Card from './Card'
 import Pagination from './Pagination';
 
-const CardsContainer = ({quantity}) => {
+const CardsContainer = ({quantity, pagination}) => {
   const [products, setProducts] = useState(productsMock)
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage, setProductsPerPage] = useState(4);
@@ -21,7 +21,6 @@ const CardsContainer = ({quantity}) => {
 
   // Change Page
   const paginate = (pageNumber) => {
-    console.log(pageNumber)
     setCurrentPage(pageNumber)
   }
 
@@ -42,7 +41,18 @@ const CardsContainer = ({quantity}) => {
             }) 
         }
       </div>
-      <div className="pagination-wrapper">
+      {
+        pagination ? 
+        <div className="pagination-wrapper">
+          <Pagination 
+            productsPerPage={productsPerPage} 
+            totalProducts={products.length} 
+            paginate={paginate}
+          />
+        </div> : 
+        <div></div>
+      }
+      {/* <div className="pagination-wrapper">
         <Pagination 
           productsPerPage={productsPerPage} 
           totalProducts={products.length} 
@@ -50,7 +60,7 @@ const CardsContainer = ({quantity}) => {
           
         />
 
-      </div>
+      </div> */}
     </div>
   )
 }
