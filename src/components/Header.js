@@ -6,12 +6,15 @@ import { IoIosArrowDown } from 'react-icons/io';
 
 import Logo from '../../assets/logo.png';
 import {productsMock} from '../utils/productsMock';
+import Cart from './Cart'
 
 const Header = () => {
   const [click, setClick] = useState(false);
+  const [cartClick, setCartClick] = useState(false);
   const [products, setProducts] = useState(productsMock);
 
   const handleClick = () => setClick(!click);
+  const handleCartClick = () => setCartClick(!cartClick);
   
   //categories
   const categories = []
@@ -67,7 +70,7 @@ const Header = () => {
                 <li><a href="/">Registrarse</a></li>
               </div>
               <div>
-                <li id="cart"><a href="/">
+                <li id="cart"><a onClick={handleCartClick}>
                   <AiOutlineShoppingCart className="cart-icon"/>
                   <span>1</span>
                 </a></li>
@@ -92,6 +95,7 @@ const Header = () => {
 
           </div>
         </div>
+        <Cart click={cartClick}/>
       </header>
     </>
   );
