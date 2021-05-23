@@ -1,6 +1,11 @@
-import React from 'react';
-import MonthlyFees from '../components/MonthlyFees';
+import React, { useState,  } from 'react';
 import NumberFormat from 'react-number-format';
+import {connect} from 'react-redux';
+
+import MonthlyFees from './MonthlyFees';
+import '../styles/components/ProductDetailHero.scss';
+import Button from './Button';
+import {addToCart} from '../actions';
 
 //SWIPER
 import 'swiper/swiper.scss';
@@ -16,12 +21,28 @@ import SwiperCore, {
   A11y,
   Keyboard,
 } from 'swiper';
-import Button from '../components/Button';
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Keyboard]);
 
-import '../styles/components/ProductDetailHero.scss';
-const ProductDetailHero = ({ product }) => {
+const ProductDetailHero = ({ product, addToCart }) => {
+  const [quantity, setQuantity] = useState(1)
+  const [size, setSize] = useState('m')
+
+  const productToCart = {
+    ...product,
+    size: [size],
+    quantity
+  }
+  const handleAddToCart = () => addToCart(productToCart);
+  
+  const handleSize = (event) => {
+    setSize(event.target.value)
+  }
+
+  const handleChange= (event) => {
+    const value = parseInt(event.target.value);
+     setQuantity(value);
+  }
   return (
     <div className="main">
       <div className="main-images_carousel">
@@ -80,10 +101,9 @@ const ProductDetailHero = ({ product }) => {
                   <label htmlFor="">Talle</label>
                 </td>
                 <td className="value">
-                  <select name="" id="p_size">
-                    <option value="">Elige una opción</option>
+                  <select name="" id="p_size" onChange={handleSize} defaultValue="m">
                     {product.sizeAvailable.map((size) => {
-                      return <option value={size}>{size}</option>;
+                      return <option value={size} onClick={handleSize}>{size}</option>;
                     })}
                   </select>
                 </td>
@@ -102,8 +122,14 @@ const ProductDetailHero = ({ product }) => {
                   id="quantity"
                   min="0"
                   max={product.stock}
+                  onChange={handleChange}
+                  value={quantity}
+                  defaultValue="1"
                 />
-                <Button text={'añadir al carrito'} />
+                <div onClick={handleAddToCart}>
+                <Button type="button" text={'añadir al carrito'}  />
+                  
+                </div>
               </div>
             </div>
           </div>
@@ -116,4 +142,8 @@ const ProductDetailHero = ({ product }) => {
   );
 };
 
-export default ProductDetailHero;
+const mapDispatchToProps = {
+  addToCart
+}
+
+export default connect(null, mapDispatchToProps)(ProductDetailHero);

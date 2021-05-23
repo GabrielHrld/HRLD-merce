@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/components/Header.scss';
 import {connect} from 'react-redux';
-import {handleCartClick} from '../actions'
+import {handleCartClick, handleSideMenuClick} from '../actions'
 import { MdSearch } from 'react-icons/md';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { IoIosArrowDown } from 'react-icons/io';
@@ -10,17 +10,20 @@ import Logo from '../../assets/logo.png';
 import {productsMock} from '../utils/productsMock';
 import Cart from './Cart'
 
-const Header = ({cart, cartClick, handleCartClick}) => {
+const Header = ({sideMenu, cart, cartClick, handleCartClick, handleSideMenuClick}) => {
   const [click, setClick] = useState(false);
   
   const [products, setProducts] = useState(productsMock);
 
-  const handleClick = () => setClick(!click);
+  // const handleClick = () => setClick(!click);
+
+  const switchSideMenuClick = () => {
+    // setClick(!click);
+    handleSideMenuClick(!sideMenu);
+  }
 
   //función para switchear el cart menu
-  const activeCartClick =()=> {
-    handleCartClick(!cartClick)
-  }
+  const switchCartClick =()=> handleCartClick(!cartClick)
   
   //categories
   const categories = []
@@ -30,11 +33,12 @@ const Header = ({cart, cartClick, handleCartClick}) => {
       categories.push(category)
     }
   }
+
   return (
     <>
       <header className="Header">
         <nav className="Navbar">
-          <div className={click? 'menu-btn active' : 'menu-btn'} onClick={handleClick}>
+          <div className={sideMenu? 'menu-btn active' : 'menu-btn'} onClick={switchSideMenuClick}>
             <div className="menu-btn_burger">
             </div>
           </div>
@@ -56,11 +60,11 @@ const Header = ({cart, cartClick, handleCartClick}) => {
                 </a>
                 <ul className="dropdown-links">
                     {
-                      categories.map((category, index)=><li className="dropdown-item" key={category+index}><a href="/">{category}</a></li>)
+                      categories.map((category, index)=><li className="dropdown-item " key={category+index}><a href="/">{category}</a></li>)
                     }
                 </ul>
               </li>
-              <li ><a href="/">SALE 🔥</a></li>
+              <li ><a href="/" >SALE 🔥</a></li>
             </ul>
           </div>
           <div className="middleSection">
@@ -76,7 +80,7 @@ const Header = ({cart, cartClick, handleCartClick}) => {
                 <li><a href="/">Registrarse</a></li>
               </div>
               <div>
-                <li id="cart"><a onClick={activeCartClick}>
+                <li id="cart"><a onClick={switchCartClick}>
                   <AiOutlineShoppingCart className="cart-icon"/>
                   <span>{cart.length}</span>
                 </a></li>
@@ -84,7 +88,7 @@ const Header = ({cart, cartClick, handleCartClick}) => {
             </ul>
           </div>
         </nav>
-        <div className={click ? "mobile-menu active-mobile" : "mobile-menu"}>
+        <div className={sideMenu ? "mobile-menu active-mobile" : "mobile-menu"}>
           <div>
             <ul className="mobile-menu_primary">
               <li><a href="">Inicio</a></li>
@@ -101,7 +105,7 @@ const Header = ({cart, cartClick, handleCartClick}) => {
 
           </div>
         </div>
-        <Cart click={cartClick}/>
+        {/* <Cart click={cartClick}/> */}
       </header>
     </>
   );
@@ -110,12 +114,14 @@ const Header = ({cart, cartClick, handleCartClick}) => {
 const mapStateToProps = state =>{
   return{
     cartClick: state.cartClick,
+    sideMenu: state.sideMenu,
     cart: state.cart
   }
 }
 
 const mapDispatchToProps = {
-  handleCartClick
+  handleCartClick,
+  handleSideMenuClick
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

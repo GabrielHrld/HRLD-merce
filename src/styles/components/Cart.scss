@@ -4,7 +4,7 @@
   position: fixed;
   top: 0vh;
   right: -100%;
-  z-index: 11;
+  z-index: 20;
   width: 45vw;
   min-width: 300px;
   height: 100vh;
@@ -46,7 +46,7 @@
       .products-container{
         .product-card{
           display: grid;
-          grid-template-columns: 20% 65% 15%;
+          grid-template-columns: 20% 65% 7.5% 7.5%;
           &_image{
             width: 100%;
             padding: 2%;
@@ -119,6 +119,11 @@
                 transition: .5s all ease;
               }
             }
+          }
+          .quantity{
+            display: flex;
+            align-items: center;
+            
           }
           .icon-container{
             display: flex;

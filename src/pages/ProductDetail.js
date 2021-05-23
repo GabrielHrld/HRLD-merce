@@ -1,21 +1,21 @@
 import React, {useState} from 'react'
+import {connect} from 'react-redux'
 import BannerService from '../components/BannerService';
 import {productsMock} from '../utils/productsMock'
 
 import '../styles/components/ProductDetail.scss'
 
 import Promo from '../components/Promo';
-import ProductDetailHero from '../components/ProductDetailMain';
+import ProductDetailHero from '../components/ProductDetailHero';
 import CardsContainer from '../components/CardsContainer';
 import { useParams } from 'react-router-dom';
 
-const ProductDetail = (props) => {
-  const [products, setProducts] = useState(productsMock)
+const ProductDetail = ({products}) => {
  
   const {id} = useParams()
 
-  const product =  productsMock.filter((product) => product.id == id);
-  console.log(product)
+  const product = products.filter((product) => product.id == id);
+
   return (
     <div className="product-detail_container">
       <ProductDetailHero product={product[0]}/> 
@@ -27,4 +27,10 @@ const ProductDetail = (props) => {
   )
 }
 
-export default ProductDetail
+const mapStateToProps = state => {
+  return {
+    products: state.products
+  }
+}
+
+export default connect(mapStateToProps, null)(ProductDetail)
