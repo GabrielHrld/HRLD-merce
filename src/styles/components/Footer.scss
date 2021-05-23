@@ -22,6 +22,7 @@
         li a{
           padding-bottom: 3px;
           color: $text-color-secondary;
+          text-transform: capitalize;
         }
         li a:hover {
           text-decoration: underline;
