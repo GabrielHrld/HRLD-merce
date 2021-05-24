@@ -1,19 +1,19 @@
-import React, { useState } from 'react'
+import React from 'react'
 import {connect} from 'react-redux'
-import {handleCartClick} from '../actions'
+import {Link} from 'react-router-dom'
+import {handleCartClick,} from '../actions'
+
 import { FaTimes } from "react-icons/fa";
-import { HiMinus, HiPlus } from "react-icons/hi";
 import NumberFormat from 'react-number-format';
 
+import Button from './Button'
 import '../styles/components/Cart.scss'
+import CartProductCard from './CartProductCard';
 
-import {productsMock} from '../utils/productsMock';
+const Cart = ({cart, cartClick, handleCartClick, }) => {
+  let sum = 0
+  cart.forEach(element => sum += element.quantity * element.price );
 
-import {ImBin} from 'react-icons/im'
-
-const Cart = ({cart, cartClick, handleCartClick}) => {
-  const [products, setProducts] = useState(productsMock)
-  console.log(cart)
   const activeCartClick =()=> {
     handleCartClick(!cartClick)
   }
@@ -35,92 +35,16 @@ const Cart = ({cart, cartClick, handleCartClick}) => {
         {
           cart.map((product) => {
             return(
-              <div className="products-wrapper">
-          <div className="products-container">
-            <div className="product-card">
-              <div className="product-card_image">
-                <figure>
-                  <img src={product.images[0]} alt={product.name} />
-                </figure>
-              </div>
-              <div className="product-card_info">
-                <div className="product-card_info_title">
-                  <a href="">
-                    {product.name}
-                  </a>
-                </div>
-                <div className="product-card_info_recap">
-                  <span>{`(${product.size[0]}, ${product.color})`}</span>
-                </div>
-                <div className="product-card_info_price">
-                  <NumberFormat
-                    value={product.price}
-                    displayType={'text'}
-                    thousandSeparator={true}
-                    prefix={'$'}
-                  />
-                </div>
-                <div className="product-card_info_quantity">
-                  <button> <HiMinus className="product-card_icon minus"/></button>
-                  <div className="input_quantity"><input type="number" defaultValue={product.quantity} readOnly/></div>
-                  <button> <HiPlus className="product-card_icon plus"/></button>
-                </div>
-              </div>
-              <div className="quantity">
-                <h3>x{product.quantity}</h3>
-              </div>
-              <div className="icon-container">
-                <ImBin className="icon"/>
-              </div>
-            </div>
-          </div>
-        </div>
+              <CartProductCard product={product} />
             )
           })
         }
-        {/* <div className="products-wrapper">
-          <div className="products-container">
-            <div className="product-card">
-              <div className="product-card_image">
-                <figure>
-                  <img src={products[0].images[0]} alt={products[0].name} />
-                </figure>
-              </div>
-              <div className="product-card_info">
-                <div className="product-card_info_title">
-                  <a href="">
-                    {products[0].name}
-                  </a>
-                </div>
-                <div className="product-card_info_recap">
-                  <span>{`(${products[0].sizeAvailable[3]}, ${products[0].color})`}</span>
-                </div>
-                <div className="product-card_info_price">
-                  <NumberFormat
-                    value={products[0].price}
-                    displayType={'text'}
-                    thousandSeparator={true}
-                    prefix={'$'}
-                  />
-                </div>
-                <div className="product-card_info_quantity">
-                  <button> <HiMinus className="product-card_icon minus"/></button>
-                  <div className="input_quantity"><input type="number" defaultValue="1" readOnly/></div>
-                  <button> <HiPlus className="product-card_icon plus"/></button>
-                </div>
-              </div>
-              <div className="icon-container">
-                <ImBin className="icon"/>
-              </div>
-            </div>
-          </div>
-        </div> */}
         <div className="cart-titles">
           <div className="cart-titles_container">
             <span className="cart-titles_item">subtotal :</span>
             <span className="cart-titles_item">
               <NumberFormat
-                value={products[0].price}
+                value={sum}
                 displayType={'text'}
                 thousandSeparator={true}
                 prefix={'$'}
@@ -130,10 +54,10 @@ const Cart = ({cart, cartClick, handleCartClick}) => {
         </div>
         <div className="cart-titles">
           <div className="cart-titles_container">
-            <span className="cart-titles_item">total :</span>
+            <span className="cart-titles_item">total (con envío) :</span>
             <span className="cart-titles_item">
               <NumberFormat
-                value={products[0].price}
+                value={sum == 0 ? 0 : sum + 300}
                 displayType={'text'}
                 thousandSeparator={true}
                 prefix={'$'}
@@ -141,7 +65,11 @@ const Cart = ({cart, cartClick, handleCartClick}) => {
             </span>
           </div>
         </div>
-        <div></div>
+        <div className="button-container"> 
+          <Link to="/">
+            <Button text={'Finalizar compra'}/>
+          </Link>
+        </div>
       </div>
     </div>
   )
@@ -154,7 +82,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-  handleCartClick
+  handleCartClick,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart)

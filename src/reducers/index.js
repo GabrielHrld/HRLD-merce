@@ -1,15 +1,15 @@
-import { handleFilterClickType, handleCartClickType, addToCartType, handleSideMenuClickType } from "../utils/actionTypes";
+import { handleFilterClickType, handleCartClickType, addToCartType, handleSideMenuClickType, deleteToCartType, handleQuantityType } from "../utils/actionTypes";
 
 const reducer = (state, action) =>{
   switch (action.type) {
     case handleSideMenuClickType:
-      console.log('funca')
       return{
         ...state,
         sideMenu: !state.sideMenu,
         overlay: state.cartClick ? true : !state.overlay,
         cartClick: false
       } 
+
     case handleFilterClickType:
       return {
         ...state,
@@ -44,6 +44,35 @@ const reducer = (state, action) =>{
           cart: [...state.cart, {...action.payload, quantity: action.payload.quantity}]
         }
       }
+    
+    case deleteToCartType:
+      const indexProductCart = state.cart.findIndex((item)=> item.id == action.payload.id && item.size[0] == action.payload.size[0])
+      state.cart.splice(indexProductCart, 1)
+      return{
+        ...state,
+        cart: [...state.cart ]
+      }
+
+    // aumenta o disminuye la cantidad
+    case handleQuantityType:
+      const indexProduct = state.cart.findIndex((item)=> item.id == action.payload.id && item.size[0] == action.payload.size[0])
+      console.log(state.cart[indexProduct])
+      const productOnCart = state.cart[indexProduct];
+      if(action.condition == 0) {
+        state.cart.splice(indexProduct, 1, {...productOnCart, quantity: productOnCart.quantity - 1})
+        return{
+          ...state,
+          cart: [...state.cart]
+        }
+      }
+      if(action.condition == 1) {
+        state.cart.splice(indexProduct, 1, {...productOnCart, quantity: productOnCart.quantity + 1})
+        return{
+          ...state,
+          cart: [...state.cart]
+        }
+      }
+
     default:
       return state;
   }

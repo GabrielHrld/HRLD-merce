@@ -1,0 +1,98 @@
+@import '../app.scss';
+.products-wrapper{
+  margin: 0 1vw;
+  border-bottom: 1px solid #ccc;
+  .products-container{
+    .product-card{
+      display: grid;
+      grid-template-columns: 20% 65% 7.5% 7.5%;
+      &_image{
+        width: 100%;
+        padding: 2%;
+        img{
+          width: 100%;
+        }
+      }
+      &_info{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 100%;
+        &_title{
+          a{
+            font-size: .8rem;
+          }
+        }
+        &_recap{
+          span{
+            text-transform: uppercase;
+            font-size: .8rem;
+          }
+        }
+        &_price{
+          font-weight: bold;
+        }
+        &_quantity{
+          display: flex;
+          justify-content: space-between;
+          height: 25%;
+          width: 25%;
+          border: 1px solid $text-color-dark;
+          .input_quantity{
+            width: 40%;
+            input{
+              height: 100%;
+              width: 100%;
+              text-align: center;
+              -moz-appearance: textfield;
+              border: 0;
+              outline: none;
+            }
+          }
+          button{
+            width: 30px;
+            border-radius: 0;
+            border: 0;
+            background: transparent;
+            transition: .3s all ease;
+          }
+          button:nth-child(1):hover{
+            background: $color-secondary
+          }
+          button:nth-child(1):hover .minus{
+            color: #fff;
+          }
+          button:nth-child(3){
+            margin-left: 5px;
+          }
+          button:nth-child(3):hover{
+            background: $color-secondary
+          }
+          button:nth-child(3):hover .plus{
+            color: #fff;
+          }
+          .minus{
+            transition: .5s all ease;
+          }
+          .plus{
+            transition: .5s all ease;
+          }
+        }
+      }
+      .quantity{
+        display: flex;
+        align-items: center;
+        
+      }
+      .icon-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .icon{
+          cursor: pointer;
+          color: red;
+        }
+      }
+    }
+  }
+}
