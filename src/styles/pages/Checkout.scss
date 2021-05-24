@@ -1,0 +1,93 @@
+@import '../app.scss';
+.checkout-wrapper{
+  .checkout-container{
+    margin: 3% 0;
+    display: grid;
+    grid-template-columns: 70% 30%;
+    padding: 0rem calc((100vw - 1300px) / 2);
+    .billing{
+      background: #dae0f5;
+      &-title{
+        margin: 1em 0;
+        text-align: center;
+      }
+      .billing-subtitle{
+        margin: .6em 0;
+        padding-left: 2em;
+        strong{
+          color: #fcfcfc;
+        }
+      }
+      .billing-data{
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 350px);
+        justify-content: center;
+        p{
+          display: flex;
+          flex-direction: column;
+          margin: .5em 0;
+          span, select{
+            display: flex;
+            align-items: center;
+            height: 50px;
+            width: 80%;
+            input{
+              height: 70%;
+              width: 100%;
+              outline: none;
+              border: none;
+              padding-left: 10px ;
+            }
+          }
+          select{
+            height: 35px;
+            margin: 7.5px 0;
+            outline: none;
+            border: none;
+          }
+        }
+      }
+    }
+    .order-resume{
+      background: #fcfcfc;
+      &_title{
+        margin: 1em 0;
+        text-align: center;
+      }
+      .order{
+        display: grid;
+        width: 80%;
+        margin: 0 auto;
+        &-box{
+          padding: 1em .5em;
+          // border-top: 1px solid $text-color-dark;
+          border-bottom: 1px solid $text-color-dark;
+          margin-bottom: .5em;
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1024px){
+  .checkout-wrapper{
+    position: relative;
+    top: 80px;
+    .checkout-container{
+      display: grid;
+      grid-template-areas: 
+      "a a"
+      "b b";
+
+      grid-template-rows: repeat(2, 1fr);
+      .billing{
+        grid-area: a;
+      }
+      .order-resume{
+        grid-area: b;
+      }
+    }
+  }
+}

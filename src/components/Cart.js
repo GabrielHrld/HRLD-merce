@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {handleCartClick,} from '../actions'
@@ -33,11 +33,13 @@ const Cart = ({cart, cartClick, handleCartClick, }) => {
           </div>
         </div>
         {
+          sum != 0 ?
           cart.map((product) => {
             return(
               <CartProductCard product={product} />
             )
-          })
+          }) : 
+          <div><h3>No hay productos añadidos al carrito</h3></div>
         }
         <div className="cart-titles">
           <div className="cart-titles_container">
@@ -65,11 +67,14 @@ const Cart = ({cart, cartClick, handleCartClick, }) => {
             </span>
           </div>
         </div>
-        <div className="button-container"> 
-          <Link to="/">
-            <Button text={'Finalizar compra'}/>
-          </Link>
-        </div>
+        {
+          sum != 0 ?
+          <div className="button-container"> 
+            <Link to="/checkout">
+              <Button text={'Realizar pedido'}/>
+            </Link>
+          </div> : <div></div>
+        }
       </div>
     </div>
   )

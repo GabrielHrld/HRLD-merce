@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;600&display=swap');
-$color-primary: #923434;
-$color-secondary: #471717;
+$color-primary: #212e36;
+$color-secondary: #192229;
 
 $background-light: #ebebeb;
 $background-light-high: #f4f4f4;
@@ -30,6 +30,7 @@ li{
   .overlay{
     height: 100vh;
     width: 100vw;
+    top: 0;
     background: $text-color-secondary;
     position: fixed;
     opacity: 0.5;
