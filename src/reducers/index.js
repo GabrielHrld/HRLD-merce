@@ -28,26 +28,34 @@ const reducer = (state, action) =>{
       }
 
     case addToCartType:
-      //validamos si el producto ya está en el carrito, si coincide su talle y ID
       const validate = state.cart.some((item)=> item.id == action.payload.id && item.size[0] == action.payload.size[0])
-      if(validate){
+      if(state.cart.length == 0){
+        localStorage.setItem('cart', JSON.stringify([{...action.payload, quantity: action.payload.quantity}]))
+        return {
+          ...state,
+          cart: [...state.cart, {...action.payload, quantity: action.payload.quantity}]
+        }
+      }
+      if (validate){
         const indexProductCart = state.cart.findIndex((item)=> item.id == action.payload.id && item.size[0] == action.payload.size[0])
         const productOnCart = state.cart[indexProductCart];
         state.cart.splice(indexProductCart, 1, {...productOnCart, quantity: productOnCart.quantity + action.payload.quantity})
+        localStorage.setItem('cart', JSON.stringify([...state.cart]))
         return{
           ...state,
           cart: [...state.cart]
         }
-      } else { 
-        return{
-          ...state,
-          cart: [...state.cart, {...action.payload, quantity: action.payload.quantity}]
-        }
+      }
+      localStorage.setItem('cart', JSON.stringify([...state.cart, {...action.payload, quantity: action.payload.quantity}]))
+      return{
+        ...state,
+        cart: [...state.cart, {...action.payload, quantity: action.payload.quantity}]
       }
     
     case deleteToCartType:
       const indexProductCart = state.cart.findIndex((item)=> item.id == action.payload.id && item.size[0] == action.payload.size[0])
       state.cart.splice(indexProductCart, 1)
+      localStorage.setItem('cart', JSON.stringify([...state.cart]))
       return{
         ...state,
         cart: [...state.cart ]
@@ -56,10 +64,18 @@ const reducer = (state, action) =>{
     // aumenta o disminuye la cantidad
     case handleQuantityType:
       const indexProduct = state.cart.findIndex((item)=> item.id == action.payload.id && item.size[0] == action.payload.size[0])
-      console.log(state.cart[indexProduct])
       const productOnCart = state.cart[indexProduct];
       if(action.condition == 0) {
+        if(productOnCart.quantity == 1){
+          state.cart.splice(indexProduct, 1)
+          localStorage.setItem('cart', JSON.stringify([...state.cart]))
+          return{
+            ...state,
+            cart: [...state.cart]
+          }
+        }
         state.cart.splice(indexProduct, 1, {...productOnCart, quantity: productOnCart.quantity - 1})
+        localStorage.setItem('cart', JSON.stringify([...state.cart]))
         return{
           ...state,
           cart: [...state.cart]
@@ -67,6 +83,7 @@ const reducer = (state, action) =>{
       }
       if(action.condition == 1) {
         state.cart.splice(indexProduct, 1, {...productOnCart, quantity: productOnCart.quantity + 1})
+        localStorage.setItem('cart', JSON.stringify([...state.cart]))
         return{
           ...state,
           cart: [...state.cart]

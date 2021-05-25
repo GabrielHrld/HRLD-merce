@@ -12,7 +12,6 @@ const Checkout = ({cart}) => {
   let sum = 0
   cart.forEach(element => sum += element.quantity * element.price );
 
-  console.log(cart)
   return (
     <div className="checkout-wrapper">
       <div className="checkout-container">

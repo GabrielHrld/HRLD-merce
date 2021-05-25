@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import '../styles/components/Header.scss';
+import React from 'react';
+import {Link} from 'react-router-dom'
 import {connect} from 'react-redux';
 import {handleCartClick, handleSideMenuClick} from '../actions'
 import { MdSearch } from 'react-icons/md';
@@ -7,18 +7,13 @@ import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { IoIosArrowDown } from 'react-icons/io';
 
 import Logo from '../../assets/logo.png';
-import {productsMock} from '../utils/productsMock';
-import Cart from './Cart'
+import '../styles/components/Header.scss';
 
-const Header = ({sideMenu, cart, cartClick, handleCartClick, handleSideMenuClick}) => {
-  const [click, setClick] = useState(false);
-  
-  const [products, setProducts] = useState(productsMock);
+const Header = ({products, sideMenu, cart, cartClick, handleCartClick, handleSideMenuClick}) => {
 
-  // const handleClick = () => setClick(!click);
-
+  const data = localStorage.getItem('cart')
+  console.log(JSON.parse(data))
   const switchSideMenuClick = () => {
-    // setClick(!click);
     handleSideMenuClick(!sideMenu);
   }
 
@@ -43,28 +38,28 @@ const Header = ({sideMenu, cart, cartClick, handleCartClick, handleSideMenuClick
             </div>
           </div>
           <div className="logoContainer">
-            <a href="/">
+            <Link to="/">
               <img src={Logo} alt="" />
-            </a>
+            </Link>
           </div>
           <div className="leftSection">
             
             <ul className="leftSection-links">
               <li>
-                <a href="/">
+                <Link to="/">
                   <span>
                     Productos
                     <IoIosArrowDown />
                   </span>
                   
-                </a>
+                </Link>
                 <ul className="dropdown-links">
                     {
-                      categories.map((category, index)=><li className="dropdown-item " key={category+index}><a href="/">{category}</a></li>)
+                      categories.map((category, index)=><li className="dropdown-item " key={category+index}><Link to="/">{category}</Link></li>)
                     }
                 </ul>
               </li>
-              <li ><a href="/" >SALE 🔥</a></li>
+              <li ><Link to="/" >SALE 🔥</Link></li>
             </ul>
           </div>
           <div className="middleSection">
@@ -76,14 +71,14 @@ const Header = ({sideMenu, cart, cartClick, handleCartClick, handleSideMenuClick
           <div className="rightSection">
             <ul className="rightSection-links">
               <div>
-                <li><a href="/">Ingresar</a></li>
-                <li><a href="/">Registrarse</a></li>
+                <li><Link to="/">Ingresar</Link></li>
+                <li><Link to="/">Registrarse</Link></li>
               </div>
               <div>
-                <li id="cart"><a onClick={switchCartClick}>
+                <li id="cart"><Link onClick={switchCartClick}>
                   <AiOutlineShoppingCart className="cart-icon"/>
                   <span>{cart.length}</span>
-                </a></li>
+                </Link></li>
               </div>
             </ul>
           </div>
@@ -91,16 +86,16 @@ const Header = ({sideMenu, cart, cartClick, handleCartClick, handleSideMenuClick
         <div className={sideMenu ? "mobile-menu active-mobile" : "mobile-menu"}>
           <div>
             <ul className="mobile-menu_primary">
-              <li><a href="">Inicio</a></li>
-              <li ><a href="/">
+              <li><Link to="">Inicio</Link></li>
+              <li ><Link to="/">
                   Productos 
-              </a>
+              </Link>
               </li>
-              <li><a href="">Sale 🔥</a></li>
+              <li><Link to="">Sale 🔥</Link></li>
             </ul>
             <ul className="mobile-menu_secondary">
-              <li><a href="">Ingresar</a></li>
-              <li><a href="">Registrarse</a></li>
+              <li><Link to="">Ingresar</Link></li>
+              <li><Link to="">Registrarse</Link></li>
             </ul>
 
           </div>
@@ -115,7 +110,8 @@ const mapStateToProps = state =>{
   return{
     cartClick: state.cartClick,
     sideMenu: state.sideMenu,
-    cart: state.cart
+    cart: state.cart,
+    products: state.products
   }
 }
 
