@@ -14,7 +14,9 @@ const CardsContainer = ({products, quantity, pagination, filteredProducts}) => {
   const min = useQuery().get('min') 
   const max = useQuery().get('max') 
 
-  if(filteredProducts) products = filteredProducts
+  if(filteredProducts) {
+    products = filteredProducts
+  }
   if(min && max != null) {
     const filterByPrice = products.filter((product)=> product.price >= min && product.price <= max)
     products = filterByPrice

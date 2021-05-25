@@ -45,7 +45,7 @@ const Header = ({products, sideMenu, cart, cartClick, handleCartClick, handleSid
             
             <ul className="leftSection-links">
               <li>
-                <Link to="/">
+                <Link to="/products">
                   <span>
                     Productos
                     <IoIosArrowDown />
@@ -54,7 +54,14 @@ const Header = ({products, sideMenu, cart, cartClick, handleCartClick, handleSid
                 </Link>
                 <ul className="dropdown-links">
                     {
-                      categories.map((category, index)=><li className="dropdown-item " key={category+index}><Link to="/">{category}</Link></li>)
+                      categories.map((category, index)=>
+                      {return(
+                        <li className="dropdown-item " key={category+index}>
+                          <Link to={`/products/categories/${category}`}>
+                            {category}
+                          </Link>
+                        </li>)
+                      })
                     }
                 </ul>
               </li>

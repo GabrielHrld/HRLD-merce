@@ -22,7 +22,7 @@ const Pagination = ({ productsPerPage, totalProducts, paginate }) => {
           ))
         }
       </ul>
-      <span>{`Usted está viendo ${productsPerPage} de ${totalProducts} productos`}</span>
+      {/* <span>{`Usted está viendo ${productsPerPage} de ${totalProducts} productos`}</span> */}
     </nav>
   );
 };
