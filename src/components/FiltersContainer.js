@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import {connect} from 'react-redux';
 import { handleFilterClick} from '../actions'
 
 import { FaTimes } from 'react-icons/fa';
 import { withStyles,makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/slider';
-
 
 //SLIDER STYLES
 const useStyles = makeStyles({
@@ -23,7 +22,8 @@ const CustomSlider =  withStyles({
 
 import '../styles/components/FiltersContainer.scss';
 
-const FiltersContainer = ({click, filterClick, cartClick, state, handleFilterClick}) => {
+const FiltersContainer = ({products, filterClick, handleFilterClick}) => {
+  const path = useLocation().pathname.toLowerCase()
   const classes = useStyles();
   const [value, setValue] = useState([0, 18000]);
   
@@ -35,6 +35,24 @@ const FiltersContainer = ({click, filterClick, cartClick, state, handleFilterCli
     setValue(newValue);
   };
   
+  //Category map
+  const categories = []
+  for (let i = 0; i < products.length; i++) {
+    const category = products[i].category[0];
+    if(!categories.includes(category)){
+      categories.push(category)
+    }
+  }
+
+  //Colors map
+  const colors = []
+  for (let i = 0; i < products.length; i++) {
+    const category = products[i].color;
+    if(!colors.includes(category)){
+      colors.push(category)
+    }
+  }
+  console.log(colors)
   return (
     <div className={filterClick ? "side-filters_wrapper active" : "side-filters_wrapper"}>
       <div className="side-filters_container">
@@ -60,14 +78,17 @@ const FiltersContainer = ({click, filterClick, cartClick, state, handleFilterCli
           <div className="category-filter">
             <div><h3>Filtra por categoría</h3></div>
             <ul className="categories-container">
-              <li><a href="!">Categoría 1</a></li>
-              <li><a href="!">Categoría 2</a></li>
-              <li><a href="!">Categoría 3</a></li>
-              <li><a href="!">Categoría 4</a></li>
-              <li><a href="!">Categoría 1</a></li>
-              <li><a href="!">Categoría 2</a></li>
-              <li><a href="!">Categoría 3</a></li>
-              <li><a href="!">Categoría 4</a></li>
+              {
+                categories.map((categorie)=> {
+                  return(
+                  <li onClick={activeFilterClick}>
+                    <Link to={`/products/categories/${categorie.toLowerCase()}`}>
+                      {categorie}
+                    </Link>
+                  </li>
+                  )
+                })
+              }
             </ul>
           </div>
           <div className="color-fllter">
@@ -76,16 +97,7 @@ const FiltersContainer = ({click, filterClick, cartClick, state, handleFilterCli
             </div>
             <div>
               <ul className="colors-container">
-                <li><a href="">Rojo</a></li>
-                <li><a href="">Rojo</a></li>
-                <li><a href="">Rojo</a></li>
-                <li><a href="">Rojo</a></li>
-                <li><a href="">Rojo</a></li>
-                <li><a href="">Rojo</a></li>
-                <li><a href="">Rojo</a></li>
-                <li><a href="">Rojo</a></li>
-                <li><a href="">Rojo</a></li>
-                <li><a href="">Rojo</a></li>
+                {colors.map((color) => <li><Link to={`${path}?color=${color}`}>{color}</Link></li>)}
               </ul>
             </div>
           </div>
@@ -97,7 +109,8 @@ const FiltersContainer = ({click, filterClick, cartClick, state, handleFilterCli
 
 const mapStateToProps = state =>{
   return {
-    filterClick: state.filterClick
+    filterClick: state.filterClick,
+    products: state.products
   }
 }
 
