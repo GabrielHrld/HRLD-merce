@@ -4,6 +4,7 @@ import Layout from '../components/Layout';
 import Checkout from '../pages/Checkout';
 import Home from '../pages/Home';
 import Market from '../pages/Market';
+import MarketCategories from '../pages/MarketCategories';
 import ProductDetail from '../pages/ProductDetail';
 import Profile from '../pages/Profile';
 import '../styles/app.scss';
@@ -14,6 +15,7 @@ const App = () => (
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/products/:id" component={ProductDetail} />
+        <Route exact path="/products/categories/:category" component={MarketCategories} />
         <Route exact path="/products" component={Market} />
         <Route exact path="/checkout" component={Checkout} />
         <Route exact path="/profile" component={Profile} />

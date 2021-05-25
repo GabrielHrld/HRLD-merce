@@ -12,7 +12,6 @@ import '../styles/components/Header.scss';
 const Header = ({products, sideMenu, cart, cartClick, handleCartClick, handleSideMenuClick}) => {
 
   const data = localStorage.getItem('cart')
-  console.log(JSON.parse(data))
   const switchSideMenuClick = () => {
     handleSideMenuClick(!sideMenu);
   }

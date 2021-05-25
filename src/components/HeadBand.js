@@ -4,7 +4,7 @@ import FiltersContainer from './FiltersContainer'
 import {handleFilterClick} from '../actions'
 
 import '../styles/components/HeadBand.scss'
-const HeadBand = ({filterClick, handleFilterClick}) => {
+const HeadBand = ({title, filterClick, handleFilterClick}) => {
   
   const activeFilterClick = () =>{
     handleFilterClick(!filterClick);
@@ -17,7 +17,7 @@ const HeadBand = ({filterClick, handleFilterClick}) => {
           <span className="filter" onClick={activeFilterClick}>Filtro</span>
         </div>
         <div className="headBand-item">
-          <h1>Productos</h1>
+          <h1>{title}</h1>
         </div>
         <div className="headBand-item">
           <form action="" className="orderBy">
