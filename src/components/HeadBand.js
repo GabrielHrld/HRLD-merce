@@ -17,7 +17,7 @@ const HeadBand = ({title, filterClick, handleFilterClick}) => {
           <span className="filter" onClick={activeFilterClick}>Filtro</span>
         </div>
         <div className="headBand-item">
-          <h1>{title}</h1>
+          <h1>{title == "Sale" ? "Sale 🔥" : title}</h1>
         </div>
         <div className="headBand-item">
           <form action="" className="orderBy">

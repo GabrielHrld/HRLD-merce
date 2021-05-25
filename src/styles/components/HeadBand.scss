@@ -15,7 +15,9 @@
     .headBand-item{
       color: $text-color-primary;
       font-size: 1.4rem;
-
+      h1{
+        text-transform: capitalize;
+      }
       &:nth-child(1){
         display: flex;
         justify-content: flex-start;

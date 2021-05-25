@@ -65,7 +65,7 @@ const Header = ({products, sideMenu, cart, cartClick, handleCartClick, handleSid
                     }
                 </ul>
               </li>
-              <li ><Link to="/" >SALE 🔥</Link></li>
+              <li ><Link to="/sale" >SALE 🔥</Link></li>
             </ul>
           </div>
           <div className="middleSection">
