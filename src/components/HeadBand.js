@@ -1,11 +1,34 @@
-import React, { useState } from 'react'
+import React from 'react'
 import {connect} from 'react-redux'
+import { useHistory, useLocation } from 'react-router-dom'
+
 import FiltersContainer from './FiltersContainer'
-import {handleFilterClick} from '../actions'
+import {handleFilterClick, orderByPrice} from '../actions'
+import {minToMaxType, maxToMinType, restoreType} from '../utils/actionTypes'
 
 import '../styles/components/HeadBand.scss'
-const HeadBand = ({title, filterClick, handleFilterClick}) => {
-  
+const HeadBand = ({title, filterClick, handleFilterClick, orderByPrice}) => {
+  const history = useHistory()
+  const path = useLocation().pathname.toLowerCase()
+  const restore = () => orderByPrice(restoreType)
+  const minToMaxPrice = () => orderByPrice(minToMaxType)
+  const maxToMinPrice = () => orderByPrice(maxToMinType)
+
+  const handleOrderByPrice = (e) => {
+    if(e.target.value == "0"){
+      restore()
+      history.push(path)
+      }
+    if(e.target.value == "1"){
+      minToMaxPrice()
+      history.push(path)
+      }
+    if(e.target.value == "2") {
+      maxToMinPrice()
+      history.push(path)
+    }
+  }
+
   const activeFilterClick = () =>{
     handleFilterClick(!filterClick);
   }
@@ -21,10 +44,10 @@ const HeadBand = ({title, filterClick, handleFilterClick}) => {
         </div>
         <div className="headBand-item">
           <form action="" className="orderBy">
-            <select name="" id="">
-              <option value="">Ordenar por los últimos</option>
-              <option value="">Ordenar por precio: bajo a alto</option>
-              <option value="">Ordenar por precio: alto a bajo</option>
+            <select name="" id="" onChange={handleOrderByPrice}>
+              <option value="0" >Reestablecer</option>
+              <option value="1" >Ordenar por precio: bajo a alto</option>
+              <option value="2" >Ordenar por precio: alto a bajo</option>
             </select>
               <input type="hidden" value="1" />
           </form>
@@ -43,7 +66,8 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-  handleFilterClick
+  handleFilterClick,
+  orderByPrice
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(HeadBand);

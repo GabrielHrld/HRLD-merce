@@ -1,4 +1,4 @@
-import {handleFilterClickType, handleCartClickType, addToCartType, handleSideMenuClickType, deleteToCartType, handleQuantityType} from '../utils/actionTypes';
+import {handleFilterClickType, handleCartClickType, addToCartType, handleSideMenuClickType, deleteToCartType, handleQuantityType, orderByPriceType} from '../utils/actionTypes';
 
 export const handleFilterClick = (payload) => ({
   type: handleFilterClickType,
@@ -29,4 +29,9 @@ export const handleQuantity = (payload, condition) => ({
   type: handleQuantityType,
   payload,
   condition
+})
+
+export const orderByPrice = (payload) => ({
+  type: orderByPriceType,
+  payload
 })
