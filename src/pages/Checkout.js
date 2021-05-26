@@ -46,6 +46,12 @@ const Checkout = ({cart}) => {
               </select>
             </p>
             <p>
+              <label htmlFor="address">Dirección</label>
+              <span>
+                <input type="text" placeholder="Dirección" id="address"/>
+              </span>
+            </p>
+            <p>
               <label htmlFor="postal">Código postal</label>
               <span>
                 <input type="number" placeholder="Código postal" id="postal"/>
@@ -74,7 +80,7 @@ const Checkout = ({cart}) => {
             {
               cart.map((product, index)=>{
                 return (
-                  <div className="order-card_product order-box">
+                  <div className="order-card_product order-box" key={product + index}>
                     <span>{product.name} <strong>x{product.quantity}</strong></span>
                     <NumberFormat
                       value={product.price}

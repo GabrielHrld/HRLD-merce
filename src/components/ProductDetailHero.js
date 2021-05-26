@@ -54,9 +54,9 @@ const ProductDetailHero = ({ product, addToCart }) => {
           scrollbar={{ draggable: true }}
           className="swiper-wrapper"
         >
-          {product.images.map((image) => {
+          {product.images.map((image, index) => {
             return (
-              <SwiperSlide className="swiper-slide">
+              <SwiperSlide className="swiper-slide" key={image+ index}>
                 <figure className="image-container">
                   <img src={image} alt="" />
                 </figure>
@@ -103,7 +103,7 @@ const ProductDetailHero = ({ product, addToCart }) => {
                 <td className="value">
                   <select name="" id="p_size" onChange={handleSize} defaultValue="m">
                     {product.sizeAvailable.map((size) => {
-                      return <option value={size} onClick={handleSize}>{size}</option>;
+                      return <option key={size} value={size} onClick={handleSize}>{size}</option>;
                     })}
                   </select>
                 </td>

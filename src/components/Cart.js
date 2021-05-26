@@ -36,7 +36,7 @@ const Cart = ({cart, cartClick, handleCartClick, }) => {
           sum != 0 ?
           cart.map((product) => {
             return(
-              <CartProductCard product={product} />
+              <CartProductCard product={product} key={product.id + product.quantity}/>
             )
           }) : 
           <div><h3>No hay productos añadidos al carrito</h3></div>

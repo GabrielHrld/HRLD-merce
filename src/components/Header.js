@@ -88,16 +88,10 @@ const Header = ({user, products, sideMenu, cart, cartClick, handleCartClick, han
                         <li className="profile-dropdown_link"><Link>Cerrar sesión</Link></li>
                       </ul>  : 
                       <ul className="profile-dropdown">
-                      <li className="profile-dropdown_link"><Link>Mis datos</Link></li>
-                      <li className="profile-dropdown_link"><Link>Mis pedidos</Link></li>
+                      <li className="profile-dropdown_link"><Link to="/profile">Mis datos</Link></li>
                       <li className="profile-dropdown_link"><Link>Cerrar sesión</Link></li>
                     </ul> 
                     }
-                    {/* <ul className="profile-dropdown">
-                      <li className="profile-dropdown_link"><Link>Mis datos</Link></li>
-                      <li className="profile-dropdown_link"><Link>Mis pedidos</Link></li>
-                      <li className="profile-dropdown_link"><Link>Cerrar sesión</Link></li>
-                    </ul>   */}
                   </li>
                   
                 </div>

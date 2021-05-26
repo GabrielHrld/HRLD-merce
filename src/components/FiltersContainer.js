@@ -96,7 +96,7 @@ const FiltersContainer = ({products, filterClick, handleFilterClick}) => {
             </div>
             <div>
               <ul className="colors-container">
-                {colors.map((color) => <li><Link to={`${path}?color=${color}`}>{color}</Link></li>)}
+                {colors.map((color) => <li><Link key={color} to={`${path}?color=${color}`}>{color}</Link></li>)}
               </ul>
             </div>
           </div>

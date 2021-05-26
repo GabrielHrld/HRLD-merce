@@ -1,5 +1,6 @@
 @import '../app.scss';
 .menu-container{
+  
   header{
     nav{
       display: flex;
@@ -10,8 +11,12 @@
           color: $text-color-secondary;
           cursor: pointer;
           border-radius:15px 15px 0px 0px;
-          h2{
-            text-transform: uppercase;
+          a{
+            color: $background-light-high;
+            text-decoration: none;
+            h2{
+              text-transform: uppercase;
+            }
           }
           &.active{
             background-color: #3d3d3d !important;
@@ -29,7 +34,7 @@
       width: 100%;
       .page{
         width: 80%;
-        height: 73vh;
+        height: auto;
         margin: 0 auto;
         .form-container{
           width: 100%;
@@ -42,10 +47,37 @@
 }
 
 @media screen and (max-width: 678px){
-  .pages-wrapper{
-    .page-container{
-      .page{
-        height: auto !important;
+  .menu-container{
+    header{
+      nav{
+        .menu-title_container{
+          .menu-title{
+            padding: .2em .4em;
+            h2{
+              font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+    .pages-wrapper{
+      .page-container{
+        .page{
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1024px){
+  .menu-container{
+    position: relative;
+    top: 80px;
+    .pages-wrapper{
+      .page-container{
+        .page{
+          height: auto !important;
+        }
       }
     }
   }

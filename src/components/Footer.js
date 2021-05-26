@@ -22,7 +22,7 @@ const Footer = ({products}) => {
           <span className="footer-section_title">Productos</span>
           <ul className="footer-products_container">
             {
-              categories.slice(0,4).map((categorie) => <li><a href="/">{categorie}</a></li>)
+              categories.slice(0,4).map((categorie) => <li key={categorie}><a href="/">{categorie}</a></li>)
             }
           </ul>
         </div>

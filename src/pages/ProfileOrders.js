@@ -5,7 +5,7 @@ import ProfileForm from '../components/ProfileForm'
 import ProfileCardsContainer from '../components/ProfileCardsContainer'
 import '../styles/pages/Profile.scss'
 
-const Profile = () => (
+const ProfileOrders = () => (
   <div className="profile-wrapper">
     <div className="profile-container">
       <MenuContainer 
@@ -18,4 +18,4 @@ const Profile = () => (
   </div>
   )
 
-export default Profile
+export default ProfileOrders
