@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom'
+import {Link, useLocation} from 'react-router-dom'
 import {connect} from 'react-redux';
 import {handleCartClick, handleSideMenuClick} from '../actions'
 import { MdSearch } from 'react-icons/md';
@@ -10,12 +10,11 @@ import Logo from '../../assets/logo.png';
 import '../styles/components/Header.scss';
 
 const Header = ({products, sideMenu, cart, cartClick, handleCartClick, handleSideMenuClick}) => {
-
-  const data = localStorage.getItem('cart')
+ 
   const switchSideMenuClick = () => {
     handleSideMenuClick(!sideMenu);
   }
-
+  
   //función para switchear el cart menu
   const switchCartClick =()=> handleCartClick(!cartClick)
   
@@ -77,8 +76,8 @@ const Header = ({products, sideMenu, cart, cartClick, handleCartClick, handleSid
           <div className="rightSection">
             <ul className="rightSection-links">
               <div>
-                <li><Link to="/">Ingresar</Link></li>
-                <li><Link to="/">Registrarse</Link></li>
+                <li><Link to="/sign-in">Ingresar</Link></li>
+                <li><Link to="/sign-up">Registrarse</Link></li>
               </div>
               <div>
                 <li id="cart"><Link onClick={switchCartClick}>
@@ -100,14 +99,15 @@ const Header = ({products, sideMenu, cart, cartClick, handleCartClick, handleSid
               <li><Link to="">Sale 🔥</Link></li>
             </ul>
             <ul className="mobile-menu_secondary">
-              <li><Link to="">Ingresar</Link></li>
-              <li><Link to="">Registrarse</Link></li>
+              <li><Link to="/sign-in">Ingresar</Link></li>
+              <li><Link to="/sign-up">Registrarse</Link></li>
             </ul>
 
           </div>
         </div>
         {/* <Cart click={cartClick}/> */}
       </header>
+    
     </>
   );
 };

@@ -52,7 +52,6 @@ const FiltersContainer = ({products, filterClick, handleFilterClick}) => {
       colors.push(category)
     }
   }
-  console.log(colors)
   return (
     <div className={filterClick ? "side-filters_wrapper active" : "side-filters_wrapper"}>
       <div className="side-filters_container">

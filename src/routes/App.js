@@ -14,19 +14,19 @@ import '../styles/app.scss';
 
 const App = () => (
   <Router>
-    <Layout>
-      <Switch>
+    <Switch>
+        <Route exact path="/sign-in" component={SignIn} />
+        <Route exact path="/sign-up" component={SignUp} />
+      <Layout>
         <Route exact path="/" component={Home} />
         <Route exact path="/products/:id" component={ProductDetail} />
         <Route exact path="/products/categories/:category" component={MarketCategories} />
         <Route exact path="/products" component={Market} />
         <Route exact path="/sale" component={MarketSale} />
         <Route exact path="/checkout" component={Checkout} />
-        <Route exact path="/sign-in" component={SignIn} />
-        <Route exact path="/sign-up" component={SignUp} />
         <Route exact path="/profile" component={Profile} />
-      </Switch>
-    </Layout>
+      </Layout>
+    </Switch>
   </Router>
 );
 
