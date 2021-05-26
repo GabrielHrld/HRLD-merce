@@ -41,11 +41,11 @@ const SignUp = () => {
               </div>
               <div>
                 <label htmlFor="">Ingrese una contraseña</label>
-                <input type="password" />
+                <input type="password" placeholder="contraseña"/>
               </div>
               <div>
                 <label htmlFor="">Repita la contraseña</label>
-                <input type="password" />
+                <input type="password" placeholder="contraseña"/>
               </div>
               <div>
                 <label htmlFor="">Deseo recibir promociones por email</label>

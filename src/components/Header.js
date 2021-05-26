@@ -9,8 +9,9 @@ import { IoIosArrowDown } from 'react-icons/io';
 import Logo from '../../assets/logo.png';
 import '../styles/components/Header.scss';
 
-const Header = ({products, sideMenu, cart, cartClick, handleCartClick, handleSideMenuClick}) => {
- 
+const Header = ({user, products, sideMenu, cart, cartClick, handleCartClick, handleSideMenuClick}) => {
+  console.log(user.name != null)
+  
   const switchSideMenuClick = () => {
     handleSideMenuClick(!sideMenu);
   }
@@ -73,20 +74,61 @@ const Header = ({products, sideMenu, cart, cartClick, handleCartClick, handleSid
               <button className="search-area_button"><MdSearch className="search-icon"/></button>
             </form>
           </div>
-          <div className="rightSection">
-            <ul className="rightSection-links">
-              <div>
-                <li><Link to="/sign-in">Ingresar</Link></li>
-                <li><Link to="/sign-up">Registrarse</Link></li>
-              </div>
-              <div>
-                <li id="cart"><Link onClick={switchCartClick}>
-                  <AiOutlineShoppingCart className="cart-icon"/>
-                  <span>{cart.length}</span>
-                </Link></li>
-              </div>
-            </ul>
-          </div>
+          {user.name != null ? 
+            <div className="rightSection">
+              <ul className="rightSection-links">
+                <div>
+                  <li className="profile">
+                    <Link to="/sign-in" className="underline_effect">Perfil</Link>
+                    {
+                      user.role == 'admin' ? 
+                      <ul className="profile-dropdown">
+                        <li className="profile-dropdown_link"><Link>Pedidos</Link></li>
+                        <li className="profile-dropdown_link"><Link>Panel de control</Link></li>
+                        <li className="profile-dropdown_link"><Link>Cerrar sesión</Link></li>
+                      </ul>  : 
+                      <ul className="profile-dropdown">
+                      <li className="profile-dropdown_link"><Link>Mis datos</Link></li>
+                      <li className="profile-dropdown_link"><Link>Mis pedidos</Link></li>
+                      <li className="profile-dropdown_link"><Link>Cerrar sesión</Link></li>
+                    </ul> 
+                    }
+                    {/* <ul className="profile-dropdown">
+                      <li className="profile-dropdown_link"><Link>Mis datos</Link></li>
+                      <li className="profile-dropdown_link"><Link>Mis pedidos</Link></li>
+                      <li className="profile-dropdown_link"><Link>Cerrar sesión</Link></li>
+                    </ul>   */}
+                  </li>
+                  
+                </div>
+                <div>
+                  <li id="cart">
+                    <Link onClick={switchCartClick} className="underline_effect">
+                      <AiOutlineShoppingCart className="cart-icon "/>
+                      <span>{cart.length}</span>
+                    </Link>
+                  </li>
+                </div>
+              </ul>
+            </div>
+          
+            : 
+            
+            <div className="rightSection">
+              <ul className="rightSection-links">
+                <div>
+                  <li><Link to="/sign-in" className="underline_effect">Ingresar</Link></li>
+                  <li><Link to="/sign-up" className="underline_effect">Registrarse</Link></li>
+                </div>
+                <div>
+                  <li id="cart"><Link onClick={switchCartClick}>
+                    <AiOutlineShoppingCart className="cart-icon"/>
+                    <span>{cart.length}</span>
+                  </Link></li>
+                </div>
+              </ul>
+            </div>
+          }
         </nav>
         <div className={sideMenu ? "mobile-menu active-mobile" : "mobile-menu"}>
           <div>
@@ -117,7 +159,8 @@ const mapStateToProps = state =>{
     cartClick: state.cartClick,
     sideMenu: state.sideMenu,
     cart: state.cart,
-    products: state.products
+    products: state.products,
+    user: state.user
   }
 }
 

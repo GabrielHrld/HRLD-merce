@@ -1,0 +1,8 @@
+.profile-wrapper{
+  width: 100%;
+  .profile-container{
+    margin: 3% 0;
+    display: grid;
+    padding: 0rem calc((100vw - 1300px) / 2);
+  }
+}

@@ -33,7 +33,7 @@ const SignIn = () => {
               </div>
               <div>
                 <label htmlFor="">Ingrese su contraseña</label>
-                <input type="password" />
+                <input type="password" placeholder="contraseña" />
               </div>
               
               

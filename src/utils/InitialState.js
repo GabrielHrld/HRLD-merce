@@ -3,7 +3,12 @@ import {productsMock} from './productsMock'
 const data = localStorage.getItem('cart')
 
 export const initialState = {
-  "user": {},
+  "user": {
+    name: 'Gabriel',
+    lastname: 'Rodriguez',
+    email: 'test@test.com',
+    role: 'customer'
+  },
   "cart": data != null ? JSON.parse(data) : [],
   "sideMenu": false,
   "filterClick": false,

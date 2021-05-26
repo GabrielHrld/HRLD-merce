@@ -74,8 +74,8 @@
         width: 220px;
         height: auto;
         padding: 1em 0em;
-        background-color: #fefefe;
-        border: 1px solid #2a2b2c;
+        background-color: $background-light-high;
+        border: 1px solid $text-color-dark;
         z-index: 10;
         clip-path: polygon(
           20% 0,
@@ -95,7 +95,7 @@
           width: fit-content;
           a{
             text-transform: capitalize;
-            color: #2a2b2c;
+            color: $text-color-dark;
           }
         }
       }
@@ -141,13 +141,54 @@
 
           }
         }
-        li a {
+        div:nth-child(1){
+          .profile{
+            &-dropdown{
+              display: flex;
+              flex-direction: column;
+              justify-content: space-around;
+              position: absolute;
+              z-index: 11;
+              top: 45px;
+              width: 120px;
+              background-color: $background-light;
+              opacity: 0;
+              visibility: hidden;
+              transition: .6s all ease;
+              &_link{
+                border-right: none;
+                width: 100%;
+                a{
+                  display:block;
+                  width: 100%;
+                  color: $text-color-dark;
+                  padding: .6em 0 .6em .3em;
+                  transition: .2s all ease;
+                }
+                a:hover{
+                  background: $text-color-dark;
+                  color: $background-light-high;
+                }
+              }
+            }
+          }
+        }
+        div:nth-child(1):hover{
+          .profile{
+            &-dropdown{
+              opacity: 1;
+              visibility: visible;
+              top: 60px;
+            }
+          }
+        }
+        .underline_effect {
           @include navBarLinks();
         }
-        li a:after {
+        .underline_effect:after {
           @include underlineEffect();
         }
-        li a:hover:after {
+        .underline_effect:hover:after {
           width: 100%;
           left: 0;
         }
