@@ -22,7 +22,7 @@ const CustomSlider =  withStyles({
 
 import '../styles/components/FiltersContainer.scss';
 
-const FiltersContainer = ({products, filterClick, handleFilterClick}) => {
+const FiltersContainer = ({products, filterClick, handleFilterClick, admin = false}) => {
   const path = useLocation().pathname.toLowerCase()
   const classes = useStyles();
   const [value, setValue] = useState([0, 18000]);
@@ -81,7 +81,7 @@ const FiltersContainer = ({products, filterClick, handleFilterClick}) => {
                 categories.map((categorie)=> {
                   return(
                   <li onClick={activeFilterClick}>
-                    <Link to={`/products/categories/${categorie.toLowerCase()}`}>
+                    <Link to={admin ? `/admin/profile/categories/${categorie.toLowerCase()}` : `/products/categories/${categorie.toLowerCase()}`}>
                       {categorie}
                     </Link>
                   </li>

@@ -10,7 +10,7 @@ import {handleModal} from '../actions'
 import '../styles/components/Modal.scss'
 
 const Modal = ({user, modal, modalClick, handleModal}) => {
-  if(modal == {}) {
+  if(modal.name == undefined) {
     return (<div></div>)
   }
  

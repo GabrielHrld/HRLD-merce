@@ -11,6 +11,7 @@ import SignIn from '../pages/SignIn'
 import SignUp from '../pages/SignUp'
 import Profile from '../pages/Profile';
 import AdminProfile from '../pages/AdminProfile';
+import AdminProfileCategories from '../pages/AdminProfileCategories';
 import '../styles/app.scss';
 
 const App = () => (
@@ -27,6 +28,7 @@ const App = () => (
         <Route exact path="/checkout" component={Checkout} />
         <Route exact path="/profile" component={Profile} />
         <Route exact path="/admin/profile" component={AdminProfile} />
+        <Route exact path="/admin/profile/categories/:category" component={AdminProfileCategories} />
       </Layout>
     </Switch>
   </Router>

@@ -2,7 +2,7 @@ import React from 'react';
 
 import '../styles/components/Pagination.scss'
 
-const Pagination = ({ productsPerPage, totalProducts, paginate }) => {
+const Pagination = ({ productsPerPage, totalProducts, paginate, dark = false }) => {
   const pageNumbers = [];
 
   for (let i = 1; i <= Math.ceil(totalProducts / productsPerPage); i++) {
@@ -15,7 +15,7 @@ const Pagination = ({ productsPerPage, totalProducts, paginate }) => {
         {
           pageNumbers.map(number =>(
             <li key={number} className="pagination-item" onClick={() => paginate(number)}>
-              <a className="page-link" >
+              <a className={dark ? "page-link dark" : "page-link light"} >
                 {number}
               </a>
             </li>

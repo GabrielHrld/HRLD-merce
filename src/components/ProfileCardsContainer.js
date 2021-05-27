@@ -31,6 +31,7 @@ const ProfileCardsContainer = () => {
         totalProducts={ordersMock.length} 
         paginate={paginate}
         className="pagination-wrapper"
+        dark={true}
       />
     </div>
   )

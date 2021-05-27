@@ -53,7 +53,7 @@ const HeadBand = ({title, filterClick, handleFilterClick, orderByPrice}) => {
           </form>
         </div>
       </div>
-      <FiltersContainer click={filterClick}/>
+      <FiltersContainer click={filterClick} />
 
     </div>
   )

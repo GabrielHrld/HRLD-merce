@@ -1,25 +1,24 @@
 @import '../app.scss';
-.menu-container{
-  
-  header{
-    nav{
+.menu-container {
+  header {
+    nav {
       display: flex;
-      .menu-title_container{
-        .menu-title{
-          padding: .4em 1.2em;
+      .menu-title_container {
+        .menu-title {
+          padding: 0.4em 1.2em;
           background-color: #6b6b6b;
           color: $text-color-secondary;
           cursor: pointer;
-          border-radius:15px 15px 0px 0px;
-          a{
+          border-radius: 15px 15px 0px 0px;
+          a {
             color: $background-light-high;
             text-decoration: none;
-            h2{
+            h2 {
               text-transform: uppercase;
             }
           }
-          &.active{
-            background-color: #3d3d3d !important;
+          &.active {
+            background-color: #565656 !important;
             color: $text-color-primary;
           }
         }
@@ -27,16 +26,17 @@
     }
   }
 
-  .pages-wrapper{
-    background: #3d3d3d;
-    border-radius: 0 20px 20px 20px;
-    .page-container{
+  .pages-wrapper {
+    background: #565656;
+    // border-radius: 0 20px 20px 20px;
+    box-shadow: -1px 10px 21px 0px rgba(0, 0, 0, 0.75);
+    .page-container {
       width: 100%;
-      .page{
+      .page {
         width: 80%;
         height: auto;
         margin: 0 auto;
-        .form-container{
+        .form-container {
           width: 100%;
           height: 100%;
           padding: 2em 0;
@@ -46,36 +46,36 @@
   }
 }
 
-@media screen and (max-width: 678px){
-  .menu-container{
-    header{
-      nav{
-        .menu-title_container{
-          .menu-title{
-            padding: .2em .4em;
-            h2{
+@media screen and (max-width: 678px) {
+  .menu-container {
+    header {
+      nav {
+        .menu-title_container {
+          .menu-title {
+            padding: 0.2em 0.4em;
+            h2 {
               font-size: 16px;
             }
           }
         }
       }
     }
-    .pages-wrapper{
-      .page-container{
-        .page{
+    .pages-wrapper {
+      .page-container {
+        .page {
         }
       }
     }
   }
 }
 
-@media screen and (max-width: 1024px){
-  .menu-container{
+@media screen and (max-width: 1024px) {
+  .menu-container {
     position: relative;
     top: 80px;
-    .pages-wrapper{
-      .page-container{
-        .page{
+    .pages-wrapper {
+      .page-container {
+        .page {
           height: auto !important;
         }
       }

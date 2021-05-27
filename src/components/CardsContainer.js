@@ -8,9 +8,9 @@ import Pagination from './Pagination';
 function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
-const CardsContainer = ({products, quantity, pagination, filteredProducts}) => {
+const CardsContainer = ({products, quantity, pagination, filteredProducts, mini, dark, admin}) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [productsPerPage, setProductsPerPage] = useState(4);
+  const [productsPerPage, setProductsPerPage] = useState(6);
   const min = useQuery().get('min') 
   const max = useQuery().get('max') 
 
@@ -38,17 +38,17 @@ const CardsContainer = ({products, quantity, pagination, filteredProducts}) => {
 
   return (
     <div className="container-cards_wrapper">
-      <div className="container-cards">
+      <div className={mini ? "container-cards mini" : "container-cards"}>
         {
           quantity ? 
             products.slice(0, quantity).map((product)=>{
               return(
-                <Card product={product} key={product.id}/>
+                <Card product={product} key={product.id} admin={admin}/>
               )
             }) :
             currentProducts.map((product) => {
               return(
-                <Card product={product} key={product.id}/>
+                <Card product={product} key={product.id} admin={admin}/>
               )
             }) 
         }
@@ -60,6 +60,7 @@ const CardsContainer = ({products, quantity, pagination, filteredProducts}) => {
             productsPerPage={productsPerPage} 
             totalProducts={products.length} 
             paginate={paginate}
+            dark={dark}
           />
         </div> : 
         <div></div>

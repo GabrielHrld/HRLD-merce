@@ -1,55 +1,79 @@
 @import '../app.scss';
-@mixin card-data{
+@mixin card-data {
   text-align: center;
-      text-transform: uppercase;
-      color: $text-color-primary;
-      padding: .8rem;
-      background-color: $color-secondary;
+  text-transform: uppercase;
+  color: $text-color-primary;
+  padding: 0.8rem;
+  background-color: $color-secondary;
 }
-.card-container{
+.card-container {
   width: 100%;
   height: auto;
   padding: 0 1em;
-  margin: .6rem 0;
-  .card-image_container{
-    width: 100%;
+  margin: 0.6rem 0;
+  .card-image_container {
+    // width: 100%;
+    a {
+      position: relative;
+      top: 10px;
 
-    figure{
-      width: 100%;
-      object-fit: cover;
-      border: 1px solid #d1d1d1;
-      overflow: hidden;
-    }
-     img{
-      width: 100%;
-      -webkit-transform: scale(1);
-      -webkit-transition: .3s ease-in-out;
-      transform: scale(1);
-      transition: .3s ease-in-out;
+      figure {
+        width: 100%;
+        object-fit: cover;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          -webkit-transform: scale(1);
+          -webkit-transition: 0.3s ease-in-out;
+          transform: scale(1);
+          transition: 0.3s ease-in-out;
+        }
+      }
     }
   }
-  .card-image_container figure:hover img{
+  .card-image_container img:hover {
     -webkit-transform: scale(1.3);
     transform: scale(1.3);
   }
-  .card-title{
+  .card-title {
     @include card-data;
   }
-  .card-title:hover{
+  .card-title:hover {
     text-decoration: underline;
   }
-  .card-price{
+  .card-price {
     @include card-data;
-    padding: .6rem;
+    padding: 0.6rem;
     font-weight: bold;
-  } 
-  .card-fees{
+  }
+  .card-fees {
     text-align: center;
     background-color: $color-primary;
     color: $text-color-secondary;
-    padding: .6rem;
-    div{
-      padding: .5em 0;
+    padding: 0.6rem;
+    div {
+      padding: 0.5em 0;
     }
+  }
+  .icon-container{
+    width: 100%;
+    background-color: $text-color-secondary;
+    display: flex;
+    justify-content: center;
+    padding: .5em 0;
+    transition: .3s all ease;
+    cursor: pointer;
+    .icon{
+      font-size: 22px;
+      color: $text-color-dark;
+      transition: .3s all ease;
+    }
+  }
+  .icon-container:hover{
+    background-color: $text-color-dark;
+  }
+  .icon-container:hover .icon{
+    color: $background-light-high
   }
 }

@@ -83,13 +83,12 @@ const Header = ({user, products, sideMenu, cart, cartClick, handleCartClick, han
                     {
                       user.role == 'admin' ? 
                       <ul className="profile-dropdown">
-                        <li className="profile-dropdown_link"><Link>Pedidos</Link></li>
-                        <li className="profile-dropdown_link"><Link>Panel de control</Link></li>
-                        <li className="profile-dropdown_link"><Link>Cerrar sesión</Link></li>
+                        <li className="profile-dropdown_link"><Link to="/admin/profile">Panel de control</Link></li>
+                        <li className="profile-dropdown_link"><Link to="/">Cerrar sesión</Link></li>
                       </ul>  : 
                       <ul className="profile-dropdown">
                       <li className="profile-dropdown_link"><Link to="/profile">Mis datos</Link></li>
-                      <li className="profile-dropdown_link"><Link>Cerrar sesión</Link></li>
+                      <li className="profile-dropdown_link"><Link to="/">Cerrar sesión</Link></li>
                     </ul> 
                     }
                   </li>
@@ -141,7 +140,6 @@ const Header = ({user, products, sideMenu, cart, cartClick, handleCartClick, han
 
           </div>
         </div>
-        {/* <Cart click={cartClick}/> */}
       </header>
     
     </>
