@@ -8,7 +8,9 @@ import {
   orderByPriceType,
   minToMaxType,
   maxToMinType,
-  restoreType
+  restoreType,
+  handleModalType,
+  chargeTheModalType
 } from '../utils/actionTypes';
 import { bubbleSort, bubbleSortInverse, orderById } from '../utils/BubbleSort';
 
@@ -140,8 +142,8 @@ const reducer = (state, action) => {
           cart: [...state.cart],
         };
       }
+
       case orderByPriceType:
-        
       if (action.payload == restoreType) { //ordenamos de menor a mayor
         return{
           ...state,
@@ -160,6 +162,21 @@ const reducer = (state, action) => {
           products: bubbleSortInverse(state.products)
         }
       }
+
+      case handleModalType:
+        return{ 
+          ...state,
+          modalClick: !state.modalClick,
+          overlay: false,
+        }
+      
+      case chargeTheModalType:
+        return{
+          ...state,
+          modalClick: true,
+          overlay: true,
+          modal : action.payload
+        }
     default:
       return state;
   }

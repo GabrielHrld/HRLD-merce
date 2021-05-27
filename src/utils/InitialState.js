@@ -14,5 +14,7 @@ export const initialState = {
   "filterClick": false,
   "cartClick": false,
   "overlay": false,
+  "modalClick": false,
+  "modal": {},
   "products": productsMock,
 }

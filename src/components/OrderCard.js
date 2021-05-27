@@ -1,14 +1,21 @@
 import React from 'react'
 
 import NumberFormat from 'react-number-format';
+import { connect } from 'react-redux';
 
+import {chargeTheModal} from '../actions'
 import '../styles/components/OrderCard.scss'
+import Modal from './Modal';
 
-const OrderCard = ({order}) => {
+const OrderCard = ({order, chargeTheModal}) => {
   let sum = 0
   order.products.forEach(element => sum += element.quantity * element.price );
+  const activeModal = () => {
+    console.log(order)
+    chargeTheModal(order)
+  }
   return (
-    <div className="card-wrapper">
+    <div className="card-wrapper" onClick={activeModal}>
       <div className="card-container">
         <div className="card-container_info">
           <div className="card-container_info-name">
@@ -40,8 +47,13 @@ const OrderCard = ({order}) => {
           </div>
         </div>
       </div>
+      <Modal />
     </div>
   )
 }
 
-export default OrderCard
+const mapDispatchToProps = {
+  chargeTheModal
+}
+
+export default connect(null, mapDispatchToProps)(OrderCard)
