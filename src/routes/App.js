@@ -10,6 +10,7 @@ import ProductDetail from '../pages/ProductDetail';
 import SignIn from '../pages/SignIn'
 import SignUp from '../pages/SignUp'
 import Profile from '../pages/Profile';
+import AdminProfile from '../pages/AdminProfile';
 import '../styles/app.scss';
 
 const App = () => (
@@ -25,6 +26,7 @@ const App = () => (
         <Route exact path="/sale" component={MarketSale} />
         <Route exact path="/checkout" component={Checkout} />
         <Route exact path="/profile" component={Profile} />
+        <Route exact path="/admin/profile" component={AdminProfile} />
       </Layout>
     </Switch>
   </Router>

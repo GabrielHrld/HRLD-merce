@@ -1,18 +1,24 @@
 import React, { useState } from 'react'
 import {connect} from 'react-redux'
-import {handleModal} from '../actions'
-
-import {FaTimes} from 'react-icons/fa'
-
-import '../styles/components/Modal.scss'
 import NumberFormat from 'react-number-format'
 
-const Modal = ({modal, modalClick, handleModal}) => {
+
+import {BsBoxArrowUpRight} from 'react-icons/bs'
+import {FaTimes} from 'react-icons/fa'
+
+import {handleModal} from '../actions'
+import '../styles/components/Modal.scss'
+
+const Modal = ({user, modal, modalClick, handleModal}) => {
   if(modal == {}) {
     return (<div></div>)
   }
  
   const handleClick = () => handleModal()
+
+  let sum = 0;
+  if(modal.name != undefined ) modal.products.forEach((element) => sum += element.quantity * element.price)
+  
 
   return (
     <div className={modalClick ? "modal-wrapper active-modal" :"modal-wrapper"}>
@@ -60,32 +66,36 @@ const Modal = ({modal, modalClick, handleModal}) => {
                 </li>
               ))  : <div></div>
             }
-            {/* <li className="modal-list_item">
-              <div className="modal-product">
-                <span>PANTALON AZUL MOCHA <strong>x3 $1234</strong></span>
-              </div>
-            </li>
-            <li className="modal-list_item">
-              <div>
-                <span>PANTALON AZUL MOCHA <strong>x3 $1234</strong></span>
-              </div>
-            </li>
-            <li className="modal-list_item">
-              <div>
-                <span>PANTALON AZUL MOCHA <strong>x3 $1234</strong></span>
-              </div>
-            </li> */}
           </ul>
         </div>
       </div>
         <footer>
-          <div>
+          <div className="total">
             <span>Total:</span>
-            <h3>$1234</h3>
+            <h3><NumberFormat
+                  value={sum}
+                  displayType={'text'}
+                  thousandSeparator={true}
+                  prefix={'$'}
+                /></h3>
           </div>
-          <div>
+          <div className="status">
             <span>Estado:</span>
-            <h3>{modal.status}</h3>
+            {
+              user.role == 'admin' ? (
+                <form>
+                  <select >
+                    <option value="pending">En proceso</option>
+                    <option value="onWay">En camino</option>
+                    <option value="delivered">Entregado</option>
+                  </select>
+                  <button type="submit">
+                    <BsBoxArrowUpRight className="icon"/>
+                  </button>
+                </form>
+              ) : (<h3>{modal.status}</h3>)
+            }
+            
           </div>
         </footer>
     </div>
@@ -95,7 +105,8 @@ const Modal = ({modal, modalClick, handleModal}) => {
 const mapStateToProps = (state) => {
   return{
     modalClick: state.modalClick,
-    modal: state.modal
+    modal: state.modal,
+    user: state.user
   }
 }
 
