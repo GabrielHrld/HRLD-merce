@@ -42,6 +42,7 @@ const PanelProducts = ({orderByPrice, filteredProducts, filterClick, handleFilte
         <form action="" className="orderBy">
           <div>
             <h3>filtrar por precio</h3>
+            <h3>Añadir producto</h3>
             <h3 onClick={activeFilterClick}>filtros</h3>
           </div>
             <select name="" id="" onChange={handleOrderByPrice}>

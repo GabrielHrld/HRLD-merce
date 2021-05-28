@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import {connect} from 'react-redux'
 import NumberFormat from 'react-number-format'
 
@@ -11,12 +11,25 @@ import {handleModal} from '../actions'
 import '../styles/components/ModalProduct.scss'
 
 const ModalProduct = ({user, modal, modalClick, handleModal}) => {
+  const [image, setImage] = useState("")
   if(modal.name == undefined) {
     return (<div></div>)
   }
- 
   const handleClick = () => handleModal()
 
+  const handleImage = (e) =>{
+    const selected = e.target.files[0]
+    const ALLOWED_TYPES = ['image/png', 'image/jpeg', 'image/jpg']
+    if (selected && ALLOWED_TYPES.includes(selected.type)){
+      let reader = new FileReader();
+      reader.onloadend = () => {
+        setImage(reader.result)
+      };
+      reader.readAsDataURL(selected)
+    } else {
+      console.log('file not supported')
+    }
+  }
 
   return (
     <div className={modalClick ? "modalProduct-wrapper active-modal" :"modalProduct-wrapper"}>
@@ -39,7 +52,10 @@ const ModalProduct = ({user, modal, modalClick, handleModal}) => {
           </div>
           <div className="modal-names">
             <h3>Imágenes: </h3>
-            <p> <input type="file"/></p>
+            <p> <input type="file" onChange={handleImage}/></p>
+            {image == "" ? <div></div> : <figure className="image-container">
+              <img src={image} alt="" />
+            </figure>}
           </div>
         </div>
         <footer>

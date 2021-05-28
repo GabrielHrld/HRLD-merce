@@ -44,6 +44,14 @@
           resize: none;
         }
       }
+      .image-container{
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        img{
+          height: 100%;
+        }
+      }
     }
   }
   footer {
