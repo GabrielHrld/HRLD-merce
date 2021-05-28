@@ -7,7 +7,7 @@ export const initialState = {
     name: 'Gabriel',
     lastname: 'Rodriguez',
     email: 'test@test.com',
-    role: 'customer'
+    role: 'admin'
   },
   "cart": data != null ? JSON.parse(data) : [],
   "sideMenu": false,

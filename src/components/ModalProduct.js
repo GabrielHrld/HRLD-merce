@@ -19,34 +19,43 @@ const ModalProduct = ({user, modal, modalClick, handleModal}) => {
 
 
   return (
-    <div className={modalClick ? "modal-wrapper active-modal" :"modal-wrapper"}>
+    <div className={modalClick ? "modalProduct-wrapper active-modal" :"modalProduct-wrapper"}>
       <header>
         <FaTimes onClick={handleClick}/>
       </header>
-      <div className="modal-container">
-        <div className="modal-names">
-          <h3>Nombre: </h3>
-          <p><input type="text" placeholder={modal.name}/></p>
+      <form action="">
+        <div className="modal-container">
+          <div className="modal-names">
+            <h3>Nombre: </h3>
+            <p><input type="text" placeholder={modal.name}/></p>
+          </div>
+          <div className="modal-names">
+            <h3>Descripción: </h3>
+            <p><textarea name="" id="" cols="30" rows="10" placeholder={modal.description}></textarea></p>
+          </div>
+          <div className="modal-names">
+            <h3>Color: </h3>
+            <p> <input type="text" placeholder={modal.color}/></p>
+          </div>
+          <div className="modal-names">
+            <h3>Imágenes: </h3>
+            <p> <input type="file"/></p>
+          </div>
         </div>
-        <div className="modal-names">
-          <h3>Descripción: </h3>
-          <p><textarea name="" id="" cols="30" rows="10" placeholder={modal.description}></textarea></p>
-        </div>
-        <div className="modal-names">
-          <h3>Color: </h3>
-          <p> <input type="text" placeholder={modal.color}/></p>
-        </div>
-        
-      </div>
         <footer>
           <div className="total">
             <span>Precio:</span>
             <h3>$ <input type="number" placeholder={modal.price} min="1"/> </h3>
           </div>
+          <div className="total">
+            <span>Stock:</span>
+            <h3><input type="number" placeholder={modal.stock} min="1"/> </h3>
+          </div>
           <div className="status">
             <Button text="Modificar" className="button"/>
           </div>
         </footer>
+      </form>
     </div>
   )
 }
