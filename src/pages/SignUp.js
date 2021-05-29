@@ -1,9 +1,7 @@
 import React, { useState } from 'react'
-import {connect} from 'react-redux'
 import { Link, useHistory } from 'react-router-dom';
 import moment from 'moment'
 
-import { handleUser } from '../actions/index'
 import {expresiones} from '../utils/regex';
 import InputForm from '../components/InputForm'
 import Logo from '../../assets/logo.png';
@@ -11,7 +9,7 @@ import Button from '../components/Button'
 import '../styles/pages/SignUp.scss'
 import axios from 'axios';
 
-const SignUp = ({handleUser}) => {
+const SignUp = () => {
   let history = useHistory()
   console.log(typeof moment().format('LLL'))
   const [name, setName] = useState({field: '', valid: null})
@@ -67,12 +65,7 @@ const SignUp = ({handleUser}) => {
             history.push("/sign-up")
           }
         })
-
-          
-        console.log('valid')
-        console.log(user)
       } else {
-        console.log('invalid')
         setValidForm(false)
       }
   }
@@ -190,8 +183,4 @@ const SignUp = ({handleUser}) => {
   )
 }
 
-const mapDispatchToProps = {
-  handleUser
-}
-
-export default connect(null, mapDispatchToProps)(SignUp)
+export default SignUp
