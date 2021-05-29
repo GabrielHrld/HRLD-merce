@@ -35,15 +35,17 @@
       position: relative;
       top: 25px;
       z-index: 2;
-      border-radius: 15px;
-      height: 75vh;
-      min-height: 370px;
-      width: 23%;
-      min-width: 280px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      width: 23%;
+      padding-top: 200px;
+      border-radius: 15px;
+      max-height: 500px;
+      min-height: 370px;
+      min-width: 280px;
+      overflow-y: scroll;
       background: #fcfcfc;
       .signUp-title{
         width: 100%;
@@ -63,26 +65,38 @@
           display: flex;
           flex-direction: column;
           justify-content: space-evenly;
-          div {
-            display: flex;
-            flex-direction: column;
-            label{
-              font-size: 16px;
-              margin-bottom: 5px;
-            }
-            input{
-              height: 35px;
-              width: 100%;
-              border: none;
-              border-bottom: 1px solid grey;
-              padding-left: 10px;
-              margin-bottom: 1em 0;
-              background: $background-light;
-              border-radius: 25px ;
-              outline: none;
-            }
+          .danger{
+            color: #db0000;
           }
-          div:nth-child(6){
+          // .inputForm-container {
+          //   display: flex;
+          //   flex-direction: column;
+          //   margin-bottom: .5em;
+          //   label{
+          //     font-size: 16px;
+          //     margin-bottom: 5px;
+          //   }
+          //   input{
+          //     height: 35px;
+          //     width: 100%;
+          //     border: 3px solid transparent;
+          //     // border-bottom: 1px solid grey;
+          //     padding-left: 10px;
+          //     margin-bottom: 1em 0;
+          //     background: $background-light;
+          //     border-radius: 25px ;
+          //     outline: none;
+          //     transition: .5s border ease-in-out;
+          //   }
+          //   input:focus{
+          //     border: 2px solid $color-primary;
+          //   }
+          //   .text-error{
+          //     font-size: 12px;
+          //     color: #db0000;
+          //   }
+          // }
+          .inputForm-container:nth-child(7){
             flex-direction: row;
             align-items: center;
             justify-content: space-between;
@@ -95,6 +109,9 @@
           }
         }
       }
+    }
+    .signUp-card::-webkit-scrollbar{
+      width: 0px;
     }
   }
 }

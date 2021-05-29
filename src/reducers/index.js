@@ -10,12 +10,18 @@ import {
   maxToMinType,
   restoreType,
   handleModalType,
-  chargeTheModalType
+  chargeTheModalType,
+  handleUserType
 } from '../utils/actionTypes';
 import { bubbleSort, bubbleSortInverse, orderById } from '../utils/BubbleSort';
 
 const reducer = (state, action) => {
   switch (action.type) {
+    case handleUserType:
+      return {
+        ...state,
+        user: action.payload
+      }
     case handleSideMenuClickType:
       return {
         ...state,

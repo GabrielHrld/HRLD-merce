@@ -10,8 +10,7 @@ import Logo from '../../assets/logo.png';
 import '../styles/components/Header.scss';
 
 const Header = ({user, products, sideMenu, cart, cartClick, handleCartClick, handleSideMenuClick}) => {
-  console.log(user.name != null)
-  
+  console.log(user.name)
   const switchSideMenuClick = () => {
     handleSideMenuClick(!sideMenu);
   }
@@ -74,7 +73,8 @@ const Header = ({user, products, sideMenu, cart, cartClick, handleCartClick, han
               <button className="search-area_button"><MdSearch className="search-icon"/></button>
             </form>
           </div>
-          {user.name != null ? 
+          {
+          user.name != null ? 
             <div className="rightSection">
               <ul className="rightSection-links">
                 <div>

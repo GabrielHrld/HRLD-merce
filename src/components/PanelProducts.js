@@ -2,14 +2,15 @@ import React from 'react'
 import {connect} from 'react-redux'
 import { useHistory, useLocation } from 'react-router-dom'
 
-import {orderByPrice, handleFilterClick} from '../actions'
+import {orderByPrice, handleFilterClick, handleModal} from '../actions'
 import {minToMaxType, maxToMinType, restoreType} from '../utils/actionTypes'
 import FiltersContainer from './FiltersContainer'
 import CardsContainer from './CardsContainer'
 
 import '../styles/components/PanelProducts.scss'
+import ModalAddProduct from './ModalAddProduct'
 
-const PanelProducts = ({orderByPrice, filteredProducts, filterClick, handleFilterClick}) => {
+const PanelProducts = ({orderByPrice, filteredProducts, filterClick, handleFilterClick, handleModal}) => {
   const history = useHistory()
   const path = useLocation().pathname.toLowerCase()
   const restore = () => orderByPrice(restoreType)
@@ -30,6 +31,7 @@ const PanelProducts = ({orderByPrice, filteredProducts, filterClick, handleFilte
     }
   }
 
+  const activeModalAddProduct = () => handleModal()
   const activeFilterClick = () => handleFilterClick(!filterClick)
 
   return (
@@ -42,7 +44,7 @@ const PanelProducts = ({orderByPrice, filteredProducts, filterClick, handleFilte
         <form action="" className="orderBy">
           <div>
             <h3>filtrar por precio</h3>
-            <h3>Añadir producto</h3>
+            <h3 onClick={activeModalAddProduct}>Añadir producto</h3>
             <h3 onClick={activeFilterClick}>filtros</h3>
           </div>
             <select name="" id="" onChange={handleOrderByPrice}>
@@ -55,7 +57,7 @@ const PanelProducts = ({orderByPrice, filteredProducts, filterClick, handleFilte
         </header>
         <CardsContainer pagination={true} mini={true} className="container-cards_wrapper" dark={true} admin={true} filteredProducts={filteredProducts}/>
         <FiltersContainer admin={true}/>
-
+        <ModalAddProduct />
       </div>
     </div>
   )
@@ -63,13 +65,14 @@ const PanelProducts = ({orderByPrice, filteredProducts, filterClick, handleFilte
 
 const mapStateToProps = (state) => {
   return {
-    filterClick: state.filterClick   
+    filterClick: state.filterClick,
   }
 }
 
 const mapDispatchToProps = {
   orderByPrice,
-  handleFilterClick
+  handleFilterClick,
+  handleModal
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PanelProducts)

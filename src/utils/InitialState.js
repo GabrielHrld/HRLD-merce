@@ -1,15 +1,12 @@
 import {productsMock} from './productsMock'
 
-const data = localStorage.getItem('cart')
+const dataUser = localStorage.getItem('user')
+console.log(dataUser)
+const dataCart = localStorage.getItem('cart')
 
 export const initialState = {
-  "user": {
-    name: 'Gabriel',
-    lastname: 'Rodriguez',
-    email: 'test@test.com',
-    role: 'admin'
-  },
-  "cart": data != null ? JSON.parse(data) : [],
+  "user": dataUser != null ?  JSON.parse(dataUser) : {},
+  "cart": dataCart != null ? JSON.parse(dataCart) : [],
   "sideMenu": false,
   "filterClick": false,
   "cartClick": false,

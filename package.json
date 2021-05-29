@@ -27,6 +27,7 @@
     "eslint-plugin-prettier": "^3.3.0",
     "eslint-plugin-react": "^7.22.0",
     "file-loader": "^6.2.0",
+    "moment": "^2.29.1",
     "prettier": "^2.2.1",
     "react": "^17.0.1",
     "react-chartjs-2": "^3.0.3",

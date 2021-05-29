@@ -1,0 +1,46 @@
+@import '../app.scss';
+.inputForm-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: .5em;
+  .label{
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    transition: .5s color ease-in-out;
+    color: black ;
+    &.labelValid{
+      color: #01c733;
+    }
+    &.labelDanger{
+      color: #db0000;
+    }
+  }
+  .input{
+    height: 35px;
+    width: 100%;
+    border: 2px solid transparent;
+    // border-bottom: 1px solid grey;
+    padding-left: 10px;
+    margin-bottom: 1em 0;
+    background: $background-light;
+    border-radius: 25px ;
+    outline: none;
+    transition: .5s border ease-in-out;
+  }
+  .input:focus{
+    border: 2px solid $color-primary;
+  }
+  .valid{
+    border: 2px solid #01c733;
+  }
+  .danger{
+    border: 2px solid #db0000;
+  }
+  // .labelValid{
+  //   color: #01c733;
+  // }
+  // .labelDanger{
+  //   color: #db0000;
+  // }
+}
