@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import axios from 'axios';
 import BannerService from '../components/BannerService';
 import CardsContainer from '../components/CardsContainer';
 import Hero from '../components/Hero';
 import Promo from '../components/Promo';
 
 import '../styles/pages/Home.scss';
-const Home = () => (
+const Home = () => {
+  useEffect(()=>{
+  axios.get('http://localhost:3000/products')
+  .then((res)=> localStorage.setItem('products', JSON.stringify(res.data)))
+  }, [])
+  return(
   <div className="Home">
     <div className="container">
       <Hero />
@@ -15,7 +21,7 @@ const Home = () => (
       <BannerService />
 
     </div>
-  </div>
-);
+  </div>)}
+;
 
 export default Home;

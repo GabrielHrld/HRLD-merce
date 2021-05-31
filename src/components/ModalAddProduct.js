@@ -30,9 +30,8 @@ const ModalAddProduct = ({user, modalAddProductClick, handleModalAddProduct}) =>
   
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(product)
     if(
-      !(product.name || 
+      (product.name || 
        product.description || 
        product.category ||
        product.color == ''
@@ -45,7 +44,8 @@ const ModalAddProduct = ({user, modalAddProductClick, handleModalAddProduct}) =>
           data: base64Image,
         })
         .then((res) => {
-          setProduct(product.image = res.data.data.link)
+          setProduct({...product, image: res.data.data.link})
+          console.log(product)
           axios.post('http://localhost:3000/products', product, {
             headers: {
               'Authorization': `Bearer ${user.access_token}`

@@ -1,3 +1,4 @@
+import axios from 'axios';
 import {productsMock} from './productsMock'
 
 const dataUser = localStorage.getItem('user')
@@ -8,6 +9,7 @@ let user_;
    token = access_token;
    user_ = user
 }
+const dataProducts = localStorage.getItem('products')
 const dataCart = localStorage.getItem('cart')
 
 export const initialState = {
@@ -20,5 +22,5 @@ export const initialState = {
   "modalClick": false,
   "modalAddProductClick": false,
   "modal": {},
-  "products": productsMock,
+  "products": dataProducts != null ? JSON.parse(dataProducts) : []//productsMock,
 }
