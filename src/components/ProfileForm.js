@@ -2,26 +2,27 @@ import React from 'react'
 
 import Button from './Button'
 import '../styles/components/ProfileForm.scss'
+import { connect } from 'react-redux'
 
-const ProfileForm = () => {
+const ProfileForm = ({user}) => {
   return (
     <div className="form-container">
       <form action="">
         <div className="form-area">
           <label htmlFor="">Nombre</label>
-          <input type="text" placeholder="Nombre" />
+          <input type="text" placeholder={user.name} />
         </div>
         <div className="form-area">
           <label htmlFor="">Apellido</label>
-          <input type="text" placeholder="Apellido" />
+          <input type="text" placeholder={user.lastname} />
         </div>
         <div className="form-area">
-          <label htmlFor="">Número</label>
+          <label htmlFor="">Teléfono</label>
           <input type="text" placeholder="1140948366" />
         </div>
         <div className="form-area">
-          <label htmlFor="">Correo</label>
-          <input type="email" placeholder="example@email.com" />
+          <label htmlFor="">Correo electrónico</label>
+          <input type="email" placeholder={user.email} />
         </div>
         <div className="form-area">
           <label htmlFor="">Contraseña</label>
@@ -39,4 +40,14 @@ const ProfileForm = () => {
   )
 }
 
-export default ProfileForm
+const mapStateToProps = (state) => {
+  return {
+    user: state.user
+  }
+}
+
+const mapDispatchToProps = {
+
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileForm)

@@ -11,7 +11,6 @@ import axios from 'axios';
 
 const SignUp = () => {
   let history = useHistory()
-  console.log(typeof moment().format('LLL'))
   const [name, setName] = useState({field: '', valid: null})
   const [lastname, setLastname] = useState({field: '', valid: null})
   const [email, setEmail] = useState({field: '', valid: null})

@@ -1,0 +1,43 @@
+p{
+  display: flex;
+  flex-direction: column;
+  margin: .5em 0;
+  .label{
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    transition: .5s color ease-in-out;
+    color: black ;
+    &.labelValid{
+      color: #01c733;
+    }
+    &.labelDanger{
+      color: #db0000;
+    }
+  }
+  span, select{
+    display: flex;
+    align-items: center;
+    height: 50px;
+    width: 80%;
+    .input{
+      height: 70%;
+      width: 100%;
+      outline: none;
+      border: 2px solid transparent;
+      padding-left: 10px ;
+      &.valid{
+        border: 2px solid #01c733;
+      }
+      &.danger{
+        border: 2px solid #db0000;
+      }
+    }
+  }
+  select{
+    height: 35px;
+    margin: 7.5px 0;
+    outline: none;
+    border: none;
+  }
+}

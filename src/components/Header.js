@@ -10,7 +10,6 @@ import Logo from '../../assets/logo.png';
 import '../styles/components/Header.scss';
 
 const Header = ({user, products, sideMenu, cart, cartClick, handleCartClick, handleSideMenuClick}) => {
-  console.log(user)
   const switchSideMenuClick = () => {
     handleSideMenuClick(!sideMenu);
   }

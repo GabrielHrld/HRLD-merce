@@ -18,7 +18,6 @@ const SignIn = ({handleUser}) => {
     email: email.field,
     password: pass.field
   }
-  console.log(email, pass)
   const handleSubmit = (e) => {
     e.preventDefault()
     if(
@@ -36,6 +35,7 @@ const SignIn = ({handleUser}) => {
         localStorage.setItem('user', JSON.stringify(data))
         handleUser(data)
         history.push("/")
+        window.location.reload(true);
       })
       .catch((error)=> console.log(error))
     }

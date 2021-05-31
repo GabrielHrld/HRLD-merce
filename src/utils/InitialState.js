@@ -1,11 +1,17 @@
 import {productsMock} from './productsMock'
 
 const dataUser = localStorage.getItem('user')
-const {access_token, user} = JSON.parse(dataUser)
+let token;
+let user_;
+ if(dataUser != null){
+   const {access_token, user} = JSON.parse(dataUser)
+   token = access_token;
+   user_ = user
+}
 const dataCart = localStorage.getItem('cart')
 
 export const initialState = {
-  "user": dataUser != null ?  {...user, access_token: access_token} : {},
+  "user": dataUser != null ?  {...user_, access_token: token} : {},
   "cart": dataCart != null ? JSON.parse(dataCart) : [],
   "sideMenu": false,
   "filterClick": false,

@@ -26,7 +26,6 @@ const ModalAddProduct = ({modalClick, handleModal}) => {
   const base64Image = window.btoa(image);
   const handleImgur = (e) => {
     e.preventDefault()
-    console.log(product)
     setProduct(product.category = ['gabito'])
     setProduct(product.images = ['https://google.com'])
     //   axios({
@@ -37,12 +36,10 @@ const ModalAddProduct = ({modalClick, handleModal}) => {
       //   })
       //   .then((res)=> console.log(res.data.data.link))
       //   .catch((err)=>console.log(err))
-      console.log(product)
     }
     
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(product)
   }
   const handlePrice = (e) => {
     let price = parseInt(e.target.value)
@@ -53,7 +50,6 @@ const ModalAddProduct = ({modalClick, handleModal}) => {
     setProduct({...product, stock})
   }  
   const handleSizes = (e) => {
-    console.log(e.target.value)
     setProduct({...product, sizeAvailable: [...product.sizeAvailable, e.target.value]})
   }
 

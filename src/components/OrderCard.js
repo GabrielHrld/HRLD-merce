@@ -8,15 +8,20 @@ import '../styles/components/OrderCard.scss'
 import Modal from './Modal';
 
 const OrderCard = ({order, chargeTheModal}) => {
+  if (order == null) {
+    return <div />
+  }
   let sum = 0
   order.products.forEach(element => sum += element.quantity * element.price );
   const activeModal = () => {
-    console.log(order)
     chargeTheModal(order)
   }
+  console.log(order)
   return (
     <div className="card-wrapper" onClick={activeModal}>
-      <div className="card-container">
+      {order != null ?
+      <>
+        <div className="card-container">
         <div className="card-container_info">
           <div className="card-container_info-name">
             <span>{order.name}</span>{' '}
@@ -47,7 +52,9 @@ const OrderCard = ({order, chargeTheModal}) => {
           </div>
         </div>
       </div>
-      <Modal />
+        <Modal /> 
+      </>
+        : <div></div>}
     </div>
   )
 }

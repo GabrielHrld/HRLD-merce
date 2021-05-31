@@ -28,9 +28,9 @@ const App = () => (
         <Route exact path="/products" component={Market} />
         <Route exact path="/sale" component={MarketSale} />
         <Route exact path="/checkout" component={Checkout} />
-        <PrivateRoute exact path="/profile" component={Profile} />
-        <PrivateAdminRoute exact path="/admin/profile" component={AdminProfile} />
-        <PrivateAdminRoute exact path="/admin/profile/categories/:category" component={AdminProfileCategories} />
+        <Route exact path="/profile" component={Profile} />
+        <Route exact path="/admin/profile" component={AdminProfile} />
+        <Route exact path="/admin/profile/categories/:category" component={AdminProfileCategories} />
       </Layout>
     </Switch>
   </Router>
