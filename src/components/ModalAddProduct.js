@@ -54,10 +54,7 @@ const ModalAddProduct = ({user, modalAddProductClick, handleModalAddProduct}) =>
           .then((res)=> console.log(res))
           .catch((error) => console.log(error))
         })
-        .catch((err)=>{
-          setImageError(true)
-          setTimeout(()=> setImageError(false), 5000)
-        })
+        .catch((err)=>{console.log(err)})
       } else {
         setFieldsError(true)
         setTimeout(()=> setFieldsError(false), 5000)
