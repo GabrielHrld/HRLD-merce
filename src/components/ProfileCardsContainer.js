@@ -10,8 +10,6 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 
 const ProfileCardsContainer = ({user, admin}) => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [ordersPerPage, setProductsPerPage] = useState(9);
   const [orders, setOrders] = useState([])
   const [loading, setLoading] = useState(false)
 

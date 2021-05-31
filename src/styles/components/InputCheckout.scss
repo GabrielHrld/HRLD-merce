@@ -1,40 +1,42 @@
-p{
+@import '../app.scss';
+p {
   display: flex;
   flex-direction: column;
-  margin: .5em 0;
-  .label{
+  margin: 0.5em 0;
+  .label {
     font-size: 16px;
     font-weight: bold;
     margin-bottom: 5px;
-    transition: .5s color ease-in-out;
-    color: black ;
-    &.labelValid{
-      color: #01c733;
+    transition: 0.5s color ease-in-out;
+    color: black;
+    &.labelValid {
+      color: $valid;
     }
-    &.labelDanger{
-      color: #db0000;
+    &.labelDanger {
+      color: $danger;
     }
   }
-  span, select{
+  span,
+  select {
     display: flex;
     align-items: center;
     height: 50px;
     width: 80%;
-    .input{
+    .input {
       height: 70%;
       width: 100%;
       outline: none;
       border: 2px solid transparent;
-      padding-left: 10px ;
-      &.valid{
-        border: 2px solid #01c733;
+      padding-left: 10px;
+      &.valid {
+        border: 2px solid $valid;
       }
-      &.danger{
-        border: 2px solid #db0000;
+      &.danger {
+        border: 2px solid $danger;
       }
     }
   }
-  select{
+  select {
     height: 35px;
     margin: 7.5px 0;
     outline: none;

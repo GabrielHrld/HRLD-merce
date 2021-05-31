@@ -7,20 +7,20 @@
     height: 80px;
     position: absolute;
     background: $color-secondary;
-    nav{
+    nav {
       height: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0rem calc((100vw - 1300px) / 2);
-    .logoContainer{
-      width: 100px;
-      padding: 5px;
-      margin: 0.1em;
-      img{
-        width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0rem calc((100vw - 1300px) / 2);
+      .logoContainer {
+        width: 100px;
+        padding: 5px;
+        margin: 0.1em;
+        img {
+          width: 100%;
+        }
       }
-    }
     }
   }
   .signUp-container {
@@ -47,10 +47,10 @@
       min-width: 280px;
       overflow-y: scroll;
       background: #fcfcfc;
-      .signUp-title{
+      .signUp-title {
         width: 100%;
         padding: 1em 0;
-        margin-top:1em;
+        margin-top: 1em;
         text-align: center;
       }
       .form-container {
@@ -65,8 +65,8 @@
           display: flex;
           flex-direction: column;
           justify-content: space-evenly;
-          .danger{
-            color: #db0000;
+          .danger {
+            color: $danger;
           }
           // .inputForm-container {
           //   display: flex;
@@ -93,24 +93,24 @@
           //   }
           //   .text-error{
           //     font-size: 12px;
-          //     color: #db0000;
+          //     color: $danger;
           //   }
           // }
-          .inputForm-container:nth-child(7){
+          .inputForm-container:nth-child(7) {
             flex-direction: row;
             align-items: center;
             justify-content: space-between;
-            label{
-              font-size: 12px
+            label {
+              font-size: 12px;
             }
-            input{
+            input {
               width: 5%;
             }
           }
         }
       }
     }
-    .signUp-card::-webkit-scrollbar{
+    .signUp-card::-webkit-scrollbar {
       width: 0px;
     }
   }

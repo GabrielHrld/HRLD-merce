@@ -19,6 +19,9 @@
     border-radius: 25px 25px 0 0;
     display: flex;
     justify-content: space-between;
+    .icon{
+      cursor: pointer;
+    }
     h2 {
       margin-left: 20px;
     }
@@ -40,6 +43,7 @@
       p {
         padding-left: 1em;
         display: flex;
+        flex-direction: row;
         .sizes-container{
           display: flex;
           flex-direction: column;
@@ -87,6 +91,29 @@
       }
     }
   }
+  .error-wrapper{
+    position: fixed;
+    top: -15%;
+    left: 0;
+    width: 100vw;
+    height: 80px;
+    background-color: $danger;
+    transition: .7s top ease-out;
+    .error-container{
+      padding: 0rem calc((100vw - 1300px)/2);
+      height: 100%;
+      display: flex;
+      align-items: center;
+      h3{
+        font-weight: bold;
+        font-size: 24px;
+        color: #440808;
+      }
+    }
+    &.active{
+      top: 0%;
+    }
+  }
 }
 .modalProduct-wrapper::-webkit-scrollbar{
   display: none;
@@ -98,8 +125,8 @@
 }
 
 @media screen and(max-width: 678px) {
-  .modal-wrapper {
-    width: 60%;
+  .modalProduct-wrapper {
+    min-width: 60%;
     left: 28%;
     max-height: 400px;
     overflow: scroll;
@@ -107,7 +134,7 @@
 }
 
 @media screen and(max-width: 768px) {
-  .modal-wrapper {
+  .modalProduct-wrapper {
     width: 50%;
     left: 28%;
   }

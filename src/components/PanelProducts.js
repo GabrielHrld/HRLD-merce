@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import { useHistory, useLocation } from 'react-router-dom'
 
-import {orderByPrice, handleFilterClick, handleModal} from '../actions'
+import {orderByPrice, handleFilterClick, handleModal, handleModalAddProduct} from '../actions'
 import {minToMaxType, maxToMinType, restoreType} from '../utils/actionTypes'
 import FiltersContainer from './FiltersContainer'
 import CardsContainer from './CardsContainer'
@@ -10,7 +10,7 @@ import CardsContainer from './CardsContainer'
 import '../styles/components/PanelProducts.scss'
 import ModalAddProduct from './ModalAddProduct'
 
-const PanelProducts = ({orderByPrice, filteredProducts, filterClick, handleFilterClick, handleModal}) => {
+const PanelProducts = ({orderByPrice, filteredProducts, filterClick, handleFilterClick, handleModal, handleModalAddProduct}) => {
   const history = useHistory()
   const path = useLocation().pathname.toLowerCase()
   const restore = () => orderByPrice(restoreType)
@@ -31,7 +31,7 @@ const PanelProducts = ({orderByPrice, filteredProducts, filterClick, handleFilte
     }
   }
 
-  const activeModalAddProduct = () => handleModal()
+  const activeModalAddProduct = () => handleModalAddProduct()
   const activeFilterClick = () => handleFilterClick(!filterClick)
 
   return (
@@ -72,7 +72,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   orderByPrice,
   handleFilterClick,
-  handleModal
+  handleModal,
+  handleModalAddProduct
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PanelProducts)

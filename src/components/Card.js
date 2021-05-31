@@ -15,7 +15,7 @@ const Card = ({ product, admin = false, chargeTheModal }) => {
 
   return (
     <div>
-      <ul className="card-container" onClick={handleModal}>
+      <ul className="card-container">
         <li>
           <div className="card-image_container">
             <Link to={admin ? './profile' : `/products/${product.id}`}>

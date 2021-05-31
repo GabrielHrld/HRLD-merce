@@ -11,7 +11,8 @@ import {
   restoreType,
   handleModalType,
   chargeTheModalType,
-  handleUserType
+  handleUserType,
+  handleModalAddProductType
 } from '../utils/actionTypes';
 import { bubbleSort, bubbleSortInverse, orderById } from '../utils/BubbleSort';
 
@@ -46,7 +47,13 @@ const reducer = (state, action) => {
         filterClick: false,
         sideMenu: false,
       };
-
+    case handleModalAddProductType:
+      return { 
+        ...state,
+        modalAddProductClick: !state.modalAddProductClick,
+        overlay: !state.overlay,
+      }
+    
     case addToCartType:
       const validate = state.cart.some(
         (item) =>

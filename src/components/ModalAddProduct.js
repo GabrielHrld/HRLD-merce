@@ -4,43 +4,66 @@ import {FaTimes} from 'react-icons/fa'
 import axios from 'axios'
 
 import Button from './Button'
-import {handleModal} from '../actions'
+import {handleModal, handleModalAddProduct} from '../actions'
 import '../styles/components/ModalAddProduct.scss'
 
 const sizes = ['xs', 's', 'm', 'l', 'xl'];
 
-const ModalAddProduct = ({modalClick, handleModal}) => {
+const ModalAddProduct = ({user, modalAddProductClick, handleModalAddProduct}) => {
+  // ARREGLAR LA IMAGEN QUE NO SE MUESTRA EL PREVIEW
+  const reader = new FileReader()
+  const [fieldsError, setFieldsError] = useState(false)
   const [product, setProduct] = useState({
     name: '',
-    price: 1,
     description: '',
-    color: '',
     category: '',
-    images: [],
+    price: 1,
     stock: 1,
+    color: '',
+    image: '',
     sale: false,
     sizeAvailable: []
 
   })
   const [image, setImage] = useState("")
   const base64Image = window.btoa(image);
-  const handleImgur = (e) => {
-    e.preventDefault()
-    setProduct(product.category = ['gabito'])
-    setProduct(product.images = ['https://google.com'])
-    //   axios({
-      //     method: 'post',
-      //     url: 'https://api.imgur.com/3/upload/',
-      //     headers: {Authorization: 'Client-ID 8a4df7500e45c80'},
-      //     data: base64Image,
-      //   })
-      //   .then((res)=> console.log(res.data.data.link))
-      //   .catch((err)=>console.log(err))
-    }
-    
+  
   const handleSubmit = (e) => {
     e.preventDefault()
+    console.log(product)
+    if(
+      !(product.name || 
+       product.description || 
+       product.category ||
+       product.color == ''
+      )
+      ){
+      axios({
+          method: 'post',
+          url: 'https://api.imgur.com/3/upload/',
+          headers: {Authorization: 'Client-ID 8a4df7500e45c80'},
+          data: base64Image,
+        })
+        .then((res) => {
+          setProduct(product.image = res.data.data.link)
+          axios.post('http://localhost:3000/products', product, {
+            headers: {
+              'Authorization': `Bearer ${user.access_token}`
+            }
+          })
+          .then((res)=> console.log(res))
+          .catch((error) => console.log(error))
+        })
+        .catch((err)=>{
+          setImageError(true)
+          setTimeout(()=> setImageError(false), 5000)
+        })
+      } else {
+        setFieldsError(true)
+        setTimeout(()=> setFieldsError(false), 5000)
+      }
   }
+    
   const handlePrice = (e) => {
     let price = parseInt(e.target.value)
     setProduct({...product, price})
@@ -50,6 +73,7 @@ const ModalAddProduct = ({modalClick, handleModal}) => {
     setProduct({...product, stock})
   }  
   const handleSizes = (e) => {
+    console.log(e.target.value)
     setProduct({...product, sizeAvailable: [...product.sizeAvailable, e.target.value]})
   }
 
@@ -58,14 +82,14 @@ const ModalAddProduct = ({modalClick, handleModal}) => {
     setProduct({...product, [e.target.name]: e.target.value})
   }
   
-  const handleClick = () => handleModal()
+  const handleClick = () => handleModalAddProduct()
 
   const handleImage = (e) =>{
     const selected = e.target.files[0]
     const ALLOWED_TYPES = ['image/png', 'image/jpeg', 'image/jpg']
     if (selected && ALLOWED_TYPES.includes(selected.type)){
-      let reader = new FileReader();
       reader.onloadend = () => {
+        console.log(reader.result)
         setImage(reader.result)
       };
       reader.readAsBinaryString(selected)
@@ -75,12 +99,12 @@ const ModalAddProduct = ({modalClick, handleModal}) => {
   }
 
   return (
-    <div className={modalClick ? "modalProduct-wrapper active-modal" :"modalProduct-wrapper"}>
+    <div className={modalAddProductClick ? "modalProduct-wrapper active-modal" :"modalProduct-wrapper"}>
       <header>
-        <FaTimes onClick={handleClick}/>
+        <FaTimes onClick={handleClick} className="icon"/>
         <h3>Añadir un producto</h3>
       </header>
-      <form action="" onSubmit={handleSubmit}>
+      <form action="">
         <div className="modal-container">
           <div className="modal-names">
             <h3>Nombre: </h3>
@@ -115,11 +139,8 @@ const ModalAddProduct = ({modalClick, handleModal}) => {
             ))}</p>
           </div>
           <div className="modal-names">
-            <h3>Imágenes: </h3>
+            <h3>Imagen: </h3>
             <p> <input type="file" onChange={handleImage}/></p>
-            {image == "" ? <div></div> : <figure className="image-container">
-              <img src={image} alt="" />
-            </figure>}
           </div>
         </div>
         <footer>
@@ -131,15 +152,16 @@ const ModalAddProduct = ({modalClick, handleModal}) => {
             <span>Stock:</span>
             <h3><input type="number" min="1" value={product.stock} onChange={handleStock}/> </h3>
           </div>
-          <div className="status" onClick={handleImgur}>
-            <Button text="enviar imgur" className="button"/>
-          </div>
-          <div className="status">
+          <div className="status" onClick={handleSubmit}>
             <Button text="Cargar Producto" type="submit" className="button"/>
           </div>
         </footer>
       </form>
-      
+      <div className={fieldsError ? "error-wrapper active" : "error-wrapper"}>
+        <div className="error-container">
+          <h3><b>Error: </b>completá todos los campos por favor</h3>
+        </div>
+      </div>
     </div>
   )
 }
@@ -147,12 +169,14 @@ const ModalAddProduct = ({modalClick, handleModal}) => {
 const mapStateToProps = (state) => {
   return{
     modalClick: state.modalClick,
-    user: state.user
+    user: state.user,
+    modalAddProductClick: state.modalAddProductClick
   }
 }
 
 const mapDispatchToProps = {
   handleModal,
+  handleModalAddProduct
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ModalAddProduct)

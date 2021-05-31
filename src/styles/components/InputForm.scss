@@ -2,21 +2,21 @@
 .inputForm-container {
   display: flex;
   flex-direction: column;
-  margin-bottom: .5em;
-  .label{
+  margin-bottom: 0.5em;
+  .label {
     font-size: 16px;
     font-weight: bold;
     margin-bottom: 5px;
-    transition: .5s color ease-in-out;
-    color: black ;
-    &.labelValid{
-      color: #01c733;
+    transition: 0.5s color ease-in-out;
+    color: black;
+    &.labelValid {
+      color: $valid;
     }
-    &.labelDanger{
-      color: #db0000;
+    &.labelDanger {
+      color: $danger;
     }
   }
-  .input{
+  .input {
     height: 35px;
     width: 100%;
     border: 2px solid transparent;
@@ -24,23 +24,23 @@
     padding-left: 10px;
     margin-bottom: 1em 0;
     background: $background-light;
-    border-radius: 25px ;
+    border-radius: 25px;
     outline: none;
-    transition: .5s border ease-in-out;
+    transition: 0.5s border ease-in-out;
   }
-  .input:focus{
+  .input:focus {
     border: 2px solid $color-primary;
   }
-  .valid{
-    border: 2px solid #01c733;
+  .valid {
+    border: 2px solid $valid;
   }
-  .danger{
-    border: 2px solid #db0000;
+  .danger {
+    border: 2px solid $danger;
   }
   // .labelValid{
-  //   color: #01c733;
+  //   color: $valid;
   // }
   // .labelDanger{
-  //   color: #db0000;
+  //   color: $danger;
   // }
 }

@@ -9,25 +9,28 @@ $text-color-primary: #fefefe;
 $text-color-secondary: #c5c5c5;
 
 $text-color-dark: #2a2b2c;
-*{
+
+$danger: #db0000;
+$valid: #01c733;
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
 }
-body{ 
+body {
   background-color: $background-light;
 }
-li{
+li {
   list-style: none;
-  a{
+  a {
     color: $text-color-primary;
     text-decoration: none;
   }
 }
 
-.App{
-  .overlay{
+.App {
+  .overlay {
     height: 100vh;
     width: 100vw;
     top: 0;
@@ -35,5 +38,13 @@ li{
     position: fixed;
     opacity: 0.5;
     z-index: 2;
+  }
+}
+
+@media screen and (max-width: 768px) {
+    .App{
+      .overlay{
+      height: calc(100vh + 160px);
+    }
   }
 }

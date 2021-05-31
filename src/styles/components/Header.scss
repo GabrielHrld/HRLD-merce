@@ -287,7 +287,7 @@
       display: flex;
       width: 33vw;
       min-width: 240px;
-      height: calc(100vh - 80px);
+      height: calc(100vh + 80px);
       background-color: $color-secondary;
       position: relative;
       transition: .8s all ease-in-out;
