@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Layout from '../components/Layout';
 import Checkout from '../pages/Checkout';
@@ -15,8 +15,14 @@ import AdminProfileCategories from '../pages/AdminProfileCategories';
 import PrivateRoute from '../utils/PrivateRoute'
 import PrivateAdminRoute from '../utils/PrivateAdminRoute'
 import '../styles/app.scss';
+import axios from 'axios';
 
-const App = () => (
+const App = () => {
+  useEffect(()=>{
+    axios.get('http://localhost:3000/products')
+    .then((res)=> localStorage.setItem('products', JSON.stringify(res.data)))
+    }, [])
+  return(
   <Router>
     <Switch>
         <Route exact path="/sign-in" component={SignIn} />
@@ -34,6 +40,6 @@ const App = () => (
       </Layout>
     </Switch>
   </Router>
-);
+)};
 
 export default App;

@@ -54,15 +54,11 @@ const ProductDetailHero = ({ product, addToCart }) => {
           scrollbar={{ draggable: true }}
           className="swiper-wrapper"
         >
-          {product.images.map((image, index) => {
-            return (
-              <SwiperSlide className="swiper-slide" key={image+ index}>
-                <figure className="image-container">
-                  <img src={image} alt="" />
-                </figure>
-              </SwiperSlide>
-            );
-          })}
+          <SwiperSlide className="swiper-slide">
+            <figure className="image-container">
+              <img src={product.image} alt="" />
+            </figure>
+          </SwiperSlide>
         </Swiper>
       </div>
       <div className="main-info_container">

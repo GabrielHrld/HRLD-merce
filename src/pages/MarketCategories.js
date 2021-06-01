@@ -10,7 +10,7 @@ const MarketCategories = ({products}) => {
   
   const {category} = useParams()
   
-  const productsByCategory = products.filter((product) => product.category[0].toLowerCase() == category.toLowerCase())
+  const productsByCategory = products.filter((product) => product.category.toLowerCase() == category.toLowerCase())
 
   return (
     <div className="market-wrapper">

@@ -14,7 +14,7 @@ const ProductDetail = ({products}) => {
  
   const {id} = useParams()
 
-  const product = products.filter((product) => product.id == id);
+  const product = products.filter((product) => product._id == id);
 
   return (
     <div className="product-detail_container">

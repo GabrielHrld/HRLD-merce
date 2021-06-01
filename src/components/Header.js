@@ -20,12 +20,12 @@ const Header = ({user, products, sideMenu, cart, cartClick, handleCartClick, han
   //categories
   const categories = []
   for (let i = 0; i < products.length; i++) {
-    const category = products[i].category[0];
+    const category = products[i].category;
     if(!categories.includes(category)){
       categories.push(category)
     }
   }
-
+  console.log(products)
   return (
     <>
       <header className="Header">

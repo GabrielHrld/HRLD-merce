@@ -58,13 +58,15 @@ const Checkout = ({cart, user}) => {
             const size_ = size[0]
             order.products.push({name,price,quantity,size: size_, color})
           })
+          console.log(order)
           axios.post('http://localhost:3000/orders', order, {
             headers : {
               'Content-Type': 'application/json',
-              'Authorization': 'Bearer ${user.access_token}'
+              'Authorization': `Bearer ${user.access_token}`
             }})
             .then((res) => {
               handleModalSuccess()
+              console.log(res.data)
               localStorage.removeItem('cart')
               setName({field: '', valid: null})
               setLastname({field: '', valid: null})
@@ -79,7 +81,7 @@ const Checkout = ({cart, user}) => {
                 window.location.reload(true);
               }, 3000)
             })
-            .catch((error) => console.log(error))
+            .catch((error) => console.log({error}))
           //   setFormError(false)
           
         }else { 

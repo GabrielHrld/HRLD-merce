@@ -10,8 +10,8 @@ const Footer = ({products}) => {
   //obtenemos las categorias para mostrarlas
   const categories = []
   products.forEach(element => {
-    if (!categories.includes(element.category[0])) {
-      categories.push(element.category[0])
+    if (!categories.includes(element.category)) {
+      categories.push(element.category)
     }
   });
 

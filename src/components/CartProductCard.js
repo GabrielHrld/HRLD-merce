@@ -21,7 +21,7 @@ const CartProductCard = ({product, deleteToCart, handleQuantity}) => {
           <div className="product-card">
             <div className="product-card_image">
               <figure>
-                <img src={product.images[0]} alt={product.name} />
+                <img src={product.image} alt={product.name} />
               </figure>
             </div>
             <div className="product-card_info">

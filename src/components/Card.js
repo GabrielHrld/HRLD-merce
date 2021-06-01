@@ -18,14 +18,14 @@ const Card = ({ product, admin = false, chargeTheModal }) => {
       <ul className="card-container">
         <li>
           <div className="card-image_container">
-            <Link to={admin ? './profile' : `/products/${product.id}`}>
+            <Link to={admin ? './profile' : `/products/${product._id}`}>
               <figure>
-                <img src={product.images[0]} alt={product.name} />
+                <img src={product.image} alt={product.name} />
               </figure>
             </Link>
           </div>
           <div className="card-title">
-            <Link to={admin ? './profile' : `/products/${product.id}`}>
+            <Link to={admin ? './profile' : `/products/${product._id}`}>
               <span>{product.name}</span>
             </Link>
           </div>

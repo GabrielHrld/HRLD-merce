@@ -26,7 +26,7 @@ const FiltersContainer = ({products, filterClick, handleFilterClick, admin = fal
   const path = useLocation().pathname.toLowerCase()
   const classes = useStyles();
   const [value, setValue] = useState([0, 18000]);
-  
+  console.log(products)
   const activeFilterClick = () =>{
     handleFilterClick(!filterClick);
   }
@@ -38,7 +38,7 @@ const FiltersContainer = ({products, filterClick, handleFilterClick, admin = fal
   //Category map
   const categories = []
   for (let i = 0; i < products.length; i++) {
-    const category = products[i].category[0];
+    const category = products[i].category;
     if(!categories.includes(category)){
       categories.push(category)
     }

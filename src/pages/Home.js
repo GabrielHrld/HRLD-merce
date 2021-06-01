@@ -7,10 +7,7 @@ import Promo from '../components/Promo';
 
 import '../styles/pages/Home.scss';
 const Home = () => {
-  useEffect(()=>{
-  axios.get('http://localhost:3000/products')
-  .then((res)=> localStorage.setItem('products', JSON.stringify(res.data)))
-  }, [])
+  
   return(
   <div className="Home">
     <div className="container">
