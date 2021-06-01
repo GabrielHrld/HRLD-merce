@@ -16,11 +16,18 @@ import PrivateRoute from '../utils/PrivateRoute'
 import PrivateAdminRoute from '../utils/PrivateAdminRoute'
 import '../styles/app.scss';
 import axios from 'axios';
+import { connect } from 'react-redux';
 
-const App = () => {
+import {chargeProducts} from '../actions/index'
+
+const App = ({chargeProducts, products}) => {
   useEffect(()=>{
     axios.get('http://localhost:3000/products')
-    .then((res)=> localStorage.setItem('products', JSON.stringify(res.data)))
+    .then((res)=> {
+      console.log('productos cargados')
+      // localStorage.setItem('products', JSON.stringify(res.data))
+      chargeProducts(res.data)
+    })
     }, [])
   return(
   <Router>
@@ -42,4 +49,14 @@ const App = () => {
   </Router>
 )};
 
-export default App;
+const mapStateToProps = (state) =>{
+  return {
+    products: state.products
+  }
+}
+
+const mapDispatchToProps = {
+  chargeProducts
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

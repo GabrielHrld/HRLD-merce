@@ -13,6 +13,8 @@ const ModalAddProduct = ({user, modalAddProductClick, handleModalAddProduct}) =>
   // ARREGLAR LA IMAGEN QUE NO SE MUESTRA EL PREVIEW
   const reader = new FileReader()
   const [fieldsError, setFieldsError] = useState(false)
+  const [categories, setCategories] = useState([])
+  const [loading, setLoading] = useState(false)
   const [product, setProduct] = useState({
     name: '',
     description: '',
@@ -27,6 +29,16 @@ const ModalAddProduct = ({user, modalAddProductClick, handleModalAddProduct}) =>
   })
   const [image, setImage] = useState("")
   const base64Image = window.btoa(image);
+  const categoriesFiltered = [];
+  useEffect(()=>{
+    //hacemos un fetch a las categorias y las guardamos en una variable para mapear luego
+    setLoading(true)
+    axios
+    .get('http://localhost:3000/categories')
+    .then((res)=>{setCategories(res.data)})
+    .then(()=> {setLoading(false)})
+    .catch((error) => console.log(error))
+  }, [])
   
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -109,7 +121,19 @@ const ModalAddProduct = ({user, modalAddProductClick, handleModalAddProduct}) =>
           </div>
           <div className="modal-names">
             <h3>Categoría: </h3>
-            <p><input type="text" name="category" value={product.category} onChange={handleChange} placeholder="Categoría"/></p>
+            <p>
+              <select name="category" id="category" onChange={handleChange}>
+                { 
+                  !loading ?(
+                
+                    categories.map((category) => {
+                    return(
+                      <option value={category.name}>{category.name}</option>
+                    )
+                  })) : (<option value="cargando">Cargando</option>)
+                }
+              </select>
+            </p>
           </div>
           <div className="modal-names">
             <h3>Descripción: </h3>

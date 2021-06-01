@@ -54,11 +54,13 @@
       }
     }
   }
-  footer {
+  .footerModalProduct {
     display: grid;
-    grid-template-columns: 30% 30% 40%;
+    grid-template-columns: 30% 20% 25% 25%;
+    grid-gap: 5px;
     text-align: center;
     margin-bottom: 1em;
+    padding-right: 1.2em;
     align-items: center;
     .total{
       h3{
@@ -70,8 +72,36 @@
     .status {
       .button {
         cursor: pointer;
-        width: 80%;
+        width: 100%;
+        button{
+          font-size: 14px;
+        }
+        button:nth-child(1){
+          font-size: 13px;
+        }
       }
+    }
+  }
+  .message-success_wrapper{
+    position: fixed;
+    top: -15%;
+    left: 0;
+    height: 80px;
+    width: 100vw;
+    background-color: $valid;
+    transition: .8s all ease-out;
+    .message-success_container{
+      height: 100%;
+      display: flex;
+      align-items: center;
+      padding-left: 1.5rem;
+      h3{
+        color: #003504;
+        font-size: 24px;
+      }
+    }
+    &.activeMessage{
+      top: 0;
     }
   }
 }

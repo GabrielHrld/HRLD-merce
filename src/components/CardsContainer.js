@@ -1,22 +1,41 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import {connect} from 'react-redux';
 import { useLocation } from 'react-router';
 
+import Spinner from '../components/Spinner'
 import '../styles/components/CardsContainer.scss'
 import Card from './Card'
 import Pagination from './Pagination';
 function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
-const CardsContainer = ({products, quantity, pagination, filteredProducts, mini, dark, admin}) => {
+const CardsContainer = ({ quantity, pagination, filteredProducts, mini, dark, admin}) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage, setProductsPerPage] = useState(6);
+  const [productos, setProductos] = useState([])
+  const [loading, setLoading] = useState([])
   const min = useQuery().get('min') 
   const max = useQuery().get('max') 
-
+  let products;
   if(filteredProducts) {
     products = filteredProducts
   }
+
+  useEffect(()=>{
+    setLoading(true)
+    
+    axios.get('http://localhost:3000/products')
+    .then((res) => {
+      
+      setProductos(res.data)
+      setLoading(false)
+    })
+
+  },[])
+
+  products = productos;
+
   if(min && max != null) {
     const filterByPrice = products.filter((product)=> product.price >= min && product.price <= max)
     products = filterByPrice
@@ -40,6 +59,8 @@ const CardsContainer = ({products, quantity, pagination, filteredProducts, mini,
     <div className="container-cards_wrapper">
       <div className={mini ? "container-cards mini" : "container-cards"}>
         {
+
+          loading ? (<div className="spiner-wrapper"><div className="spinner-container"><Spinner /></div></div>) :
           quantity ? 
             products.slice(0, quantity).map((product)=>{
               return(

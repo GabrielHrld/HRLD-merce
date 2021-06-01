@@ -22,5 +22,6 @@ export const initialState = {
   "modalClick": false,
   "modalAddProductClick": false,
   "modal": {},
-  "products": dataProducts != null ? JSON.parse(dataProducts) : []//productsMock,
+  // "products": dataProducts != null ? JSON.parse(dataProducts) : []//productsMock,
+  "products": [],
 }

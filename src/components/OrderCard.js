@@ -16,7 +16,6 @@ const OrderCard = ({order, chargeTheModal}) => {
   const activeModal = () => {
     chargeTheModal(order)
   }
-  console.log(order)
   return (
     <div className="card-wrapper" onClick={activeModal}>
       {order != null ?

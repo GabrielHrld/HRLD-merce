@@ -9,6 +9,7 @@ export const handleModalType = 'HANDLE_MODAL';
 export const chargeTheModalType = 'CHARGE_THE_MODAL';
 export const handleUserType = 'HANDLE_USER'
 export const handleModalAddProductType = 'HANDLE_MODAL_ADD_PRODUCT'
+export const productsType = 'ADD_PRODUCTS'
 
 export const minToMaxType = 'minToMax';
 export const maxToMinType = 'maxToMin';

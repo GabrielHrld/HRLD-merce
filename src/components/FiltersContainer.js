@@ -26,7 +26,6 @@ const FiltersContainer = ({products, filterClick, handleFilterClick, admin = fal
   const path = useLocation().pathname.toLowerCase()
   const classes = useStyles();
   const [value, setValue] = useState([0, 18000]);
-  console.log(products)
   const activeFilterClick = () =>{
     handleFilterClick(!filterClick);
   }

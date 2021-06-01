@@ -25,7 +25,6 @@ const Header = ({user, products, sideMenu, cart, cartClick, handleCartClick, han
       categories.push(category)
     }
   }
-  console.log(products)
   return (
     <>
       <header className="Header">

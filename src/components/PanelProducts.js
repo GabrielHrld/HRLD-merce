@@ -10,7 +10,7 @@ import CardsContainer from './CardsContainer'
 import '../styles/components/PanelProducts.scss'
 import ModalAddProduct from './ModalAddProduct'
 
-const PanelProducts = ({orderByPrice, filteredProducts, filterClick, handleFilterClick, handleModal, handleModalAddProduct}) => {
+const PanelProducts = ({orderByPrice, filteredProducts, filterClick, handleFilterClick, handleModalAddProduct}) => {
   const history = useHistory()
   const path = useLocation().pathname.toLowerCase()
   const restore = () => orderByPrice(restoreType)

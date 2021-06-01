@@ -9,7 +9,8 @@ import {
   handleModalType,
   chargeTheModalType,
   handleUserType,
-  handleModalAddProductType
+  handleModalAddProductType,
+  productsType
 } from '../utils/actionTypes';
 
 export const handleFilterClick = (payload) => ({
@@ -64,4 +65,9 @@ export const handleUser = (payload) => ({
 
 export const handleModalAddProduct = () => ({
   type: handleModalAddProductType
+})
+
+export const chargeProducts = (payload) => ({
+  type: productsType,
+  payload
 })
