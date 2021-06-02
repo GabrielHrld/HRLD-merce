@@ -40,7 +40,7 @@ const ModalProduct = ({ user, modal, modalClick, handleModal }) => {
   //FUNCION PARA ELIMINAR PRODUCTO
   const handleDelete = (e) => {
     e.preventDefault();
-    if(window.confirm('¿Seguro desea eliminar el producto?') == true){
+    if (window.confirm('¿Seguro desea eliminar el producto?') == true) {
       return axios
         .delete(`http://localhost:3000/products/${modal._id}`, {
           headers: {
@@ -60,7 +60,7 @@ const ModalProduct = ({ user, modal, modalClick, handleModal }) => {
         .catch((error) => console.log(error));
     }
 
-    return null
+    return null;
   };
 
   // FUNCION PARA ENVIAR LA MODIFICACIÓN
@@ -142,7 +142,16 @@ const ModalProduct = ({ user, modal, modalClick, handleModal }) => {
           history.push('/admin/profile');
         }, 3500)
       )
-      .catch(() => useMessages(setInternalError));
+      .catch(() => {
+        useMessages(setInternalError);
+      })
+      .then(() => setTimeout(() => handleClick(), 3000))
+      .then(() =>
+        setTimeout(() => {
+          history.push('/');
+          history.push('/admin/profile');
+        }, 3500)
+      );
   };
 
   //FUNCION PARA MANEJAR LA CARGA DE LA IMAGEN
@@ -170,7 +179,7 @@ const ModalProduct = ({ user, modal, modalClick, handleModal }) => {
       }
     >
       <header>
-        <FaTimes onClick={handleClick} className="icon"/>
+        <FaTimes onClick={handleClick} className="icon" />
       </header>
       <form action="">
         <div className="modal-container">

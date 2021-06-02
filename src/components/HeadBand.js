@@ -38,7 +38,7 @@ const HeadBand = ({ title, filterClick, handleFilterClick, orderByPrice }) => {
         </div>
         <div className="headBand-item">
           <form action="" className="orderBy">
-            <select name="" id="" onChange={handleOrderByPrice}>
+            <select name="orderByPrice" id="" onChange={handleOrderByPrice}>
               <option value="0">Reestablecer</option>
               <option value="1">Ordenar por precio: bajo a alto</option>
               <option value="2">Ordenar por precio: alto a bajo</option>

@@ -7,6 +7,7 @@ import Spinner from '../components/Spinner';
 import '../styles/components/CardsContainer.scss';
 import Card from './Card';
 import Pagination from './Pagination';
+import ModalProduct from './ModalProduct';
 
 const useQuery = () => {
   return new URLSearchParams(useLocation().search);
@@ -93,6 +94,8 @@ const CardsContainer = ({
           })
         )}
       </div>
+      <ModalProduct />
+
       {pagination ? (
         <div className="pagination-wrapper">
           <Pagination

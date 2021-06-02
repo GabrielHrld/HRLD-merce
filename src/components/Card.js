@@ -1,17 +1,16 @@
 import React from 'react';
-import {connect} from 'react-redux'
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import NumberFormat from 'react-number-format';
 import { BsBoxArrowUpRight } from 'react-icons/bs';
 
-import ModalProduct from './ModalProduct'
-import {chargeTheModal} from '../actions'
+import ModalProduct from './ModalProduct';
+import { chargeTheModal } from '../actions';
 import '../styles/components/Card.scss';
 import MonthlyFees from './MonthlyFees';
 
 const Card = ({ product, admin = false, chargeTheModal }) => {
-
-  const handleModal = () => chargeTheModal(product)
+  const handleModal = () => chargeTheModal(product);
 
   return (
     <div>
@@ -46,13 +45,13 @@ const Card = ({ product, admin = false, chargeTheModal }) => {
           )}
         </li>
       </ul>
-      <ModalProduct />
+      {/* <ModalProduct /> */}
     </div>
   );
 };
 
 const mapDispatchToProps = {
-  chargeTheModal
-}
+  chargeTheModal,
+};
 
 export default connect(null, mapDispatchToProps)(Card);
