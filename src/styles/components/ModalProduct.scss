@@ -16,6 +16,10 @@
     background-color: #dfdfdf;
     border-radius: 25px 25px 0 0;
     display: flex;
+    .icon{
+      cursor: pointer;
+      font-size: 20px;
+    }
     h2 {
       margin-left: 20px;
     }
@@ -101,6 +105,28 @@
       }
     }
     &.activeMessage{
+      top: 0;
+    }
+  }
+  .message-error_wrapper{
+    position: fixed;
+    top: -15%;
+    left: 0;
+    height: 80px;
+    width: 100vw;
+    background-color: $danger;
+    transition: .8s all ease-out;
+    .message-error_container{
+      height: 100%;
+      display: flex;
+      align-items: center;
+      padding-left: 1.5rem;
+      h3{
+        color: #350000;
+        font-size: 24px;
+      }
+    }
+    &.activeErrorMessage{
       top: 0;
     }
   }

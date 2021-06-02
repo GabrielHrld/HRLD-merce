@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
+import {useHistory} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {FaTimes} from 'react-icons/fa'
 import axios from 'axios'
 
+import useMessages from '../hooks/useMessages'
 import Button from './Button'
 import {handleModal, handleModalAddProduct} from '../actions'
 import '../styles/components/ModalAddProduct.scss'
@@ -11,14 +13,17 @@ const sizes = ['xs', 's', 'm', 'l', 'xl'];
 
 const ModalAddProduct = ({user, modalAddProductClick, handleModalAddProduct}) => {
   // ARREGLAR LA IMAGEN QUE NO SE MUESTRA EL PREVIEW
+  const history = useHistory()
+
   const reader = new FileReader()
   const [fieldsError, setFieldsError] = useState(false)
+  const [success, setSuccess] = useState(false)
   const [categories, setCategories] = useState([])
   const [loading, setLoading] = useState(false)
   const [product, setProduct] = useState({
     name: '',
     description: '',
-    category: '',
+    category: 'pantalones',
     price: 1,
     stock: 1,
     color: '',
@@ -27,9 +32,19 @@ const ModalAddProduct = ({user, modalAddProductClick, handleModalAddProduct}) =>
     sizeAvailable: []
 
   })
+  const productModel = {
+    name: product.name,
+    description: product.description,
+    category: product.category,
+    price: product.price,
+    stock: product.stock,
+    color: product.color,
+    image: product.image,
+    sale: product.sale,
+    sizeAvailable: product.sizeAvailable
+  }
   const [image, setImage] = useState("")
   const base64Image = window.btoa(image);
-  const categoriesFiltered = [];
   useEffect(()=>{
     //hacemos un fetch a las categorias y las guardamos en una variable para mapear luego
     setLoading(true)
@@ -55,18 +70,25 @@ const ModalAddProduct = ({user, modalAddProductClick, handleModalAddProduct}) =>
           headers: {Authorization: 'Client-ID 8a4df7500e45c80'},
           data: base64Image,
         })
+        .then((res) => {setProduct(product.image = res.data.data.link)})
+          // console.log(product)
         .then((res) => {
-          setProduct({...product, image: res.data.data.link})
-          console.log(product)
+          console.log(productModel)
           axios.post('http://localhost:3000/products', product, {
             headers: {
               'Authorization': `Bearer ${user.access_token}`
             }
           })
-          .then((res)=> console.log(res))
-          .catch((error) => console.log(error))
+          .then((res)=>{
+            useMessages(setSuccess)})
+            .then(()=> setTimeout(()=>handleClick(), 3000))
+            .then(()=> setTimeout(()=>{
+              history.push("/")
+              history.push("/admin/profile")
+            },3500))
+          .catch((error) => console.log({error}))
         })
-        .catch((err)=>{console.log(err)})
+        .catch((err)=>{console.log({err})})
       } else {
         setFieldsError(true)
         setTimeout(()=> setFieldsError(false), 5000)
@@ -88,6 +110,7 @@ const ModalAddProduct = ({user, modalAddProductClick, handleModalAddProduct}) =>
 
   const handleChange = (e) => {
     e.preventDefault()
+    console.log(e.target.value)
     setProduct({...product, [e.target.name]: e.target.value})
   }
   
@@ -181,6 +204,11 @@ const ModalAddProduct = ({user, modalAddProductClick, handleModalAddProduct}) =>
       <div className={fieldsError ? "error-wrapper active" : "error-wrapper"}>
         <div className="error-container">
           <h3><b>Error: </b>completá todos los campos por favor</h3>
+        </div>
+      </div>
+      <div className={success? "message-success_wrapper activeMessage": "message-success_wrapper"}>
+        <div className="message-success_container">
+          <h3>Producto añadido con éxito</h3>
         </div>
       </div>
     </div>
