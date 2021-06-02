@@ -7,9 +7,11 @@ import Spinner from '../components/Spinner';
 import '../styles/components/CardsContainer.scss';
 import Card from './Card';
 import Pagination from './Pagination';
-function useQuery() {
+
+const useQuery = () => {
   return new URLSearchParams(useLocation().search);
-}
+};
+
 const CardsContainer = ({
   quantity,
   pagination,
@@ -32,35 +34,31 @@ const CardsContainer = ({
   if (filteredProducts) {
     products = filteredProducts;
   }
-  console.log(
-    `http://localhost:3000/products?${
-      category != null ? `&category=${category}` : ''
-    }${color != null ? `&color=${color}` : ''}${
-      minToMax != null ? `&minToMax=${true}` : ''
-    }${maxToMin != null ? `&maxToMin=${true}` : ''}${
-      minPrice != null ? `&minPrice=${minPrice}` : ''
-    }${maxPrice != null ? `&maxPrice=${maxPrice}` : ''}`
-  );
+
+  //Llamada a la API
   useEffect(() => {
     setLoading(true);
+    const fetchApi = () => {
+      axios
+        .get(
+          `http://localhost:3000/products?${
+            category != null ? `&category=${category}` : ''
+          }${color != null ? `&color=${color}` : ''}${
+            minToMax != null ? `&minToMax=${true}` : ''
+          }${maxToMin != null ? `&maxToMin=${true}` : ''}${
+            minPrice != null ? `&minPrice=${minPrice}` : ''
+          }${maxPrice != null ? `&maxPrice=${maxPrice}` : ''}`
+        )
+        .then((res) => {
+          setProductos(res.data);
+          setLoading(false);
+        })
+        .catch((err) => console.log(err));
+    };
+    fetchApi();
+  }, [category, minPrice, maxPrice, minToMax, maxToMin, color]);
 
-    axios
-      .get(
-        `http://localhost:3000/products?${
-          category != null ? `&category=${category}` : ''
-        }${color != null ? `&color=${color}` : ''}${
-          minToMax != null ? `&minToMax=${true}` : ''
-        }${maxToMin != null ? `&maxToMin=${true}` : ''}${
-          minPrice != null ? `&minPrice=${minPrice}` : ''
-        }${maxPrice != null ? `&maxPrice=${maxPrice}` : ''}`
-      )
-      .then((res) => {
-        setProductos(res.data);
-        setLoading(false);
-      })
-      .catch((err) => console.log(err));
-  }, []);
-
+  //
   products = productos;
 
   //Get current products
@@ -82,7 +80,7 @@ const CardsContainer = ({
         {loading ? (
           <div className="spiner-wrapper">
             <div className="spinner-container">
-              <Spinner />
+              <Spinner dark={dark} />
             </div>
           </div>
         ) : quantity ? (

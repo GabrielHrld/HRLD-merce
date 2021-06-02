@@ -1,12 +1,12 @@
-import * as React from "react"
+import * as React from 'react';
 
 function Spinner(props) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       style={{
-        margin: "auto",
-        background: "0 0",
+        margin: 'auto',
+        background: '0 0',
       }}
       width={200}
       height={200}
@@ -19,7 +19,7 @@ function Spinner(props) {
         cx={50}
         cy={50}
         fill="none"
-        stroke="#fefefe"
+        stroke={props.dark ? '#fefefe' : '#3d3d3d'}
         strokeWidth={4}
         r={12}
         strokeDasharray="56.548667764616276 20.84955592153876"
@@ -34,7 +34,7 @@ function Spinner(props) {
         />
       </circle>
     </svg>
-  )
+  );
 }
 
-export default Spinner
+export default Spinner;

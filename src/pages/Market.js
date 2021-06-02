@@ -1,16 +1,23 @@
-import React from 'react'
-import CardsContainer from '../components/CardsContainer'
-import FiltersContainer from '../components/FiltersContainer'
-import HeadBand from '../components/HeadBand'
+import React from 'react';
+import CardsContainer from '../components/CardsContainer';
+import HeadBand from '../components/HeadBand';
+import { useParams, useLocation } from 'react-router-dom';
 
-import '../styles/pages/Market.scss'
+const useQuery = () => {
+  return new URLSearchParams(useLocation().search);
+};
+
+import '../styles/pages/Market.scss';
+
 const Market = () => {
+  const category = useQuery().get('category');
+
   return (
     <div className="market-wrapper">
-      <HeadBand />
-      <CardsContainer pagination={true}/>
+      <HeadBand title={category != null ? `${category}` : 'Productos'} />
+      <CardsContainer pagination={true} dark={false} />
     </div>
-  )
-}
+  );
+};
 
-export default Market
+export default Market;
