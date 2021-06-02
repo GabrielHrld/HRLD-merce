@@ -17,7 +17,7 @@
   padding: 7px 12px;
   position: relative;
 }
-@mixin mobile-menu_content{
+@mixin mobile-menu_content {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -39,33 +39,33 @@
     .menu-btn {
       display: none;
     }
-    .logoContainer{
+    .logoContainer {
       width: 100px;
       padding: 5px;
       margin: 0.1em;
-      img{
+      img {
         width: 100%;
       }
     }
     .leftSection {
       display: flex;
-      
+
       &-links {
         display: flex;
         align-items: center;
         li a {
           @include navBarLinks();
-          span{
+          span {
             display: flex;
             align-items: center;
           }
-      }
-      li:nth-child(2) a:after{
-        @include underlineEffect();
         }
-      li:nth-child(2) a:hover:after{
-        width: 100%;
-        left: 0;
+        li:nth-child(2) a:after {
+          @include underlineEffect();
+        }
+        li:nth-child(2) a:hover:after {
+          width: 100%;
+          left: 0;
         }
       }
       &-links .dropdown-links {
@@ -93,7 +93,7 @@
           left: -50px;
           padding: 0.5em 1.5em;
           width: fit-content;
-          a{
+          a {
             text-transform: capitalize;
             color: $text-color-dark;
           }
@@ -110,6 +110,8 @@
       .search-area {
         position: relative;
         &_input {
+          position: relative;
+          z-index: 19;
           height: 2rem;
           width: 35vw;
           min-width: 100px;
@@ -125,25 +127,64 @@
           background: none;
           outline: none;
           border: none;
+          z-index: 19;
+          cursor: pointer;
           .search-icon {
             font-size: 2rem;
           }
+        }
+      }
+      .searchList-container {
+        position: absolute;
+        top: 45px;
+        background-color: #fff;
+        border-top: 0px;
+        padding: 15px 10px 0;
+        z-index: 17;
+        width: 35vw;
+        min-width: 200px;
+        .searchList-item {
+          display: flex;
+          margin-bottom: 5px;
+          cursor: pointer;
+          .link {
+            display: inherit;
+            .searchList-image_container {
+              height: 60px;
+              img {
+                height: 100%;
+              }
+            }
+            .searchList-title_container {
+              display: flex;
+              align-items: center;
+              .searchList-title {
+                font-size: 14px;
+                color: $text-color-dark;
+              }
+            }
+          }
+        }
+        .searchList-item:hover {
+          background-color: #dce9f1;
+        }
+        &.empty {
+          padding: 0;
         }
       }
     }
     .rightSection {
       &-links {
         display: flex;
-        div{
+        div {
           display: flex;
-          &:nth-child(1) li{
+          &:nth-child(1) li {
             border-right: 1px solid grey;
-
           }
         }
-        div:nth-child(1){
-          .profile{
-            &-dropdown{
+        div:nth-child(1) {
+          .profile {
+            &-dropdown {
               display: flex;
               flex-direction: column;
               justify-content: space-around;
@@ -154,18 +195,18 @@
               background-color: $background-light;
               opacity: 0;
               visibility: hidden;
-              transition: .6s all ease;
-              &_link{
+              transition: 0.6s all ease;
+              &_link {
                 border-right: none;
                 width: 100%;
-                a{
-                  display:block;
+                a {
+                  display: block;
                   width: 100%;
                   color: $text-color-dark;
-                  padding: .6em 0 .6em .3em;
-                  transition: .2s all ease;
+                  padding: 0.6em 0 0.6em 0.3em;
+                  transition: 0.2s all ease;
                 }
-                a:hover{
+                a:hover {
                   background: $text-color-dark;
                   color: $background-light-high;
                 }
@@ -173,9 +214,9 @@
             }
           }
         }
-        div:nth-child(1):hover{
-          .profile{
-            &-dropdown{
+        div:nth-child(1):hover {
+          .profile {
+            &-dropdown {
               opacity: 1;
               visibility: visible;
               top: 60px;
@@ -210,79 +251,78 @@
       }
     }
   }
-  .mobile-menu{
+  .mobile-menu {
     display: none;
   }
 }
 
-@media screen and (max-width: 1024px){
-  .Header{
+@media screen and (max-width: 1024px) {
+  .Header {
     position: fixed;
     z-index: 10;
-    top:0 ;
-    .Navbar{
-      
-      .menu-btn{
+    top: 0;
+    .Navbar {
+      .menu-btn {
         display: flex;
-        position:relative;
+        position: relative;
         top: -2px;
         justify-content: center;
         align-items: center;
         width: 40px;
         height: 40px;
         cursor: pointer;
-        transition: all .5s ease-in-out;
+        transition: all 0.5s ease-in-out;
         margin-left: 15px;
-        
-        &_burger{
+
+        &_burger {
           width: 20px;
           height: 3px;
           background-color: #fefefe;
           border-radius: 5px;
-          transition: all .5s ease-in-out;
+          transition: all 0.5s ease-in-out;
 
           &::before,
-          &::after{
+          &::after {
             content: '';
             position: absolute;
             width: 20px;
             height: 3px;
             background-color: #fefefe;
             border-radius: 5px;
-            transition: all .5s ease-in-out;
+            transition: all 0.5s ease-in-out;
           }
-          &::before{
+          &::before {
             transform: translateY(-6px);
           }
-          &::after{
+          &::after {
             transform: translateY(6px);
           }
         }
-        &.active .menu-btn_burger{
+        &.active .menu-btn_burger {
           transform: translate(-50px);
           background: transparent;
-          &::before{
+          &::before {
             transform: rotate(45deg) translate(35px, -35px);
           }
-          &::after{
-            transform: rotate(-45deg) translate(35px, 35px); 
+          &::after {
+            transform: rotate(-45deg) translate(35px, 35px);
           }
         }
       }
-      .leftSection{
+      .leftSection {
         display: none;
       }
-      .rightSection{
-       div:nth-child(1){
-         background-color: red;
-         display: none;
-       }
-        div:nth-child(2){
+      .rightSection {
+        div:nth-child(1) {
+          background-color: red;
+          display: none;
+        }
+        div:nth-child(2) {
           margin-right: 15px;
         }
       }
     }
-    .mobile-menu{
+    .mobile-menu {
       z-index: 11;
       display: flex;
       width: 33vw;
@@ -290,37 +330,53 @@
       height: calc(100vh + 80px);
       background-color: $color-secondary;
       position: relative;
-      transition: .8s all ease-in-out;
+      transition: 0.8s all ease-in-out;
       left: -100%;
-      & div{
+      & div {
         display: flex;
         flex-direction: column;
         height: 60%;
         width: 80%;
         margin: auto auto;
       }
-      &.active-mobile{
+      &.active-mobile {
         left: 0%;
       }
-      &_primary{
+      &_primary {
         font-weight: bold;
         @include mobile-menu_content();
         padding-bottom: 25px;
         border-bottom: 1px solid grey;
       }
-      &_secondary{
+      &_secondary {
         @include mobile-menu_content();
       }
     }
   }
 }
 
-@media screen and (max-width: 678px){
-  .Header{
-    .Navbar{
-      .rightSection{
-        div:nth-child(2){
+@media screen and (max-width: 678px) {
+  .Header {
+    .Navbar {
+      .middleSection {
+        .searchList-container {
+        }
+      }
+      .rightSection {
+        div:nth-child(2) {
           margin: 0;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .Header {
+    .Navbar {
+      .middleSection {
+        .searchList-container {
+          left: 35%;
         }
       }
     }
