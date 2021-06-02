@@ -104,9 +104,9 @@ const FiltersContainer = ({
               <h3>Filtra por categoría</h3>
             </div>
             <ul className="categories-container">
-              {categories.map((categorie) => {
+              {categories.map((categorie, index) => {
                 return (
-                  <li onClick={activeFilterClick}>
+                  <li onClick={activeFilterClick} key={index}>
                     <Link
                       to={
                         admin
@@ -128,10 +128,8 @@ const FiltersContainer = ({
             <div>
               <ul className="colors-container">
                 {colors.map((color) => (
-                  <li>
-                    <Link key={color} to={`${path}?color=${color}`}>
-                      {color}
-                    </Link>
+                  <li key={color}>
+                    <Link to={`${path}?color=${color}`}>{color}</Link>
                   </li>
                 ))}
               </ul>

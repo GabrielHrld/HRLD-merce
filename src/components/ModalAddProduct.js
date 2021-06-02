@@ -195,9 +195,11 @@ const ModalAddProduct = ({
             <p>
               <select name="category" id="category" onChange={handleChange}>
                 {!loading ? (
-                  categories.map((category) => {
+                  categories.map((category, index) => {
                     return (
-                      <option value={category.name}>{category.name}</option>
+                      <option value={category.name} key={index}>
+                        {category.name}
+                      </option>
                     );
                   })
                 ) : (

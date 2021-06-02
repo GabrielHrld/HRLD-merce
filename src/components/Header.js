@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { handleCartClick, handleSideMenuClick } from '../actions';
 import { MdSearch } from 'react-icons/md';
@@ -20,22 +20,27 @@ const Header = ({
   handleCartClick,
   handleSideMenuClick,
 }) => {
+  const history = useHistory();
   const [query, setQuery] = useState('');
   const [queryResult, setQueryResult] = useState([]);
   const [loading, setLoading] = useState(false);
   const searchInputRef = useRef(null);
 
+  const handleLogOut = () => {
+    localStorage.removeItem('user');
+    history.push('/');
+    window.location.reload();
+  };
+
   const switchSideMenuClick = () => {
     handleSideMenuClick(!sideMenu);
   };
 
-  // const handleChange = (e) => {
-  //   e.preventDefault();
-  //   setQuery(e.target.value);
-  // };
-
   //función para switchear el cart menu
-  const switchCartClick = () => handleCartClick(!cartClick);
+  const switchCartClick = (e) => {
+    e.preventDefault();
+    handleCartClick(!cartClick);
+  };
 
   //Buscador
   const handleSearch = useCallback(() => {
@@ -46,6 +51,7 @@ const Header = ({
   });
 
   useEffect(() => {
+    if (query == '') return null;
     setLoading(true);
     const fetchAPI = () => {
       axios.get('http://localhost:3000/products').then((res) => {
@@ -95,7 +101,7 @@ const Header = ({
                   {categories.map((category, index) => {
                     return (
                       <li className="dropdown-item " key={category + index}>
-                        <Link to={`/products/categories/${category}`}>
+                        <Link to={`/products?&category=${category}`}>
                           {category}
                         </Link>
                       </li>
@@ -140,9 +146,9 @@ const Header = ({
                   <Spinner />
                 </div>
               ) : query == '' ? null : (
-                filteredProducts.map((product) => {
+                filteredProducts.map((product, index) => {
                   return (
-                    <li className="searchList-item">
+                    <li className="searchList-item" key={product + index}>
                       <a href={`/products/${product._id}`} className="link">
                         <div className="searchList-image_container">
                           <img
@@ -176,7 +182,10 @@ const Header = ({
                         <li className="profile-dropdown_link">
                           <Link to="/admin/profile">Panel de control</Link>
                         </li>
-                        <li className="profile-dropdown_link">
+                        <li
+                          className="profile-dropdown_link"
+                          onClick={handleLogOut}
+                        >
                           <Link to="/">Cerrar sesión</Link>
                         </li>
                       </ul>
@@ -185,7 +194,10 @@ const Header = ({
                         <li className="profile-dropdown_link">
                           <Link to="/profile">Mis datos</Link>
                         </li>
-                        <li className="profile-dropdown_link">
+                        <li
+                          className="profile-dropdown_link"
+                          onClick={handleLogOut}
+                        >
                           <Link to="/">Cerrar sesión</Link>
                         </li>
                       </ul>
@@ -195,6 +207,7 @@ const Header = ({
                 <div>
                   <li id="cart">
                     <Link
+                      to="/"
                       onClick={switchCartClick}
                       className="underline_effect"
                     >
@@ -222,7 +235,7 @@ const Header = ({
                 </div>
                 <div>
                   <li id="cart">
-                    <Link onClick={switchCartClick}>
+                    <Link to="/" onClick={switchCartClick}>
                       <AiOutlineShoppingCart className="cart-icon" />
                       <span>{cart.length}</span>
                     </Link>
@@ -239,20 +252,50 @@ const Header = ({
                 <Link to="">Inicio</Link>
               </li>
               <li>
-                <Link to="/">Productos</Link>
+                <Link to="/products">Productos</Link>
               </li>
               <li>
-                <Link to="">Sale 🔥</Link>
+                <Link to="/sale">Sale 🔥</Link>
               </li>
             </ul>
-            <ul className="mobile-menu_secondary">
+            {user.name != null ? (
+              user.role == 'admin' ? (
+                <ul className="mobile-menu_secondary">
+                  <li>
+                    <Link to="/admin/profile">Panel de control</Link>
+                  </li>
+                  <li onClick={handleLogOut}>
+                    <Link to="/">Cerrar sesión</Link>
+                  </li>
+                </ul>
+              ) : (
+                <ul className="mobile-menu_secondary">
+                  <li>
+                    <Link to="/profile">Mis datos</Link>
+                  </li>
+                  <li onClick={handleLogOut}>
+                    <Link to="/">Cerrar sesión</Link>
+                  </li>
+                </ul>
+              )
+            ) : (
+              <ul className="mobile-menu_secondary">
+                <li>
+                  <Link to="/sign-in">Ingresar</Link>
+                </li>
+                <li>
+                  <Link to="/sign-up">Registrarse</Link>
+                </li>
+              </ul>
+            )}
+            {/* <ul className="mobile-menu_secondary">
               <li>
                 <Link to="/sign-in">Ingresar</Link>
               </li>
               <li>
                 <Link to="/sign-up">Registrarse</Link>
               </li>
-            </ul>
+            </ul> */}
           </div>
         </div>
       </header>

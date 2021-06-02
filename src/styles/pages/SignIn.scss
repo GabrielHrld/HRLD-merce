@@ -7,20 +7,20 @@
     height: 80px;
     position: absolute;
     background: $color-secondary;
-    nav{
+    nav {
       height: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0rem calc((100vw - 1300px) / 2);
-    .logoContainer{
-      width: 100px;
-      padding: 5px;
-      margin: 0.1em;
-      img{
-        width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0rem calc((100vw - 1300px) / 2);
+      .logoContainer {
+        width: 100px;
+        padding: 5px;
+        margin: 0.1em;
+        img {
+          width: 100%;
+        }
       }
-    }
     }
   }
   .signIn-container {
@@ -44,10 +44,10 @@
       align-items: center;
       justify-content: center;
       background: #fcfcfc;
-      .signIn-title{
+      .signIn-title {
         width: 100%;
         padding: 1em 0;
-        margin-top:1em;
+        margin-top: 1em;
         text-align: center;
       }
       .form-container {
@@ -62,14 +62,17 @@
           display: flex;
           flex-direction: column;
           justify-content: space-evenly;
+          .error {
+            color: $danger;
+          }
           div {
             display: flex;
             flex-direction: column;
-            label{
+            label {
               font-size: 16px;
               margin-bottom: 5px;
             }
-            input{
+            input {
               height: 35px;
               width: 100%;
               border: none;
@@ -77,18 +80,18 @@
               padding-left: 10px;
               margin-bottom: 1em 0;
               background: $background-light;
-              border-radius: 25px ;
+              border-radius: 25px;
               outline: none;
             }
           }
-          div:nth-child(6){
+          div:nth-child(6) {
             flex-direction: row;
             align-items: center;
             justify-content: space-between;
-            label{
-              font-size: 12px
+            label {
+              font-size: 12px;
             }
-            input{
+            input {
               width: 5%;
             }
           }

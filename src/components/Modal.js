@@ -100,7 +100,7 @@ const Modal = ({ user, modal, modalClick, handleModal }) => {
           <ul className="modal-list">
             {modal.products != undefined ? (
               modal.products.map((product) => (
-                <li className="modal-list_item">
+                <li className="modal-list_item" key={product.id}>
                   <div className="modal-product">
                     <span>
                       {product.name}

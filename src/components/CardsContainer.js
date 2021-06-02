@@ -86,11 +86,11 @@ const CardsContainer = ({
           </div>
         ) : quantity ? (
           products.slice(0, quantity).map((product) => {
-            return <Card product={product} key={product.id} admin={admin} />;
+            return <Card product={product} key={product.name} admin={admin} />;
           })
         ) : (
           currentProducts.map((product) => {
-            return <Card product={product} key={product.id} admin={admin} />;
+            return <Card product={product} key={product.name} admin={admin} />;
           })
         )}
       </div>
