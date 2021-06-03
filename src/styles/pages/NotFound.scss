@@ -1,0 +1,71 @@
+@import '../app.scss';
+
+.notFound-wrapper {
+  max-width: 100vw;
+  height: 100vh;
+  .notFound-container {
+    width: 100%;
+    height: 100%;
+    padding: 0rem calc((100vw - 1300px) / 2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .notFound-message_container {
+      .image-container {
+        width: 40vw;
+        margin: 0 auto;
+        img {
+          width: 100%;
+        }
+      }
+      .text-container {
+        display: flex;
+        justify-content: center;
+        h2 {
+          font-size: 30px;
+          color: #018d97;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .notFound-wrapper {
+    .notFound-container {
+      .notFound-message_container {
+        .image-container {
+          width: 60vw;
+        }
+        .text-container {
+          display: flex;
+          justify-content: center;
+          h2 {
+            font-size: calc(26px - 1vw);
+            color: #018d97;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .notFound-wrapper {
+    .notFound-container {
+      .notFound-message_container {
+        .image-container {
+          width: 60vw;
+        }
+        .text-container {
+          display: flex;
+          justify-content: center;
+          h2 {
+            font-size: calc(15px + 1vw);
+            color: #018d97;
+          }
+        }
+      }
+    }
+  }
+}

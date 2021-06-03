@@ -2,13 +2,14 @@
 .inputForm-container {
   display: flex;
   flex-direction: column;
-  margin-bottom: 0.5em;
+  margin-bottom: 1.2em;
   .label {
     font-size: 16px;
     font-weight: bold;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
     transition: 0.5s color ease-in-out;
-    color: black;
+    color: #505050;
+    text-align: center;
     &.labelValid {
       color: $valid;
     }
@@ -27,6 +28,9 @@
     border-radius: 25px;
     outline: none;
     transition: 0.5s border ease-in-out;
+    box-shadow: 0px 7px 11px 0px rgba(0, 0, 0, 0.17);
+    -webkit-box-shadow: 0px 7px 11px 0px rgba(0, 0, 0, 0.17);
+    -moz-box-shadow: 0px 7px 11px 0px rgba(0, 0, 0, 0.17);
   }
   .input:focus {
     border: 2px solid $color-primary;

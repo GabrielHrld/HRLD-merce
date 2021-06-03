@@ -1,19 +1,19 @@
 @import '../app.scss';
-.button{
+.button {
   padding: 5% 4%;
-  font-size: calc(1rem - .4vw);
+  font-size: calc(1rem - 0.4vw);
   background-color: $color-secondary;
   outline: none;
   border: none;
   color: $text-color-primary;
   text-transform: uppercase;
   font-weight: bold;
+  cursor: pointer;
 }
 
-@media screen and(max-width: 768px){
-  .button{
+@media screen and(max-width: 768px) {
+  .button {
     padding: 3% 2%;
-  font-size: calc(1rem - .6vw);
-
+    font-size: calc(1rem - 0.6vw);
   }
 }

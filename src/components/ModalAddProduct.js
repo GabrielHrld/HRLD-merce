@@ -135,7 +135,6 @@ const ModalAddProduct = ({
     setProduct({ ...product, stock });
   };
   const handleSizes = (e) => {
-    console.log(e.target.value);
     setProduct({
       ...product,
       sizeAvailable: [...product.sizeAvailable, e.target.value],
@@ -144,7 +143,6 @@ const ModalAddProduct = ({
 
   const handleChange = (e) => {
     e.preventDefault();
-    console.log(e.target.value);
     setProduct({ ...product, [e.target.name]: e.target.value });
   };
 
@@ -155,12 +153,12 @@ const ModalAddProduct = ({
     const ALLOWED_TYPES = ['image/png', 'image/jpeg', 'image/jpg'];
     if (selected && ALLOWED_TYPES.includes(selected.type)) {
       reader.onloadend = () => {
-        console.log(reader.result);
         setImage(reader.result);
       };
       reader.readAsBinaryString(selected);
     } else {
-      console.log('file not supported');
+      alert('Formato de archivo no soportado');
+      return null;
     }
   };
 

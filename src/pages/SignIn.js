@@ -84,6 +84,9 @@ const SignIn = ({ handleUser }) => {
                 <Button text={'Ingresar'} />
               </div>
             </form>
+            <p className="redirect">
+              ¿No tienes cuenta? <a href="/sign-up">Create una</a>
+            </p>
           </div>
         </div>
       </div>
