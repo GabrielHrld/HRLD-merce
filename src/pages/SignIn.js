@@ -32,6 +32,7 @@ const SignIn = ({ handleUser }) => {
         })
         .then((res) => {
           const { data } = res;
+          console.log(data);
           localStorage.setItem('user', JSON.stringify(data));
           handleUser(data);
           setError(false);

@@ -12,7 +12,16 @@ const InputForm = ({
   regex,
   validatePass,
   promo,
+  profile = false,
 }) => {
+  let containerClass = 'inputForm-container';
+  let labelClass = 'label';
+  let inputClass = 'input';
+
+  if (profile) containerClass = 'inputContainer';
+  if (profile) labelClass = 'labelProfile';
+  if (profile) inputClass = 'inputProfile';
+
   const onChange = (e) => {
     setState({ ...state, field: e.target.value });
     if (promo) {
@@ -32,14 +41,14 @@ const InputForm = ({
   };
 
   return (
-    <div className="inputForm-container">
+    <div className={`${containerClass}`}>
       <label
         className={
           state.valid == null
-            ? 'label'
+            ? `${labelClass}`
             : state.valid
-            ? 'label labelValid'
-            : 'label labelDanger'
+            ? `${labelClass} labelValid`
+            : `${labelClass} labelDanger`
         }
         htmlFor={name}
       >
@@ -48,10 +57,10 @@ const InputForm = ({
       <input
         className={
           state.valid == null
-            ? 'input'
+            ? `${inputClass}`
             : state.valid
-            ? 'input valid'
-            : 'input danger'
+            ? `${inputClass} valid`
+            : `${inputClass} danger`
         }
         type={type}
         placeholder={placeholder}

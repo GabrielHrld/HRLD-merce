@@ -10,7 +10,7 @@ const AdminProfile = () => {
       <div className="profile-container">
         <MenuContainer
           title1={'Productos'}
-          comp1={<PanelProducts dark={true} />}
+          comp1={<PanelProducts dark="true" />}
           title2={'Ordenes'}
           comp2={<ProfileCardsContainer admin />}
         />

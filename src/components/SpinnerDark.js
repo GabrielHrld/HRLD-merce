@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-function Spinner(props) {
+function SpinnerDark(props) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19,7 +19,7 @@ function Spinner(props) {
         cx={50}
         cy={50}
         fill="none"
-        stroke="#fefefe"
+        stroke="#3d3d3d"
         strokeWidth={4}
         r={12}
         strokeDasharray="56.548667764616276 20.84955592153876"
@@ -37,4 +37,4 @@ function Spinner(props) {
   );
 }
 
-export default Spinner;
+export default SpinnerDark;

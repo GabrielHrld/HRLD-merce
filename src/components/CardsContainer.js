@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { useLocation, useParams } from 'react-router-dom';
 
 import Spinner from '../components/Spinner';
+import SpinnerDark from '../components/SpinnerDark';
 import '../styles/components/CardsContainer.scss';
 import Card from './Card';
 import Pagination from './Pagination';
@@ -81,7 +82,7 @@ const CardsContainer = ({
         {loading ? (
           <div className="spiner-wrapper">
             <div className="spinner-container">
-              <Spinner dark={dark} />
+              {dark ? <Spinner /> : <SpinnerDark />}
             </div>
           </div>
         ) : quantity ? (

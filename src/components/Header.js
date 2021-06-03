@@ -20,12 +20,15 @@ const Header = ({
   handleCartClick,
   handleSideMenuClick,
 }) => {
+  const path = useLocation().pathname;
+  if (path === '/sign-up') return null;
+  if (path === '/sign-in') return null;
+
   const history = useHistory();
   const [query, setQuery] = useState('');
   const [queryResult, setQueryResult] = useState([]);
   const [loading, setLoading] = useState(false);
   const searchInputRef = useRef(null);
-
   const handleLogOut = () => {
     localStorage.removeItem('user');
     history.push('/');
@@ -145,7 +148,7 @@ const Header = ({
                   {' '}
                   <Spinner />
                 </div>
-              ) : query == '' ? null : (
+              ) : query == '' ? null : ( //BUSCADOR
                 filteredProducts.map((product, index) => {
                   return (
                     <li className="searchList-item" key={product + index}>
@@ -164,9 +167,6 @@ const Header = ({
                   );
                 })
               )}
-
-              {/* <li className="searchList-item">Producto 2</li>
-              <li className="searchList-item">Producto 3</li> */}
             </ul>
           </div>
           {user.name != null ? (
@@ -192,7 +192,7 @@ const Header = ({
                     ) : (
                       <ul className="profile-dropdown">
                         <li className="profile-dropdown_link">
-                          <Link to="/profile">Mis datos</Link>
+                          <Link to="/user/profile">Mis datos</Link>
                         </li>
                         <li
                           className="profile-dropdown_link"
@@ -271,7 +271,7 @@ const Header = ({
               ) : (
                 <ul className="mobile-menu_secondary">
                   <li>
-                    <Link to="/profile">Mis datos</Link>
+                    <Link to="/user/profile">Mis datos</Link>
                   </li>
                   <li onClick={handleLogOut}>
                     <Link to="/">Cerrar sesión</Link>

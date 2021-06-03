@@ -7,7 +7,7 @@
     font-size: 16px;
     font-weight: bold;
     margin-bottom: 8px;
-    transition: 0.5s color ease-in-out;
+    transition: 0.3s color ease-in-out;
     color: #505050;
     text-align: center;
     &.labelValid {
@@ -27,7 +27,7 @@
     background: $background-light;
     border-radius: 25px;
     outline: none;
-    transition: 0.5s border ease-in-out;
+    transition: 0.3s border ease-in-out;
     box-shadow: 0px 7px 11px 0px rgba(0, 0, 0, 0.17);
     -webkit-box-shadow: 0px 7px 11px 0px rgba(0, 0, 0, 0.17);
     -moz-box-shadow: 0px 7px 11px 0px rgba(0, 0, 0, 0.17);
@@ -41,10 +41,4 @@
   .danger {
     border: 2px solid $danger;
   }
-  // .labelValid{
-  //   color: $valid;
-  // }
-  // .labelDanger{
-  //   color: $danger;
-  // }
 }

@@ -1,45 +1,93 @@
 @import '../app.scss';
-.form-container{
+.form-container {
   width: 100%;
   height: 100%;
   padding: 2em 0;
-  form{
+  form {
     height: 100%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    
-    .form-area{
+    .inputContainer {
       display: flex;
       flex-direction: column;
-      width: 80%;
-      margin: 0 1em 1.2em 0;
-      label{
-        margin: .5em 0;
-        color: $text-color-primary;
+      justify-content: center;
+      margin-bottom: 1.2em;
+
+      .labelProfile {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 8px;
+        transition: 0.3s color ease-in-out;
+        color: #fefefe;
+        text-align: start;
+        &.labelValid {
+          color: $valid;
+        }
+        &.labelDanger {
+          color: $danger;
+        }
       }
-      input{
-        height: 40px;
-        border: none;
+      .inputProfile {
+        height: 35px;
+        width: 70%;
+        border: 2px solid transparent;
+        // border-bottom: 1px solid grey;
+        padding-left: 10px;
+        margin-bottom: 1em 0;
+        background: $background-light;
         border-radius: 25px;
-        padding-left: 15px;
-        outline: none
+        outline: none;
+        transition: 0.3s border ease-in-out;
+        box-shadow: 0px 7px 11px 0px rgba(0, 0, 0, 0.17);
+        -webkit-box-shadow: 0px 7px 11px 0px rgba(0, 0, 0, 0.17);
+        -moz-box-shadow: 0px 7px 11px 0px rgba(0, 0, 0, 0.17);
       }
-      .button{
+      .inputProfile:focus {
+        border: 2px solid transparent;
+      }
+      .valid {
+        border: 2px solid $valid;
+      }
+      .danger {
+        border: 2px solid $danger;
+      }
+    }
+    .form-area {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 70%;
+      margin: 0 1em 1.2em 0;
+      &_label {
+        color: '#fefefe';
+      }
+      // label {
+      //   margin: 0.5em 0;
+      //   color: $text-color-primary;
+      // }
+      // input {
+      //   height: 40px;
+      //   border: none;
+      //   border-radius: 25px;
+      //   padding-left: 15px;
+      //   outline: none;
+      // }
+      .button {
         width: 50%;
         background-color: $background-light-high;
         color: $text-color-dark;
         padding: 3% 1%;
-        transition: .2s all ease;
+        transition: 0.2s all ease;
       }
-      .button:hover{
+      .button:hover {
         background-color: $text-color-secondary;
       }
     }
   }
 }
 
-@media screen and (max-width: 678px){
-  form{
+@media screen and (max-width: 678px) {
+  form {
     display: flex !important;
     flex-direction: column;
   }

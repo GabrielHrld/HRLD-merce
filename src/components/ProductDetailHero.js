@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import NumberFormat from 'react-number-format';
 import { connect } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 
 import MonthlyFees from './MonthlyFees';
 import '../styles/components/ProductDetailHero.scss';
@@ -28,6 +28,7 @@ import Spinner from './Spinner';
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Keyboard]);
 
 const ProductDetailHero = ({ addToCart }) => {
+  const history = useHistory();
   const { id } = useParams();
   const [product, setProduct] = useState({});
   const [loading, setLoading] = useState(false);
@@ -51,7 +52,10 @@ const ProductDetailHero = ({ addToCart }) => {
           setSizeAvailable(res.data.sizeAvailable);
           setLoading(false);
         })
-        .catch((error) => console.log({ error }));
+        .catch((error) => {
+          const { statusCode } = error.response.data;
+          if (statusCode == 400) history.push('/notFound');
+        });
     };
     fetchProduct();
   }, [id]);

@@ -19,7 +19,7 @@ import { connect } from 'react-redux';
 
 import { chargeProducts } from '../actions/index';
 
-const App = ({ chargeProducts, products }) => {
+const App = ({ chargeProducts, user }) => {
   useEffect(() => {
     axios.get('http://localhost:3000/products').then((res) => {
       console.log('productos cargados');
@@ -29,20 +29,32 @@ const App = ({ chargeProducts, products }) => {
   }, []);
   return (
     <Router>
-      <Switch>
-        <Route exact path="/sign-in" component={SignIn} />
-        <Route exact path="/sign-up" component={SignUp} />
-        <Layout>
+      <Layout>
+        <Switch>
+          <Route exact path="/sign-in" component={SignIn} />
+          <Route exact path="/sign-up" component={SignUp} />
           <Route exact path="/" component={Home} />
           <Route exact path="/products/:id" component={ProductDetail} />
           <Route exact path="/products" component={Market} />
           <Route exact path="/sale" component={MarketSale} />
           <Route exact path="/checkout" component={Checkout} />
-          <Route exact path="/profile" component={Profile} />
-          <Route exact path="/admin/profile" component={AdminProfile} />
-          <Route component={NotFound} />
-        </Layout>
-      </Switch>
+          <PrivateRoute
+            exact
+            path="/user/profile"
+            component={Profile}
+            user={user}
+          />
+          <PrivateAdminRoute
+            exact
+            path="/admin/profile"
+            component={AdminProfile}
+            user={user}
+          />
+          {/* <Route exact path="/profile" component={Profile} /> */}
+          {/* <Route exact path="/admin/profile" component={AdminProfile} /> */}
+          <Route exact path="*" component={NotFound} />
+        </Switch>
+      </Layout>
     </Router>
   );
 };
@@ -50,6 +62,7 @@ const App = ({ chargeProducts, products }) => {
 const mapStateToProps = (state) => {
   return {
     products: state.products,
+    user: state.user,
   };
 };
 
