@@ -64,7 +64,8 @@ const reducer = (state, action) => {
     case addToCartType:
       const validate = state.cart.some(
         (item) =>
-          item.id == action.payload.id && item.size[0] == action.payload.size[0]
+          item._id == action.payload._id &&
+          item.size[0] == action.payload.size[0]
       );
       if (state.cart.length == 0) {
         localStorage.setItem(
@@ -84,7 +85,7 @@ const reducer = (state, action) => {
       if (validate) {
         const indexProductCart = state.cart.findIndex(
           (item) =>
-            item.id == action.payload.id &&
+            item._id == action.payload._id &&
             item.size[0] == action.payload.size[0]
         );
         const productOnCart = state.cart[indexProductCart];
@@ -116,7 +117,8 @@ const reducer = (state, action) => {
     case deleteToCartType:
       const indexProductCart = state.cart.findIndex(
         (item) =>
-          item.id == action.payload.id && item.size[0] == action.payload.size[0]
+          item._id == action.payload._id &&
+          item.size[0] == action.payload.size[0]
       );
       state.cart.splice(indexProductCart, 1);
       localStorage.setItem('cart', JSON.stringify([...state.cart]));
@@ -129,7 +131,8 @@ const reducer = (state, action) => {
     case handleQuantityType:
       const indexProduct = state.cart.findIndex(
         (item) =>
-          item.id == action.payload.id && item.size[0] == action.payload.size[0]
+          item._id == action.payload._id &&
+          item.size[0] == action.payload.size[0]
       );
       const productOnCart = state.cart[indexProduct];
       if (action.condition == 0) {
