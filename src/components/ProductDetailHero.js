@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import NumberFormat from 'react-number-format';
 import { connect } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 import MonthlyFees from './MonthlyFees';
 import '../styles/components/ProductDetailHero.scss';
@@ -74,10 +75,24 @@ const ProductDetailHero = ({ addToCart }) => {
     <div>
       {loading ? (
         <div>
+          <Helmet>
+            <title>Producto | HRLD-merce</title>
+            <meta
+              name="description"
+              content="Detalles del producto. HRLD-merce es un fake e-commerce diseñado y desarrollado por @HeraldHRLD (github), espero que lo disfrutes."
+            />
+          </Helmet>
           <Spinner />
         </div>
       ) : (
         <div className="main">
+          <Helmet>
+            <title>{`${product.name}`} | HRLD-merce</title>
+            <meta
+              name="description"
+              content="Detalles del producto. HRLD-merce es un fake e-commerce diseñado y desarrollado por @HeraldHRLD (github), espero que lo disfrutes."
+            />
+          </Helmet>
           <div className="main-images_carousel">
             <Swiper
               spaceBetween={50}

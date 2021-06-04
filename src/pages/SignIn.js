@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 import { handleUser } from '../actions/index';
 import { expresiones } from '../utils/regex';
@@ -44,6 +45,13 @@ const SignIn = ({ handleUser }) => {
   };
   return (
     <div className="signIn-wrapper">
+      <Helmet>
+        <title>Ingresar | HRLD-merce</title>
+        <meta
+          name="description"
+          content="Ingresar. HRLD-merce es un fake e-commerce diseñado y desarrollado por @HeraldHRLD (github), espero que lo disfrutes."
+        />
+      </Helmet>
       <header>
         <nav>
           <div className="logoContainer">

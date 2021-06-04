@@ -199,7 +199,11 @@ const ProfileForm = ({ user }) => {
           <Button text="Actualizar" className="button" />
         </div>
         <div className="form-area">
-          <label htmlFor="" className="form-area_label">
+          <label
+            htmlFor=""
+            className="form-area_label"
+            style={{ color: '#fefefe' }}
+          >
             Deseo cambiar mi contraseña
           </label>
           <input type="checkbox" onChange={handleChangePass} />
