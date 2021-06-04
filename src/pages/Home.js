@@ -19,7 +19,7 @@ const Home = () => {
         </Helmet>
         <Hero />
         <BannerService />
-        <Promo text="ELIGI, COMPRA Y RECIBÍ NUESTROS BÁSICOS SIN MOVERTE DE TU CASA" />
+        <Promo text="ELEGI, COMPRA Y RECIBÍ NUESTROS BÁSICOS SIN MOVERTE DE TU CASA" />
         <CardsContainer quantity={10} />
         <BannerService />
       </div>

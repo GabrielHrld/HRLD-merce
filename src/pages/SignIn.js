@@ -95,7 +95,7 @@ const SignIn = ({ handleUser }) => {
               </div>
             </form>
             <p className="redirect">
-              ¿No tienes cuenta? <a href="/sign-up">Create una</a>
+              ¿No tienes cuenta? <Link to="/sign-up">Create una</Link>
             </p>
           </div>
         </div>

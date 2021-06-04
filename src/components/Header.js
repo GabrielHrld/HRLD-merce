@@ -282,21 +282,17 @@ const Header = ({
             ) : (
               <ul className="mobile-menu_secondary">
                 <li>
-                  <Link to="/sign-in">Ingresar</Link>
+                  <Link to="/sign-in" onClick={switchSideMenuClick}>
+                    Ingresar
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/sign-up">Registrarse</Link>
+                  <Link to="/sign-up" onClick={switchSideMenuClick}>
+                    Registrarse
+                  </Link>
                 </li>
               </ul>
             )}
-            {/* <ul className="mobile-menu_secondary">
-              <li>
-                <Link to="/sign-in">Ingresar</Link>
-              </li>
-              <li>
-                <Link to="/sign-up">Registrarse</Link>
-              </li>
-            </ul> */}
           </div>
         </div>
       </header>

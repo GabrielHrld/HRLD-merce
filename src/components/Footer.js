@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import {
   AiOutlinePhone,
@@ -27,7 +28,7 @@ const Footer = ({ products }) => {
           <ul className="footer-products_container">
             {categories.slice(0, 4).map((categorie) => (
               <li key={categorie}>
-                <a href={`/products?&category=${categorie}`}>{categorie}</a>
+                <Link to={`/products?&category=${categorie}`}>{categorie}</Link>
               </li>
             ))}
           </ul>
