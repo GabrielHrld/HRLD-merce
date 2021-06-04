@@ -6,6 +6,7 @@ import '../styles/components/ProfileCardsContainer.scss';
 import Modal from './Modal';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import { config } from '../utils/config';
 
 const ProfileCardsContainer = ({ user, admin }) => {
   const [orders, setOrders] = useState([]);
@@ -15,7 +16,7 @@ const ProfileCardsContainer = ({ user, admin }) => {
     setLoading(true);
     if (admin) {
       return axios({
-        url: 'http://localhost:3000/orders',
+        url: `${config.api_url}/orders`,
         headers: {
           Authorization: `Bearer ${user.access_token}`,
         },
@@ -27,7 +28,7 @@ const ProfileCardsContainer = ({ user, admin }) => {
         .catch((error) => console.log(error));
     }
     axios({
-      url: 'http://localhost:3000/profile/my-orders',
+      url: `${config.api_url}/profile/my-orders`,
       headers: {
         Authorization: `Bearer ${user.access_token}`,
       },

@@ -9,6 +9,7 @@ import Spinner from './Spinner';
 import { expresiones } from '../utils/regex';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
+import { config } from '../utils/config';
 
 const ProfileForm = ({ user }) => {
   const history = useHistory();
@@ -58,7 +59,7 @@ const ProfileForm = ({ user }) => {
     if (pass2.valid == true) {
       return axios
         .post(
-          'http://localhost:3000/auth/login',
+          `${config.api_url}/auth/login`,
           { email: user.email, password: pass.field },
           {
             headers: { 'Content-Type': 'application/json' },
@@ -67,7 +68,7 @@ const ProfileForm = ({ user }) => {
         .then(() => {
           axios
             .put(
-              `http://localhost:3000/users/${user._id}`,
+              `${config.api_url}/users/${user._id}`,
               changePass
                 ? { ...userToModify, password: newPass.field }
                 : userToModify,

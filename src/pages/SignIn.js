@@ -10,6 +10,7 @@ import InputForm from '../components/InputForm';
 import '../styles/pages/SignIn.scss';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import { config } from '../utils/config';
 
 const SignIn = ({ handleUser }) => {
   const history = useHistory();
@@ -26,7 +27,7 @@ const SignIn = ({ handleUser }) => {
       setEmail({ field: '', valid: null });
       setPass({ field: '', valid: null });
       axios
-        .post('http://localhost:3000/auth/login', user, {
+        .post(`${config.api_url}/auth/login`, user, {
           headers: {
             'Content-Type': 'application/json',
           },

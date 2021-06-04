@@ -18,12 +18,12 @@ const Market = () => {
   };
 
   let title;
-  if (category.length > 0) title = capitalizeFirstLetter(category);
+  if (category != null) title = capitalizeFirstLetter(category);
 
   return (
     <div className="market-wrapper">
       <Helmet>
-        <title>{category.length > 0 ? title : Productos} | HRLD-merce</title>
+        <title>{category != null ? title : 'Productos'} | HRLD-merce</title>
         <meta
           name="description"
           content="Sección de productos. HRLD-merce es un fake e-commerce diseñado y desarrollado por @HeraldHRLD (github), espero que lo disfrutes."

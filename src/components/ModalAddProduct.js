@@ -8,6 +8,7 @@ import useMessages from '../hooks/useMessages';
 import Button from './Button';
 import { handleModal, handleModalAddProduct } from '../actions';
 import '../styles/components/ModalAddProduct.scss';
+import { config } from '../utils/config';
 
 const sizes = ['xs', 's', 'm', 'l', 'xl'];
 
@@ -53,7 +54,7 @@ const ModalAddProduct = ({
     //hacemos un fetch a las categorias y las guardamos en una variable para mapear luego
     setLoading(true);
     axios
-      .get('http://localhost:3000/categories')
+      .get(`${config.api_url}/categories`)
       .then((res) => {
         setCategories(res.data);
       })
@@ -82,7 +83,7 @@ const ModalAddProduct = ({
         })
         .then(() => {
           axios
-            .post('http://localhost:3000/products', product, {
+            .post(`${config.api_url}/products`, product, {
               headers: {
                 Authorization: `Bearer ${user.access_token}`,
               },

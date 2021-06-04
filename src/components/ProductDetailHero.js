@@ -25,6 +25,7 @@ import SwiperCore, {
 } from 'swiper';
 import axios from 'axios';
 import Spinner from './Spinner';
+import { config } from '../utils/config';
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Keyboard]);
 
@@ -47,7 +48,7 @@ const ProductDetailHero = ({ addToCart }) => {
     setLoading(true);
     const fetchProduct = () => {
       axios
-        .get(`http://localhost:3000/products/${id}`)
+        .get(`${config.api_url}/products/${id}`)
         .then((res) => {
           setProduct(res.data);
           setSizeAvailable(res.data.sizeAvailable);

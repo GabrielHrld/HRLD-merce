@@ -10,6 +10,7 @@ import useMessages from '../hooks/useMessages';
 import { handleModal } from '../actions';
 import '../styles/components/Modal.scss';
 import axios from 'axios';
+import { config } from '../utils/config';
 
 const Modal = ({ user, modal, modalClick, handleModal }) => {
   const history = useHistory();
@@ -30,7 +31,7 @@ const Modal = ({ user, modal, modalClick, handleModal }) => {
     e.preventDefault();
     axios
       .put(
-        `http://localhost:3000/orders/${modal._id}`,
+        `${config.api_url}/orders/${modal._id}`,
         { status: status },
         {
           headers: {

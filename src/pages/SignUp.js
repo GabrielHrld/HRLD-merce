@@ -9,6 +9,7 @@ import Logo from '../../assets/logo.png';
 import Button from '../components/Button';
 import '../styles/pages/SignUp.scss';
 import axios from 'axios';
+import { config } from '../utils/config';
 
 const SignUp = () => {
   let history = useHistory();
@@ -52,7 +53,7 @@ const SignUp = () => {
       setPass2({ field: '', valid: null });
       setPromos(false);
       axios
-        .post('http://localhost:3000/users', user, {
+        .post(`${config.api_url}/users`, user, {
           headers: {
             'Content-Type': 'application/json',
           },

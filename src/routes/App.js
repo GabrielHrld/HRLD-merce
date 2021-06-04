@@ -18,10 +18,11 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 
 import { chargeProducts } from '../actions/index';
+import { config } from '../utils/config';
 
 const App = ({ chargeProducts, user }) => {
   useEffect(() => {
-    axios.get('http://localhost:3000/products').then((res) => {
+    axios.get(`${config.api_url}/products`).then((res) => {
       console.log('productos cargados');
       chargeProducts(res.data);
     });

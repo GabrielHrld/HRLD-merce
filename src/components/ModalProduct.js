@@ -9,6 +9,7 @@ import { handleModal } from '../actions';
 import '../styles/components/ModalProduct.scss';
 import axios from 'axios';
 import useMessages from '../hooks/useMessages';
+import { config } from '../utils/config';
 
 const ModalProduct = ({ user, modal, modalClick, handleModal }) => {
   if (modal.name == undefined) {
@@ -42,7 +43,7 @@ const ModalProduct = ({ user, modal, modalClick, handleModal }) => {
     e.preventDefault();
     if (window.confirm('¿Seguro desea eliminar el producto?') == true) {
       return axios
-        .delete(`http://localhost:3000/products/${modal._id}`, {
+        .delete(`${config.api_url}/products/${modal._id}`, {
           headers: {
             Authorization: `Bearer ${user.access_token}`,
           },
@@ -90,7 +91,7 @@ const ModalProduct = ({ user, modal, modalClick, handleModal }) => {
           setProductModify((productModify.image = res.data.data.link));
           axios
             .put(
-              `http://localhost:3000/products/${modal._id}`,
+              `${config.api_url}/products/${modal._id}`,
               {
                 ...productModify,
                 price: parseInt(productModify.price),
@@ -120,7 +121,7 @@ const ModalProduct = ({ user, modal, modalClick, handleModal }) => {
 
     return axios
       .put(
-        `http://localhost:3000/products/${modal._id}`,
+        `${config.api_url}/products/${modal._id}`,
         {
           ...productModify,
           price: parseInt(productModify.price),

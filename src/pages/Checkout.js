@@ -11,6 +11,7 @@ import { expresiones } from '../utils/regex';
 import Button from '../components/Button';
 import '../styles/pages/Checkout.scss';
 import InputCheckout from '../components/InputCheckout';
+import { config } from '../utils/config';
 
 const Checkout = ({ cart, user }) => {
   const history = useHistory();
@@ -62,7 +63,7 @@ const Checkout = ({ cart, user }) => {
         });
         console.log(order);
         axios
-          .post('http://localhost:3000/orders', order, {
+          .post(`${config.api_url}/orders`, order, {
             headers: {
               'Content-Type': 'application/json',
               Authorization: `Bearer ${user.access_token}`,

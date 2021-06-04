@@ -9,6 +9,7 @@ import '../styles/components/CardsContainer.scss';
 import Card from './Card';
 import Pagination from './Pagination';
 import ModalProduct from './ModalProduct';
+import { config } from '../utils/config';
 
 const useQuery = () => {
   return new URLSearchParams(useLocation().search);
@@ -43,7 +44,7 @@ const CardsContainer = ({
     const fetchApi = () => {
       axios
         .get(
-          `http://localhost:3000/products?${
+          `${config.api_url}/products?${
             category != null ? `&category=${category}` : ''
           }${color != null ? `&color=${color}` : ''}${
             minToMax != null ? `&minToMax=${true}` : ''
