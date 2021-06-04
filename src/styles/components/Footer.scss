@@ -1,25 +1,25 @@
 @import '../app.scss';
-.footer{
+.footer {
   background-color: $color-secondary;
   padding: 1.5em 0;
-  &-container{
+  &-container {
     padding: 0rem calc((100vw - 1300px) / 2);
     color: $text-color-primary;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    .footer-section{
+    .footer-section {
       display: flex;
       flex-direction: column;
       margin-bottom: 1rem;
-      &_title{
+      &_title {
         font-weight: bold;
-        padding: .6em 0 1em 0;
+        padding: 0.6em 0 1em 0;
       }
-      ul li{
-        padding: .3em 0;
+      ul li {
+        padding: 0.3em 0;
       }
-      .footer-products_container{
-        li a{
+      .footer-products_container {
+        li a {
           padding-bottom: 3px;
           color: $text-color-secondary;
           text-transform: capitalize;
@@ -28,27 +28,27 @@
           text-decoration: underline;
         }
       }
-      .footer-payship_container{
+      .footer-payship_container {
         display: flex;
-        .footer_image{
+        .footer_image {
           width: 45px;
           margin: 0 5px 5px 0px;
-          img{
+          img {
             width: 100%;
           }
         }
       }
-      .footer-deliver_container{
-        .footer_image{
+      .footer-deliver_container {
+        .footer_image {
           width: 55px;
           margin: 0 5px 5px 0px;
-          img{
+          img {
             width: 100%;
           }
         }
       }
-      .footer-contact_container{
-        li{
+      .footer-contact_container {
+        li {
           color: $text-color-secondary;
         }
       }

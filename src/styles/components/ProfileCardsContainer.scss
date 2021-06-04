@@ -1,12 +1,12 @@
 @import '../app.scss';
-.cards-wrapper{
+.cards-wrapper {
   padding: 2em 0;
-  .cards-container{
+  .cards-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(290px, 3fr));
-    .noOrders{
+    .noOrders {
       color: $background-light-high;
-      font-size: 24px
+      font-size: 24px;
     }
   }
 }

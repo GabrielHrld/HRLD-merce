@@ -8,13 +8,8 @@ import '../styles/components/ProductDetail.scss';
 import Promo from '../components/Promo';
 import ProductDetailHero from '../components/ProductDetailHero';
 import CardsContainer from '../components/CardsContainer';
-import { useParams } from 'react-router-dom';
 
-const ProductDetail = ({ products }) => {
-  const { id } = useParams();
-
-  const product = products.filter((product) => product._id == id);
-
+const ProductDetail = () => {
   return (
     <div className="product-detail_container">
       <ProductDetailHero />

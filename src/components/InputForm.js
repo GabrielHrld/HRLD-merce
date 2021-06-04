@@ -65,7 +65,6 @@ const InputForm = ({
         type={type}
         placeholder={placeholder}
         name={name}
-        // valid={state.valid}
         onChange={onChange}
         onKeyUp={validateRegex}
         onBlur={validateRegex}

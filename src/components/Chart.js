@@ -1,11 +1,24 @@
 import { red } from '@material-ui/core/colors';
-import React from 'react'
+import React from 'react';
 import { Bar } from 'react-chartjs-2';
 
-import '../styles/components/Chart.scss'
+import '../styles/components/Chart.scss';
 
 const data = {
-  labels: ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'],
+  labels: [
+    'enero',
+    'febrero',
+    'marzo',
+    'abril',
+    'mayo',
+    'junio',
+    'julio',
+    'agosto',
+    'septiembre',
+    'octubre',
+    'noviembre',
+    'diciembre',
+  ],
   datasets: [
     {
       label: '# of Red Votes',
@@ -28,12 +41,11 @@ const data = {
 const options = {
   backgroundColor: 'rgb(75, 192, 192)',
   scales: {
-    yAxes: 
-      {
-        ticks: {
-          beginAtZero: true,
-        },
+    yAxes: {
+      ticks: {
+        beginAtZero: true,
       },
+    },
   },
 };
 const Chart = () => {
@@ -41,7 +53,7 @@ const Chart = () => {
     <div className="chart-container">
       <Bar data={data} options={options} />
     </div>
-  )
-}
+  );
+};
 
-export default Chart
+export default Chart;

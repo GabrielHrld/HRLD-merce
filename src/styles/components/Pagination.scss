@@ -1,10 +1,10 @@
 @import '../app.scss';
-.pagination-wrapper{
-  .pagination{
+.pagination-wrapper {
+  .pagination {
     display: flex;
     justify-content: flex-end;
     flex-flow: row wrap;
-    &-item{
+    &-item {
       width: 40px;
       height: 40px;
       padding: 5px;
@@ -13,22 +13,22 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      transition: .4s all ease;
+      transition: 0.4s all ease;
     }
-    &-item:hover{
+    &-item:hover {
       color: $text-color-primary;
       background-color: $color-secondary;
     }
-    &-item:hover .page-link{
+    &-item:hover .page-link {
       color: $text-color-primary;
       font-size: 18px;
     }
-    .page-link{
-      transition: .4s all ease;
+    .page-link {
+      transition: 0.4s all ease;
       color: black;
     }
   }
-  span{
+  span {
     display: flex;
     width: 100%;
     justify-content: flex-end;
@@ -36,10 +36,10 @@
   }
 }
 
-.light{
+.light {
   color: $text-color-dark !important;
 }
 
-.dark{
+.dark {
   color: $background-light-high !important;
 }

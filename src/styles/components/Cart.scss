@@ -1,6 +1,6 @@
 @import '../app.scss';
 
-.side-cart_wrapper{
+.side-cart_wrapper {
   position: fixed;
   top: 0vh;
   right: -100%;
@@ -10,14 +10,14 @@
   height: 100vh;
   max-height: 100vh;
   background-color: $text-color-primary;
-  transition: .8s right ease-out;
+  transition: 0.8s right ease-out;
   overflow-y: scroll;
   overflow-x: hidden;
-  &.active{
+  &.active {
     right: 0;
   }
-  .side-cart_container{
-    header{
+  .side-cart_container {
+    header {
       height: 8vh;
       display: flex;
       align-items: center;
@@ -25,40 +25,39 @@
       margin: 0 1vw;
       border-bottom: 1px solid #cccccc;
     }
-    .cart-titles{
+    .cart-titles {
       height: 5vh;
       margin: 0 1vw;
       border-bottom: 1px solid #ccc;
-      .cart-titles_container{
+      .cart-titles_container {
         height: 100%;
         width: 100%;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        span{
+        span {
           text-transform: uppercase;
         }
       }
     }
-    .button-container{
+    .button-container {
       height: 100px;
       margin: 0 1vw;
       padding: 1.5vw 0;
       display: flex;
       justify-content: flex-end;
-      .button{
+      .button {
         padding: 3% 2%;
         height: 100%;
       }
-      .button:hover{
+      .button:hover {
         background: $color-primary;
       }
     }
   }
 }
 @media screen and (max-width: 768px) {
-
-  .side-cart_wrapper{
+  .side-cart_wrapper {
     height: calc(100vh + 80px);
     max-height: calc(100vh + 80px);
   }

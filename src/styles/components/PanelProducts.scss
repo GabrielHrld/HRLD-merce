@@ -1,49 +1,48 @@
 @import '../app.scss';
 
-.panelProducts-wrapper{
-  .panelProducts-container{
-    header{
-      h2{
+.panelProducts-wrapper {
+  .panelProducts-container {
+    header {
+      h2 {
         padding: 15px 0 0px 0;
         font-size: 36px;
         color: $background-light-high;
         text-decoration: underline 2px;
       }
-      .orderBy{
+      .orderBy {
         padding-right: 15%;
         padding-top: 1em;
-        div{
+        div {
           display: flex;
           justify-content: space-between;
-          h3{
+          h3 {
             text-transform: capitalize;
             font-size: 24px;
             color: $background-light-high;
             margin-bottom: 10px;
-            transition: .5s ease;
+            transition: 0.5s ease;
             border-right: 1px solid $background-light;
             padding-right: 9%;
           }
           h3:nth-child(2):hover,
-          h3:nth-child(3):hover{
+          h3:nth-child(3):hover {
             color: $text-color-secondary;
             cursor: pointer;
-            
           }
-          h3:nth-child(3){
+          h3:nth-child(3) {
             border: none;
           }
         }
-        select{
-          min-width:125px;
+        select {
+          min-width: 125px;
           width: 20%;
           height: 2.4rem;
           outline: none;
         }
       }
     }
-    .container-cards_wrapper{
-      padding: 1em ;
+    .container-cards_wrapper {
+      padding: 1em;
     }
   }
 }

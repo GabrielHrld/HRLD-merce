@@ -11,8 +11,8 @@
   min-height: 100vh;
   background-color: $text-color-primary;
   transition: 1s left ease-out;
-  &.active{
-    left:0%
+  &.active {
+    left: 0%;
   }
   .side-filters_container {
     height: 100%;
@@ -82,29 +82,28 @@
         flex-direction: column;
         padding: 3vh 3vw;
         height: auto;
-          .colors-container {
-            padding-left: 1.5rem;
-            height: calc(8vw);
-            min-height: 100px;
-            max-height: 30vh;
-            background-color: $background-light;
-            overflow: scroll;
-            &::-webkit-scrollbar-thumb {
-              background: $text-color-dark;
-              border-radius: 35px;
+        .colors-container {
+          padding-left: 1.5rem;
+          height: calc(8vw);
+          min-height: 100px;
+          max-height: 30vh;
+          background-color: $background-light;
+          overflow: scroll;
+          &::-webkit-scrollbar-thumb {
+            background: $text-color-dark;
+            border-radius: 35px;
+          }
+          &::-webkit-scrollbar-track-piece {
+            background: transparent;
+          }
+          li {
+            padding: 1.5em 0;
+            a {
+              color: $text-color-dark;
+              text-transform: uppercase;
+              font-weight: bold;
             }
-            &::-webkit-scrollbar-track-piece {
-              background: transparent;
-            }
-            li {
-              padding: 1.5em 0;
-              a {
-                color: $text-color-dark;
-                text-transform: uppercase;
-                font-weight: bold;
-              }
-            }
-          
+          }
         }
       }
     }

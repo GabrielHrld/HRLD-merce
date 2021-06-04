@@ -1,7 +1,7 @@
 import React from 'react';
 import CardsContainer from '../components/CardsContainer';
 import HeadBand from '../components/HeadBand';
-import { useParams, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
 const useQuery = () => {

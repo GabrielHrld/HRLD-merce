@@ -1,17 +1,15 @@
-.container-cards_wrapper{
+.container-cards_wrapper {
   padding: 5rem calc((100vw - 1300px) / 2);
-  
 }
-.container-cards{
+.container-cards {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  .spiner-wrapper{
+  .spiner-wrapper {
     width: 80vw;
     display: flex;
     justify-content: center;
-    
   }
 }
-.mini{
+.mini {
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)) !important;
 }

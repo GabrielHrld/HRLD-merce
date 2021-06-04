@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 
 import { chargeTheModal } from '../actions';
 import '../styles/components/OrderCard.scss';
-import Modal from './Modal';
 
 const OrderCard = ({ order, chargeTheModal }) => {
   if (order == null) {

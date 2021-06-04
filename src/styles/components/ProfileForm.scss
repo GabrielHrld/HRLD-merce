@@ -31,7 +31,6 @@
         height: 35px;
         width: 70%;
         border: 2px solid transparent;
-        // border-bottom: 1px solid grey;
         padding-left: 10px;
         margin-bottom: 1em 0;
         background: $background-light;
@@ -61,17 +60,6 @@
       &_label {
         color: '#fefefe';
       }
-      // label {
-      //   margin: 0.5em 0;
-      //   color: $text-color-primary;
-      // }
-      // input {
-      //   height: 40px;
-      //   border: none;
-      //   border-radius: 25px;
-      //   padding-left: 15px;
-      //   outline: none;
-      // }
       .button {
         width: 50%;
         background-color: $background-light-high;

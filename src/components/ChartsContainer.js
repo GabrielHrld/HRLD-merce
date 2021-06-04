@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-import Chart from './Chart'
+import Chart from './Chart';
 
 const ChartsContainer = () => {
   return (
@@ -10,7 +10,7 @@ const ChartsContainer = () => {
       <Chart />
       <Chart />
     </div>
-  )
-}
+  );
+};
 
-export default ChartsContainer
+export default ChartsContainer;

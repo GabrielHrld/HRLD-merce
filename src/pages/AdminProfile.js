@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import MenuContainer from '../components/MenuContainer';
 import ProfileCardsContainer from '../components/ProfileCardsContainer';
 import PanelProducts from '../components/PanelProducts';
-import axios from 'axios';
 import { Helmet } from 'react-helmet';
 
 const AdminProfile = () => {

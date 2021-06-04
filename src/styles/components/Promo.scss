@@ -1,12 +1,12 @@
 @import '../app.scss';
 
-.promo{
+.promo {
   width: 100%;
   background-color: $color-primary;
-  .promo-container{
+  .promo-container {
     padding: 0rem calc((100vw - 1300px) / 2);
     text-align: center;
-    h2{
+    h2 {
       padding: 15px 0;
       color: $text-color-primary;
       font-size: 1.3rem;

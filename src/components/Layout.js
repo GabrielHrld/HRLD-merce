@@ -1,16 +1,16 @@
-import React from 'react'
-import {connect} from 'react-redux'
+import React from 'react';
+import { connect } from 'react-redux';
 
-import Header from './Header'
-import Footer from './Footer'
+import Header from './Header';
+import Footer from './Footer';
 
-import '../styles/app.scss'
-import Cart from './Cart'
+import '../styles/app.scss';
+import Cart from './Cart';
 
-const Layout = ({children, overlay, cartClick}) =>(
+const Layout = ({ children, overlay, cartClick }) => (
   <div className="App">
     <Header />
-    <Cart click={cartClick}/>
+    <Cart click={cartClick} />
     <div className={overlay ? 'overlay' : ''}></div>
     {children}
     <Footer />
@@ -20,8 +20,8 @@ const Layout = ({children, overlay, cartClick}) =>(
 const mapStateToProps = (state) => {
   return {
     overlay: state.overlay,
-    cartClick: state.cartClick
-  }
-}
+    cartClick: state.cartClick,
+  };
+};
 
-export default connect(mapStateToProps, null)(Layout)
+export default connect(mapStateToProps, null)(Layout);

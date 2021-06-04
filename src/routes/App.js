@@ -23,7 +23,6 @@ const App = ({ chargeProducts, user }) => {
   useEffect(() => {
     axios.get('http://localhost:3000/products').then((res) => {
       console.log('productos cargados');
-      // localStorage.setItem('products', JSON.stringify(res.data))
       chargeProducts(res.data);
     });
   }, []);
@@ -50,8 +49,6 @@ const App = ({ chargeProducts, user }) => {
             component={AdminProfile}
             user={user}
           />
-          {/* <Route exact path="/profile" component={Profile} /> */}
-          {/* <Route exact path="/admin/profile" component={AdminProfile} /> */}
           <Route exact path="*" component={NotFound} />
         </Switch>
       </Layout>

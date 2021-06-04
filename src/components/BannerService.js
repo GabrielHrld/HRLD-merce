@@ -1,16 +1,16 @@
-import React from 'react'
-import {GrDeliver, GrLock} from 'react-icons/gr'
-import {BiLock} from 'react-icons/bi'
-import {BsCreditCard} from 'react-icons/bs'
+import React from 'react';
+import { GrDeliver, GrLock } from 'react-icons/gr';
+import { BiLock } from 'react-icons/bi';
+import { BsCreditCard } from 'react-icons/bs';
 
-import '../styles/components/BannerServices.scss'
+import '../styles/components/BannerServices.scss';
 const BannerService = () => {
   return (
     <div className="banner-services">
       <div className="banner-container">
         <div className="banner-items">
           <div>
-            <GrDeliver className="banner-icon"/>
+            <GrDeliver className="banner-icon" />
           </div>
           <div>
             <span>Envios gratis</span>
@@ -28,7 +28,7 @@ const BannerService = () => {
         </div>
         <div className="banner-items">
           <div>
-            <BiLock className="banner-icon"/>
+            <BiLock className="banner-icon" />
           </div>
           <div>
             <span>comprá con seguridad</span>
@@ -37,7 +37,7 @@ const BannerService = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default BannerService
+export default BannerService;

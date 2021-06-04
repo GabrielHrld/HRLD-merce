@@ -13,7 +13,7 @@ import {
   chargeTheModalType,
   handleUserType,
   handleModalAddProductType,
-  productsType
+  productsType,
 } from '../utils/actionTypes';
 import { bubbleSort, bubbleSortInverse, orderById } from '../utils/BubbleSort';
 
@@ -22,8 +22,8 @@ const reducer = (state, action) => {
     case handleUserType:
       return {
         ...state,
-        user: action.payload
-      }
+        user: action.payload,
+      };
     case handleSideMenuClickType:
       return {
         ...state,
@@ -49,18 +49,18 @@ const reducer = (state, action) => {
         sideMenu: false,
       };
     case handleModalAddProductType:
-      return { 
+      return {
         ...state,
         modalAddProductClick: !state.modalAddProductClick,
         overlay: !state.overlay,
-      }
-    
+      };
+
     case productsType:
       return {
         ...state,
-        products: action.payload
-      } 
-      
+        products: action.payload,
+      };
+
     case addToCartType:
       const validate = state.cart.some(
         (item) =>
@@ -163,40 +163,43 @@ const reducer = (state, action) => {
         };
       }
 
-      case orderByPriceType:
-      if (action.payload == restoreType) { //ordenamos de menor a mayor
-        return{
+    case orderByPriceType:
+      if (action.payload == restoreType) {
+        //ordenamos de menor a mayor
+        return {
           ...state,
-          products: orderById(state.products)
-        }
+          products: orderById(state.products),
+        };
       }
-      if (action.payload == minToMaxType) { //ordenamos de menor a mayor
-        return{
+      if (action.payload == minToMaxType) {
+        //ordenamos de menor a mayor
+        return {
           ...state,
-          products: bubbleSort(state.products)
-        }
+          products: bubbleSort(state.products),
+        };
       }
-      if (action.payload == maxToMinType) { //ordenamos de mayor a menor
-        return{
+      if (action.payload == maxToMinType) {
+        //ordenamos de mayor a menor
+        return {
           ...state,
-          products: bubbleSortInverse(state.products)
-        }
+          products: bubbleSortInverse(state.products),
+        };
       }
 
-      case handleModalType:
-        return{ 
-          ...state,
-          modalClick: !state.modalClick,
-          overlay: false,
-        }
-      
-      case chargeTheModalType:
-        return{
-          ...state,
-          modalClick: true,
-          overlay: true,
-          modal : action.payload
-        }
+    case handleModalType:
+      return {
+        ...state,
+        modalClick: !state.modalClick,
+        overlay: false,
+      };
+
+    case chargeTheModalType:
+      return {
+        ...state,
+        modalClick: true,
+        overlay: true,
+        modal: action.payload,
+      };
     default:
       return state;
   }

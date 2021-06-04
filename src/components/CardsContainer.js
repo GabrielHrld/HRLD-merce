@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 import Spinner from '../components/Spinner';
 import SpinnerDark from '../components/SpinnerDark';
@@ -23,7 +23,7 @@ const CardsContainer = ({
   admin,
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [productsPerPage, setProductsPerPage] = useState(6);
+  const [productsPerPage] = useState(6);
   const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState([]);
   const category = useQuery().get('category');

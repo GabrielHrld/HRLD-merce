@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import NumberFormat from 'react-number-format';
 import { BsBoxArrowUpRight } from 'react-icons/bs';
 
-import ModalProduct from './ModalProduct';
 import { chargeTheModal } from '../actions';
 import '../styles/components/Card.scss';
 import MonthlyFees from './MonthlyFees';
@@ -45,7 +44,6 @@ const Card = ({ product, admin = false, chargeTheModal }) => {
           )}
         </li>
       </ul>
-      {/* <ModalProduct /> */}
     </div>
   );
 };
