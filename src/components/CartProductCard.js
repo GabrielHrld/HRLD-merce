@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import { Link } from 'react-router-dom';
 import NumberFormat from 'react-number-format';
 import { ImBin } from 'react-icons/im';
 import { HiMinus, HiPlus } from 'react-icons/hi';
@@ -25,7 +26,7 @@ const CartProductCard = ({ product, deleteToCart, handleQuantity }) => {
           </div>
           <div className="product-card_info">
             <div className="product-card_info_title">
-              <a href={`/products/${product.id}`}>{product.name}</a>
+              <Link to={`/products/${product.id}`}>{product.name}</Link>
             </div>
             <div className="product-card_info_recap">
               <span>{`(${product.size[0]}, ${product.color})`}</span>

@@ -153,7 +153,7 @@ const Header = ({
                 filteredProducts.map((product, index) => {
                   return (
                     <li className="searchList-item" key={product + index}>
-                      <a href={`/products/${product._id}`} className="link">
+                      <Link to={`/products/${product._id}`} className="link">
                         <div className="searchList-image_container">
                           <img
                             src={product != undefined ? product.image : ''}
@@ -163,7 +163,7 @@ const Header = ({
                         <div className="searchList-title_container">
                           <h3 className="searchList-title">{product.name}</h3>
                         </div>
-                      </a>
+                      </Link>
                     </li>
                   );
                 })

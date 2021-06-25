@@ -192,7 +192,7 @@ const SignUp = () => {
             </form>
           </div>
           <p className="redirect">
-            ¿Ya tienes cuenta? <a href="/sign-in">Ingresa</a>
+            ¿Ya tienes cuenta? <Link to="/sign-in">Ingresa</Link>
           </p>
         </div>
       </div>

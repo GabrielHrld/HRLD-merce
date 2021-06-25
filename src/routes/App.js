@@ -13,6 +13,7 @@ import AdminProfile from '../pages/AdminProfile';
 import NotFound from '../pages/NotFound';
 import PrivateRoute from '../utils/PrivateRoute';
 import PrivateAdminRoute from '../utils/PrivateAdminRoute';
+import AutoScrollToTop from '../components/AutoScrollToTop';
 import '../styles/app.scss';
 import axios from 'axios';
 import { connect } from 'react-redux';
@@ -29,6 +30,7 @@ const App = ({ chargeProducts, user }) => {
   }, []);
   return (
     <Router>
+      <AutoScrollToTop />
       <Layout>
         <Switch>
           <Route exact path="/sign-in" component={SignIn} />
