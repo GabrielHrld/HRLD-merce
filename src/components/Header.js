@@ -8,7 +8,7 @@ import { IoIosArrowDown } from 'react-icons/io';
 
 import Logo from '../../assets/logo.png';
 import '../styles/components/Header.scss';
-import Spinner from './Spinner';
+import SpinnerDark from './SpinnerDark';
 import axios from 'axios';
 import { config } from '../utils/config';
 
@@ -147,7 +147,7 @@ const Header = ({
               {loading ? (
                 <div className="spinnerContainer">
                   {' '}
-                  <Spinner />
+                  <SpinnerDark />
                 </div>
               ) : query == '' ? null : ( //BUSCADOR
                 filteredProducts.map((product, index) => {
